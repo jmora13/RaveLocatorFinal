@@ -7,15 +7,29 @@
     android:minHeight="88dp"
     android:id="@+id/recyclerview">
 
+    <TextView
+        android:layout_alignParentStart="true"
+        android:id="@+id/initalSeparator"
+        android:layout_width="match_parent"
+        android:textSize="25dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        tools:text="Date"
+        android:background="@android:color/darker_gray"/>
+
     <ImageView
         android:id="@+id/mtrl_list_item_icon"
+        android:layout_below="@id/initalSeparator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:padding="16dp"/>
+
 
     <TextView
         android:id="@+id/concertName"
+        android:layout_below="@id/initalSeparator"
+        android:fontFamily="@font/bebas_neue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -63,5 +77,14 @@
         android:layout_alignBaseline="@id/concertVenue"
        />
 
-
+    <TextView
+        android:id="@+id/separatorView"
+        android:layout_width="match_parent"
+        android:layout_below="@id/favoriteButton"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:text="Date"
+        android:background="@android:color/darker_gray"/>
 </RelativeLayout>

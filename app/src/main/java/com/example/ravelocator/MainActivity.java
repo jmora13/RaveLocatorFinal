@@ -1,22 +1,37 @@
 package com.example.ravelocator;
 
+import android.app.FragmentTransaction;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.ravelocator.util.Datum;
+import com.example.ravelocator.util.DatumUpdate;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -39,15 +54,13 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        if(savedInstanceState != null){
-            dayOfMonth = mPreferences.getInt(DAY_OF_MONTH_KEY,0);
-            if(dayOfMonth == 0){
-                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-            }
-
-        }
+//        if(savedInstanceState != null){
+//            dayOfMonth = mPreferences.getInt(DAY_OF_MONTH_KEY,0);
+//            if(dayOfMonth == 0){
+//                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+//            }
+//
+//        }
 //        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -63,12 +76,15 @@ public class MainActivity extends AppCompatActivity  {
 //        if (navigationView != null) {
 //            navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
 //        }
-        //Toolbar myToolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(myToolbar);
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+        //getSupportActionBar().setTitle(city);
+        //myToolbar.setTitle(city);
         createNotificationChannel();
         DataFragmentAdapter ad = new DataFragmentAdapter(this);
         viewPager = findViewById(R.id.pager);
         viewPager.setAdapter(ad);
+        viewPager.setOffscreenPageLimit(2);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             viewPager.setCurrentItem(tab.getPosition(), true);
@@ -77,11 +93,14 @@ public class MainActivity extends AppCompatActivity  {
                 tab.setIcon(R.drawable.ic_outline_location_on_24);
             }
             if(position == 1){
+                tab.setText("Search");
+                tab.setIcon(R.drawable.ic_baseline_search_24);
+            }
+            if(position == 2){
                 tab.setText("Favorites");
                 tab.setIcon(R.drawable.ic_baseline_favorite_24);
             }
         }).attach();
-
 
 //        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 //            @Override
@@ -102,22 +121,18 @@ public class MainActivity extends AppCompatActivity  {
 //        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
 //            @Override
 //            public void onPageSelected(int position) {
-//                tabLayout.selectTab(tabLayout.getTabAt(position));
+//                View view = viewPager.getChildAt(position);
+//                //if (view == null) return;
+//                int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
+//                int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+//                view.measure(wMeasureSpec,hMeasureSpec);
+//
+//                if(viewPager.getLayoutParams().height != view.getMeasuredHeight()){
+//                    ViewGroup.LayoutParams lp = viewPager.getLayoutParams();
+//                    lp.height = view.getMeasuredHeight();
+//                }
 //            }
 //        });
-//        public boolean onOptionsItemSelected(MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.action_sign_out: {
-//                    // do your sign-out stuff
-//                    break;
-//                }
-//                default:
-//                    // If we got here, the user's action was not recognized.
-//                    // Invoke the superclass to handle it.
-//                    return super.onOptionsItemSelected(item);
-//            }
-//            return true;
-//        }
 
     }
 
@@ -137,22 +152,42 @@ public class MainActivity extends AppCompatActivity  {
 //    }
 
 
-
+//    private void updatePagerHeightForChild(View view, ViewPager2 viewPager){
+//        int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
+//        int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+//        view.measure(wMeasureSpec,hMeasureSpec);
+//
+//        if(viewPager.getLayoutParams().height != view.getMeasuredHeight()){
+//            viewPager.setLayoutParams(view.getLayoutParams());
+//        }
+//    }
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        // Get the SearchView and set the searchable configuration
+//        SearchManager searchManager = null;
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//            searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        }
+//        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+//        // Assumes current activity is the searchable activity
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.action_calendar:
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.show(getSupportFragmentManager(),"datePicker");
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    public void setActionBarTitle(String title) {
+//        getSupportActionBar().setTitle(title);
+//    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch(item.getItemId()){
+//            case R.id.action_calendar:
+//                DialogFragment newFragment = new DatePickerFragment();
+//                newFragment.show(getSupportFragmentManager(),"datePicker");
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public void processDatePickerResult(int year, int month, int day){
         String month_string = Integer.toString(month+1);
@@ -196,20 +231,20 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    @Override
-    protected void onPause() {
-        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-        super.onPause();
-        preferencesEditor.putInt(DAY_OF_MONTH_KEY, dayOfMonth);
-        preferencesEditor.apply();
-    }
+//    @Override
+//    protected void onPause() {
+//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+//        super.onPause();
+//        preferencesEditor.putInt(DAY_OF_MONTH_KEY, dayOfMonth);
+//        preferencesEditor.apply();
+//    }
 
-    public void reset(View view){
-        //reset day to current day
-        dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-        //clear preferences
-        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-        preferencesEditor.clear();
-        preferencesEditor.apply();
-    }
+//    public void reset(View view){
+//        //reset day to current day
+//        dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+//        //clear preferences
+//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+//        preferencesEditor.clear();
+//        preferencesEditor.apply();
+//    }
 }

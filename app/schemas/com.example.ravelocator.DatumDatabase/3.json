@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "c82409b80757a2a5d960990d48ff1e63",
+    "identityHash": "3f8971a23c9266456778cd17479a0620",
     "entities": [
       {
         "tableName": "datum_table",
@@ -240,12 +240,132 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "ftsVersion": "FTS4",
+        "ftsOptions": {
+          "tokenizer": "simple",
+          "tokenizerArgs": [],
+          "contentTable": "datum_table",
+          "languageIdColumnName": "",
+          "matchInfo": "FTS4",
+          "notIndexedColumns": [],
+          "prefixSizes": [],
+          "preferredOrder": "ASC"
+        },
+        "contentSyncTriggers": [
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_BEFORE_UPDATE BEFORE UPDATE ON `datum_table` BEGIN DELETE FROM `datum_fts` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_BEFORE_DELETE BEFORE DELETE ON `datum_table` BEGIN DELETE FROM `datum_fts` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_AFTER_UPDATE AFTER UPDATE ON `datum_table` BEGIN INSERT INTO `datum_fts`(`docid`, `id`, `link`, `name`, `ages`, `festivalInd`, `livestreamInd`, `electronicGenreInd`, `otherGenreInd`, `date`, `startTime`, `endTime`, `createdDate`, `venue`, `artistList`, `isFavorite`) VALUES (NEW.`rowid`, NEW.`id`, NEW.`link`, NEW.`name`, NEW.`ages`, NEW.`festivalInd`, NEW.`livestreamInd`, NEW.`electronicGenreInd`, NEW.`otherGenreInd`, NEW.`date`, NEW.`startTime`, NEW.`endTime`, NEW.`createdDate`, NEW.`venue`, NEW.`artistList`, NEW.`isFavorite`); END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_AFTER_INSERT AFTER INSERT ON `datum_table` BEGIN INSERT INTO `datum_fts`(`docid`, `id`, `link`, `name`, `ages`, `festivalInd`, `livestreamInd`, `electronicGenreInd`, `otherGenreInd`, `date`, `startTime`, `endTime`, `createdDate`, `venue`, `artistList`, `isFavorite`) VALUES (NEW.`rowid`, NEW.`id`, NEW.`link`, NEW.`name`, NEW.`ages`, NEW.`festivalInd`, NEW.`livestreamInd`, NEW.`electronicGenreInd`, NEW.`otherGenreInd`, NEW.`date`, NEW.`startTime`, NEW.`endTime`, NEW.`createdDate`, NEW.`venue`, NEW.`artistList`, NEW.`isFavorite`); END"
+        ],
+        "tableName": "datum_fts",
+        "createSql": "CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`id` INTEGER, `link` TEXT, `name` TEXT, `ages` TEXT, `festivalInd` INTEGER, `livestreamInd` INTEGER, `electronicGenreInd` INTEGER, `otherGenreInd` INTEGER, `date` TEXT, `startTime` TEXT, `endTime` TEXT, `createdDate` TEXT, `venue` TEXT, `artistList` TEXT, `isFavorite` INTEGER DEFAULT false, content=`datum_table`)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "link",
+            "columnName": "link",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ages",
+            "columnName": "ages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "festivalInd",
+            "columnName": "festivalInd",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "livestreamInd",
+            "columnName": "livestreamInd",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "electronicGenreInd",
+            "columnName": "electronicGenreInd",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "otherGenreInd",
+            "columnName": "otherGenreInd",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "startTime",
+            "columnName": "startTime",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "endTime",
+            "columnName": "endTime",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdDate",
+            "columnName": "createdDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "venue",
+            "columnName": "venue",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "artistList",
+            "columnName": "artistList",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isFavorite",
+            "columnName": "isFavorite",
+            "affinity": "INTEGER",
+            "notNull": false,
+            "defaultValue": "false"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c82409b80757a2a5d960990d48ff1e63')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3f8971a23c9266456778cd17479a0620')"
     ]
   }
 }

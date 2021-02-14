@@ -2,7 +2,6 @@
 package com.example.ravelocator.util;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Fts4;
 import androidx.room.PrimaryKey;
@@ -30,10 +29,10 @@ import java.util.List;
         "venue",
         "artistList"
 })
-@Entity(tableName = "datum_table")
-public class Datum {
+@Entity(tableName = "datum_fts")
+@Fts4(contentEntity = Datum.class)
+public class DatumFTS {
 
-    @PrimaryKey
     @JsonProperty("id")
     private Integer id;
     @JsonProperty("link")
@@ -65,20 +64,20 @@ public class Datum {
     @ColumnInfo(defaultValue = "false")
     private Boolean isFavorite = false;
 
-    public Datum(Integer id, String link, String name,String ages,Boolean festivalInd,
-                 Boolean livestreamInd,Boolean electronicGenreInd,Boolean otherGenreInd,
-                 String date, String startTime, String endTime, String createdDate, Venue venue, List<ArtistList> artistList){
-        this.id = id; this.link = link; this.name = name; this.ages = ages; this.festivalInd = festivalInd;
-        this.livestreamInd = livestreamInd; this.electronicGenreInd = electronicGenreInd; this.otherGenreInd = otherGenreInd;
-        this.date = date; this.startTime = startTime; this.endTime = endTime; this.createdDate = createdDate; this.venue = venue; this.artistList = artistList;
-    }
+//    public Datum(Integer id, String link, String name,String ages,Boolean festivalInd,
+//                 Boolean livestreamInd,Boolean electronicGenreInd,Boolean otherGenreInd,
+//                 String date, String startTime, String endTime, String createdDate, Venue venue, List<ArtistList> artistList){
+//        this.id = id; this.link = link; this.name = name; this.ages = ages; this.festivalInd = festivalInd;
+//        this.livestreamInd = livestreamInd; this.electronicGenreInd = electronicGenreInd; this.otherGenreInd = otherGenreInd;
+//        this.date = date; this.startTime = startTime; this.endTime = endTime; this.createdDate = createdDate; this.venue = venue; this.artistList = artistList;
+//    }
 
-//    public Datum(Integer id, String name){
+    //    public Datum(Integer id, String name){
 //        this.id = id;
 //        this.name = name;
 //    }
-    public Datum(){
-    }
+//    public Datum(){
+//    }
 
     public static Datum populateData() {
         return new Datum(123, "456","test", "all", true, true,

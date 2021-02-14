@@ -11,6 +11,7 @@ import androidx.room.Update;
 
 import com.example.ravelocator.util.ArtistList;
 import com.example.ravelocator.util.Datum;
+import com.example.ravelocator.util.DatumFTS;
 import com.example.ravelocator.util.DatumUpdate;
 import com.example.ravelocator.util.Venue;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -35,6 +36,9 @@ public interface DatumDao {
     @Query("SELECT * from datum_table")
     LiveData<List<Datum>> getAllDatum();
 
+    @Query("SELECT * FROM datum_table JOIN datum_fts ON datum_table.id = datum_fts.id WHERE datum_fts MATCH :query ORDER BY date")
+    List<Datum> search(String query);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Datum datum);
 
@@ -56,5 +60,7 @@ public interface DatumDao {
     List<DatumWithArtistList> getDatumWithArtistList(Integer aId);
     @Query("DELETE FROM datum_table")
     void deleteAll();
+
+
 
 }

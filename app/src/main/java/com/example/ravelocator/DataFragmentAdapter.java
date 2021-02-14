@@ -19,6 +19,8 @@ public class DataFragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 1:
+                return new SearchFragment();
+            case 2:
                 return new FavoritesFragment();
             default:
                 return new NearbyFragment();
@@ -27,6 +29,6 @@ public class DataFragmentAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

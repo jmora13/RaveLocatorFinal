@@ -20,6 +20,7 @@ public class RaveLocatorModel {
     private Boolean success;
 
 
+
 //    public RaveLocatorModel(@NonNull boolean success, List<Datum> data){
 //        this.success = success;
 //        this.data = data;

@@ -10,11 +10,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ToggleButton;
 
 import com.example.ravelocator.util.Datum;
 import com.example.ravelocator.util.DatumUpdate;
@@ -22,35 +25,48 @@ import com.example.ravelocator.util.RaveLocatorModel;
 
 
 public class FavoritesFragment extends Fragment {
-        @Nullable
+    private RaveLocatorViewModel mRaveLocatorViewModel;
+    ToggleButton favorite;
+    View view;
+    ViewPager2 viewPager;
+    @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                 @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.content_main, container, false);
+            view = inflater.inflate(R.layout.fragment_favorites, container, false);
             Context context = view.getContext();
+            viewPager = view.findViewById(R.id.pager);
             RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
             final RaveLocatorAdapter adapter = new RaveLocatorAdapter(getActivity(), this::onListItemClick);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            RaveLocatorViewModel mRaveLocatorViewModel = new ViewModelProvider(requireActivity()).get(RaveLocatorViewModel.class);
+            mRaveLocatorViewModel = new ViewModelProvider(requireActivity()).get(RaveLocatorViewModel.class);
             mRaveLocatorViewModel.getAllFavorites().observe(getViewLifecycleOwner(), adapter::setRaves);
             return view;
         }
 
 
     public void onListItemClick(Datum datum) {
-        //Toast.makeText(this, datum., Toast.LENGTH_SHORT).show();
-//        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
-//        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
-        DatumUpdate isFavorite = new DatumUpdate(datum.getId(), true);
-        //mRaveLocatorViewModel.updateDatumFavorites(isFavorite);
+        DatumUpdate isFavorite;
+        isFavorite = new DatumUpdate(datum.getId(), false);
+        mRaveLocatorViewModel.updateDatumFavorites(isFavorite);
     }
 
     @Override
-        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-            Bundle args = getArguments();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 
-        }
 
+    public void onResume() {
+        super.onResume();
+//        int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
+//        int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+//        view.measure(wMeasureSpec,hMeasureSpec);
 
+//        if(viewPager.getLayoutParams().height != view.getMeasuredHeight()){
+//            ViewGroup.LayoutParams lp = viewPager.getLayoutParams();
+//            lp.height = view.getMeasuredHeight();
+//        }
+    }
 }

@@ -2,13 +2,16 @@ package com.example.ravelocator;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.ravelocator.util.ArtistList;
 import com.example.ravelocator.util.Datum;
+import com.example.ravelocator.util.DatumFTS;
 import com.example.ravelocator.util.DatumUpdate;
 import com.example.ravelocator.util.Venue;
 
@@ -17,8 +20,9 @@ import com.example.ravelocator.util.Venue;
                 Datum.class,
                 Venue.class,
                 ArtistList.class,
-                DatumUpdate.class},
-        version = 3)
+                DatumUpdate.class,
+                DatumFTS.class},
+        version = 4)
 @TypeConverters({Converters.class})
 public abstract class DatumDatabase extends RoomDatabase {
 //    public abstract DatumDao datumDao();
@@ -147,6 +151,7 @@ private static DatumDatabase INSTANCE;
             INSTANCE = Room
                     .databaseBuilder(context.getApplicationContext(), DatumDatabase.class, "datum_database")
                     .fallbackToDestructiveMigration()
+                    .addCallback(sRoomDatabaseCallback)
                     .allowMainThreadQueries()
                     .build();
             INSTANCE.populateInitialData();
@@ -155,14 +160,20 @@ private static DatumDatabase INSTANCE;
     }
 
     private void populateInitialData() {
-            runInTransaction(new Runnable() {
-                @Override
-                public void run() {
-                    Datum datum = new Datum();
-                    //datumDao().insertDatum(Datum.populateData());
-                }
+            runInTransaction(() -> {
+                new Datum();
             });
     }
+
+        private static RoomDatabase.Callback sRoomDatabaseCallback =
+            new RoomDatabase.Callback(){
+
+                @Override
+                public void onOpen(@NonNull SupportSQLiteDatabase db) {
+                    super.onOpen(db);
+                    db.execSQL("INSERT INTO datum_fts(datum_fts) VALUES ('rebuild')");
+                }
+            };
 
 //    private static DatumDatabase buildDatabase(final Context context) {
 //        return Room.databaseBuilder(context,

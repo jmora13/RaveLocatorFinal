@@ -6,14 +6,19 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import com.example.ravelocator.util.Datum;
+import com.example.ravelocator.util.DatumFTS;
 import com.example.ravelocator.util.DatumUpdate;
+import com.example.ravelocator.util.Venue;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class RaveLocatorRepository {
     private DatumDao datumDao;
     private LiveData<List<Datum>> datum;
     private LiveData<List<Datum>> favorites;
+    private LiveData<List<Venue>> venue;
 
     RaveLocatorRepository(Application application){
         DatumDatabase db = DatumDatabase.getDatabase(application);
@@ -25,9 +30,12 @@ public class RaveLocatorRepository {
     LiveData<List<Datum>> getAllDatum(){
         return datum;
     }
-    
+
     public void insertDatum(Datum datum){
         new insertAsyncTask(datumDao).execute(datum);
+    }
+    public void insertVenue(Venue venue){
+        new insertAsyncTask(datumDao).execute(venue);
     }
     public void updateDatumFavorites(DatumUpdate isFavorite){
         new insertAsyncTask(datumDao).execute(isFavorite);
@@ -35,6 +43,10 @@ public class RaveLocatorRepository {
     public LiveData<List<Datum>> getAllFavorites(){
         return favorites;
     }
+    public List<Datum> search(String query){
+
+        return datumDao.search(query);}
+
 
     private class insertAsyncTask extends AsyncTask<Datum, Void, Void> {
         private DatumDao mAsyncTaskDao;
@@ -51,6 +63,8 @@ public class RaveLocatorRepository {
             mAsyncTaskDao.updateDatumFavorites(isFavorite);
         }
 
+        public void execute(Venue venue) {
+            mAsyncTaskDao.insertVenue(venue);
+        }
     }
-
 }
