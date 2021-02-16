@@ -41,7 +41,7 @@ public class FavoritesFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRaveLocatorViewModel = new ViewModelProvider(requireActivity()).get(RaveLocatorViewModel.class);
-            mRaveLocatorViewModel.getAllFavorites().observe(getViewLifecycleOwner(), adapter::setRaves);
+            //mRaveLocatorViewModel.getAllFavorites().observe(getViewLifecycleOwner(), adapter::setRaves);
             return view;
         }
 

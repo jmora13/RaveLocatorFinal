@@ -30,6 +30,8 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     private boolean isCollapsed = INITIAL_IS_COLLAPSED;
     private ListItemClickListener mOnClickListener;
     private Toolbar toolbar;
+    private RaveLocatorViewModel mRaveLocatorViewModel;
+    private List<DatumWithVenue> dwv;
 
     class RaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView concertName;
@@ -79,6 +81,7 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     @Override
     public void onBindViewHolder(@NonNull RaveLocatorAdapter.RaveViewHolder holder, int position) {
         Datum current = datum.get(position);
+
         if(position == 0){
             holder.initialSeparatorView.setText(datum.get(position).getDate());
             holder.initialSeparatorView.setVisibility(View.VISIBLE);
@@ -96,8 +99,10 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
             }
             if(current.getLivestreamInd() == true) {
                 holder.concertVenue.setText("Livestream");
-            } else {
+            } if(dwv == null){
                 holder.concertVenue.setText(current.getVenue().getVenueName());
+                } else {
+                holder.concertVenue.setText(dwv.get(position).venue.getVenueName());
             }
             holder.concertVenue.setOnClickListener(v -> collapseArtistList(holder));
             holder.artistPreview.setText(getArtists(current));
@@ -126,6 +131,12 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
         return artists;
     }
 
+
+    void setRaves(List<Datum> raves, List<DatumWithVenue> dwv){
+        datum = raves;
+        this.dwv = dwv;
+        notifyDataSetChanged();
+    }
 
     void setRaves(List<Datum> raves){
         datum = raves;

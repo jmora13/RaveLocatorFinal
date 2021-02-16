@@ -38,7 +38,6 @@ public class Venue {
     @JsonProperty("longitude")
     private Double longitude;
 
-    public Integer vId;
 
     @ForeignKey
             (entity = Datum.class,
@@ -117,5 +116,9 @@ public class Venue {
     @JsonProperty("id")
     public void setVenueId(Integer venueId) {
         this.venueId = venueId;
+    }
+
+    public String getNameFromId(int venueId){
+        return venueName;
     }
 }

@@ -1,21 +1,23 @@
 package com.example.ravelocator;
 
 import androidx.room.Embedded;
+import androidx.room.Junction;
 import androidx.room.Relation;
 
 import com.example.ravelocator.util.Datum;
 import com.example.ravelocator.util.Venue;
 
-public class DatumAndVenue {
+public class DatumWithVenue {
     @Embedded
     public Datum datum;
     @Relation(
             parentColumn = "id",
-            entityColumn = "vId"
+            entityColumn = "venueName",
+            associateBy = @Junction(DatumVenueCrossRef.class)
     )
     public Venue venue;
-    public DatumAndVenue(Datum datum, Venue venue){
-        this. datum = datum;
+    public DatumWithVenue(Datum datum, Venue venue){
+        this.datum = datum;
         this.venue = venue;
     }
 }

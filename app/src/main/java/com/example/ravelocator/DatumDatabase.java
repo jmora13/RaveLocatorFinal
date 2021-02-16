@@ -21,8 +21,9 @@ import com.example.ravelocator.util.Venue;
                 Venue.class,
                 ArtistList.class,
                 DatumUpdate.class,
-                DatumFTS.class},
-        version = 4)
+                DatumFTS.class,
+        DatumVenueCrossRef.class},
+        version = 6)
 @TypeConverters({Converters.class})
 public abstract class DatumDatabase extends RoomDatabase {
 //    public abstract DatumDao datumDao();

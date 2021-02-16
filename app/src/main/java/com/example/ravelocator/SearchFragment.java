@@ -39,6 +39,7 @@ import com.example.ravelocator.util.RaveLocatorModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -83,7 +84,12 @@ public class SearchFragment extends Fragment {
             private void Search(String searchText) {
                 searchText = "*"+searchText+"*";
                 String finalSearchText = searchText;
-                adapter.setRaves(mRaveLocatorViewModel.search(finalSearchText));
+                List<Datum> raves = mRaveLocatorViewModel.search(finalSearchText);
+                List<DatumWithVenue> dwv = new ArrayList<>();
+                for(int i = 0; i < raves.size(); i++) {
+                    dwv.add(mRaveLocatorViewModel.getVenueOfDatum(raves.get(i).getId()));
+                }
+                adapter.setRaves(raves, dwv);
             }
         });
 

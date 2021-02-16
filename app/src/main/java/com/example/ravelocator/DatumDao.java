@@ -11,10 +11,8 @@ import androidx.room.Update;
 
 import com.example.ravelocator.util.ArtistList;
 import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumFTS;
 import com.example.ravelocator.util.DatumUpdate;
 import com.example.ravelocator.util.Venue;
-import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.List;
 
@@ -40,6 +38,13 @@ public interface DatumDao {
     List<Datum> search(String query);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertDatumVenueCrossRef(DatumVenueCrossRef crossRef);
+
+    @Transaction
+    @Query("SELECT * FROM datum_table WHERE id = :id")
+    DatumWithVenue getVenueOfDatum(int id);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Datum datum);
 
     @Delete
@@ -51,9 +56,6 @@ public interface DatumDao {
     @Query("SELECT * FROM datum_table WHERE isFavorite = 1")
     LiveData<List<Datum>> getAllFavorites();
 
-    @Transaction
-    @Query("SELECT * FROM datum_table WHERE id = :vId")
-    List<DatumAndVenue> getDatumAndVenueWithId(Integer vId);
 
     @Transaction
     @Query("SELECT * FROM datum_table WHERE id = :aId")

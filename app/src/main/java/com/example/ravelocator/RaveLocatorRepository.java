@@ -19,6 +19,7 @@ public class RaveLocatorRepository {
     private LiveData<List<Datum>> datum;
     private LiveData<List<Datum>> favorites;
     private LiveData<List<Venue>> venue;
+    private DatumWithVenue datumWithVenue;
 
     RaveLocatorRepository(Application application){
         DatumDatabase db = DatumDatabase.getDatabase(application);
@@ -30,13 +31,14 @@ public class RaveLocatorRepository {
     LiveData<List<Datum>> getAllDatum(){
         return datum;
     }
-
+    DatumWithVenue getVenueOfDatum(int id) {return datumDao.getVenueOfDatum(id);}
     public void insertDatum(Datum datum){
         new insertAsyncTask(datumDao).execute(datum);
     }
     public void insertVenue(Venue venue){
         new insertAsyncTask(datumDao).execute(venue);
     }
+    public void insertDatumVenueCrossRef(DatumVenueCrossRef crossRef){ new insertAsyncTask(datumDao).execute(crossRef);}
     public void updateDatumFavorites(DatumUpdate isFavorite){
         new insertAsyncTask(datumDao).execute(isFavorite);
     }
@@ -66,5 +68,9 @@ public class RaveLocatorRepository {
         public void execute(Venue venue) {
             mAsyncTaskDao.insertVenue(venue);
         }
+
+        public void execute(DatumVenueCrossRef crossRef) { mAsyncTaskDao.insertDatumVenueCrossRef(crossRef);
+        }
+
     }
 }
