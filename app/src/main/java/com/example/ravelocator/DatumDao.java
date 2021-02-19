@@ -44,6 +44,10 @@ public interface DatumDao {
     @Query("SELECT * FROM datum_table WHERE id = :id")
     DatumWithVenue getVenueOfDatum(int id);
 
+    @Transaction
+    @Query("SELECT * FROM venue WHERE venueName = :venueName")
+    List<VenueWithDatum> getDatumOfVenue(String venueName);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Datum datum);
 

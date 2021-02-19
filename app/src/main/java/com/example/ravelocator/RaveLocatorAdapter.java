@@ -32,7 +32,9 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     private Toolbar toolbar;
     private RaveLocatorViewModel mRaveLocatorViewModel;
     private List<DatumWithVenue> dwv;
-
+    private List<VenueWithDatum> vwd;
+    private String location;
+    private boolean isLocationQuery = false;
     class RaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView concertName;
         private final TextView concertVenue;
@@ -81,7 +83,6 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     @Override
     public void onBindViewHolder(@NonNull RaveLocatorAdapter.RaveViewHolder holder, int position) {
         Datum current = datum.get(position);
-
         if(position == 0){
             holder.initialSeparatorView.setText(datum.get(position).getDate());
             holder.initialSeparatorView.setVisibility(View.VISIBLE);
@@ -97,12 +98,13 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
             } else {
                 holder.concertName.setText(getArtists(current));
             }
-            if(current.getLivestreamInd() == true) {
-                holder.concertVenue.setText("Livestream");
-            } if(dwv == null){
+        if(isLocationQuery) {
+            holder.concertVenue.setText(location);
+        }
+            if(dwv == null && !isLocationQuery){
                 holder.concertVenue.setText(current.getVenue().getVenueName());
                 } else {
-                holder.concertVenue.setText(dwv.get(position).venue.getVenueName());
+                //holder.concertVenue.setText(dwv.get(position).venue.getVenueName());
             }
             holder.concertVenue.setOnClickListener(v -> collapseArtistList(holder));
             holder.artistPreview.setText(getArtists(current));
@@ -143,8 +145,12 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
         notifyDataSetChanged();
     }
 
-
-
+    void setRaves(List<Datum> raves, String query){
+        datum = raves;
+        isLocationQuery = true;
+        location = query;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {

@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -36,6 +37,7 @@ import android.widget.TextView;
 import com.example.ravelocator.util.Datum;
 import com.example.ravelocator.util.DatumUpdate;
 import com.example.ravelocator.util.RaveLocatorModel;
+import com.example.ravelocator.util.Venue;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -69,6 +71,9 @@ public class SearchFragment extends Fragment {
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                List<VenueWithDatum> vwd = mRaveLocatorViewModel.getDatumOfVenue(query);
+                List<Datum> raves = vwd.get(0).datum;
+                adapter.setRaves(raves, query);
                 return false;
             }
 
@@ -87,10 +92,18 @@ public class SearchFragment extends Fragment {
                 List<Datum> raves = mRaveLocatorViewModel.search(finalSearchText);
                 List<DatumWithVenue> dwv = new ArrayList<>();
                 for(int i = 0; i < raves.size(); i++) {
-                    dwv.add(mRaveLocatorViewModel.getVenueOfDatum(raves.get(i).getId()));
+                    dwv.add(mRaveLocatorViewModel.getVenueOfDatum(raves.get(i).getId())); //makes list of events by id and its reference to the venue
+                    //vwd.add(mRaveLocatorViewModel.g)
                 }
                 adapter.setRaves(raves, dwv);
             }
+
+            //TODO: make a search location function
+
+//            private void SearchLocations(String searchText) {
+//                mRaveLocatorViewModel.getDatumOfVenue(searchText);
+//                adapter.setRaves(raves, dwv);
+//            }
         });
 
         return view;

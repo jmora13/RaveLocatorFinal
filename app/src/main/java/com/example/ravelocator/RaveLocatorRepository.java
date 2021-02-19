@@ -32,6 +32,7 @@ public class RaveLocatorRepository {
         return datum;
     }
     DatumWithVenue getVenueOfDatum(int id) {return datumDao.getVenueOfDatum(id);}
+    List<VenueWithDatum> getDatumOfVenue(String venueId){ return datumDao.getDatumOfVenue(venueId);}
     public void insertDatum(Datum datum){
         new insertAsyncTask(datumDao).execute(datum);
     }

@@ -13,21 +13,10 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:animateLayoutChanges="true"
-            android:background="#5D3C85"
-            app:menu="@menu/toolbar_menu"
-            app:popupTheme="@style/Widget.MaterialComponents.Toolbar"
-            app:subtitleTextColor="#FFFFFF"
-            app:titleTextColor="#FFFFFF">
-
-        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

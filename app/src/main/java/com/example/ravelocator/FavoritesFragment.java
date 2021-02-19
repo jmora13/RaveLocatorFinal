@@ -41,7 +41,7 @@ public class FavoritesFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRaveLocatorViewModel = new ViewModelProvider(requireActivity()).get(RaveLocatorViewModel.class);
-            //mRaveLocatorViewModel.getAllFavorites().observe(getViewLifecycleOwner(), adapter::setRaves);
+            mRaveLocatorViewModel.getAllFavorites().observe(getViewLifecycleOwner(), adapter::setRaves);
             return view;
         }
 
@@ -57,16 +57,4 @@ public class FavoritesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-
-    public void onResume() {
-        super.onResume();
-//        int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
-//        int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-//        view.measure(wMeasureSpec,hMeasureSpec);
-
-//        if(viewPager.getLayoutParams().height != view.getMeasuredHeight()){
-//            ViewGroup.LayoutParams lp = viewPager.getLayoutParams();
-//            lp.height = view.getMeasuredHeight();
-//        }
-    }
 }

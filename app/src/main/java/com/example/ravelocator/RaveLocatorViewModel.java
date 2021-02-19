@@ -67,6 +67,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
     public void insertVenue(Venue venue) { mRepository.insertVenue(venue);}
     public void insertDatumVenueCrossRef(DatumVenueCrossRef crossRef){mRepository.insertDatumVenueCrossRef(crossRef);}
     DatumWithVenue getVenueOfDatum(int id) {return mRepository.getVenueOfDatum(id);}
+    List<VenueWithDatum> getDatumOfVenue(String venueName){return mRepository.getDatumOfVenue(venueName);}
     public void updateDatumFavorites(DatumUpdate isFavorite){mRepository.updateDatumFavorites(isFavorite);}
     public LiveData<List<Datum>> getAllFavorites(){return mRepository.getAllFavorites(); }
     public List<Datum> search(String query){return mRepository.search(query); }
@@ -86,8 +87,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
                 for(int i =0; i <datum.size(); i++){
                     insertDatum(datum.get(i));
                     insertVenue(datum.get(i).getVenue());
-                    crossRef = new DatumVenueCrossRef(datum.get(i).getId(), datum.get(i).getVenue().getVenueName());
-                    insertDatumVenueCrossRef(crossRef);
+                    insertDatumVenueCrossRef(new DatumVenueCrossRef(datum.get(i).getId(), datum.get(i).getVenue().getVenueName()));
                 }
                 mutableLiveData.setValue(response.body());
                 Log.e("BACON AND", mutableLiveData.toString());

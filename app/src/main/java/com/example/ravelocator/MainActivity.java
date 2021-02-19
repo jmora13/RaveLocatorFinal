@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity  {
 //        if (navigationView != null) {
 //            navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
 //        }
-        Toolbar myToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(myToolbar);
+//        Toolbar myToolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(myToolbar);
         //getSupportActionBar().setTitle(city);
         //myToolbar.setTitle(city);
         createNotificationChannel();
