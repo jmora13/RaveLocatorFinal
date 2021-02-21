@@ -31,11 +31,11 @@ public interface DatumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertArtistList(List<ArtistList> artistList);
 
-    @Query("SELECT * from datum_table")
+    @Query("SELECT * from datum_table ORDER BY date")
     LiveData<List<Datum>> getAllDatum();
 
     @Query("SELECT * FROM datum_table JOIN datum_fts ON datum_table.id = datum_fts.id WHERE datum_fts MATCH :query ORDER BY date")
-    List<Datum> search(String query);
+    List<Datum>search(String query);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertDatumVenueCrossRef(DatumVenueCrossRef crossRef);

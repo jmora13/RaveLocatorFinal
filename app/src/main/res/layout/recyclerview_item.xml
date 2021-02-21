@@ -1,22 +1,40 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
+    android:background="@color/colorScreenBackground"
     android:minHeight="88dp"
     android:id="@+id/recyclerview">
 
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+
+        app:cardBackgroundColor="@color/white"
+        android:foregroundTint="@color/mtrl_list_item_tint"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
     <TextView
-        android:layout_alignParentStart="true"
         android:id="@+id/initalSeparator"
+        android:layout_alignParentStart="true"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:layout_width="match_parent"
         android:textSize="25dp"
         android:visibility="gone"
         android:gravity="center"
         android:layout_height="wrap_content"
         tools:text="Date"
-        android:background="@android:color/darker_gray"/>
+        android:background="@color/colorSecondaryDark"/>
 
     <ImageView
         android:id="@+id/mtrl_list_item_icon"
@@ -37,7 +55,7 @@
         android:paddingTop="16dp"
         android:paddingEnd="16dp"
         android:textAppearance="?attr/textAppearanceHeadline4"
-        android:textColor="@color/mtrl_list_item_tint"
+        android:textColor="@color/black"
         tools:text="@tools:sample/date/day_of_week" />
 
     <TextView
@@ -50,7 +68,7 @@
         android:maxLines="1"
         android:paddingEnd="16dp"
         android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="@color/mtrl_list_item_tint"
+        android:textColor="@color/black"
         tools:text="@tools:sample/full_names" />
 
     <TextView
@@ -63,7 +81,16 @@
         android:paddingEnd="16dp"
         android:maxLines="1"
         android:textAppearance="?attr/textAppearanceCaption"
-        android:textColor="@color/mtrl_list_item_tint"/>
+        android:textColor="@color/black"/>
+<!--    <TextView-->
+<!--        android:text="6pm"-->
+<!--        android:id="@+id/timeslot"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@id/favoriteButton"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentRight="true"/>-->
 
     <ToggleButton
         android:id="@+id/favoriteButton"
@@ -73,6 +100,7 @@
         android:layout_alignParentEnd="true"
         android:textOff="@null"
         android:textOn="@null"
+        android:backgroundTint="@color/black"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_alignBaseline="@id/concertVenue"
        />
@@ -82,9 +110,14 @@
         android:layout_width="match_parent"
         android:layout_below="@id/favoriteButton"
         android:textSize="25dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/white"
         android:gravity="center"
         android:layout_height="wrap_content"
         android:visibility="gone"
         tools:text="Date"
-        android:background="@android:color/darker_gray"/>
-</RelativeLayout>
+        android:background="@color/colorSecondaryDark"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

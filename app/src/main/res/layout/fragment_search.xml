@@ -22,6 +22,8 @@
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:iconifiedByDefault="false"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/search"
         app:queryHint="type sum shit"
         />

@@ -47,7 +47,6 @@ public class RaveLocatorRepository {
         return favorites;
     }
     public List<Datum> search(String query){
-
         return datumDao.search(query);}
 
 

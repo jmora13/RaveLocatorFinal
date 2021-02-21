@@ -98,12 +98,12 @@ public class SearchFragment extends Fragment {
                 adapter.setRaves(raves, dwv);
             }
 
-            //TODO: make a search location function
-
-//            private void SearchLocations(String searchText) {
-//                mRaveLocatorViewModel.getDatumOfVenue(searchText);
-//                adapter.setRaves(raves, dwv);
-//            }
+//            //TODO: make a search location function
+//
+////            private void SearchLocations(String searchText) {
+////                mRaveLocatorViewModel.getDatumOfVenue(searchText);
+////                adapter.setRaves(raves, dwv);
+////            }
         });
 
         return view;

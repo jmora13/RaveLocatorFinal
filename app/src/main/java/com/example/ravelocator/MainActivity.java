@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,9 @@ import com.example.ravelocator.util.DatumUpdate;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity  {
 //        }
 //        Toolbar myToolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(myToolbar);
+        mRaveLocatorViewModel = new ViewModelProvider(this).get(RaveLocatorViewModel.class);
         //getSupportActionBar().setTitle(city);
         //myToolbar.setTitle(city);
         createNotificationChannel();
@@ -90,17 +94,21 @@ public class MainActivity extends AppCompatActivity  {
             viewPager.setCurrentItem(tab.getPosition(), true);
             if(position == 0) {
                 tab.setText("Nearby");
-                tab.setIcon(R.drawable.ic_outline_location_on_24);
+                tab.setIcon(R.drawable.ic_baseline_location_on_24_white);
             }
             if(position == 1){
                 tab.setText("Search");
-                tab.setIcon(R.drawable.ic_baseline_search_24);
+                tab.setIcon(R.drawable.ic_baseline_search_24_white);
             }
             if(position == 2){
                 tab.setText("Favorites");
-                tab.setIcon(R.drawable.ic_baseline_favorite_24);
+                tab.setIcon(R.drawable.ic_baseline_favorite_24_white);
             }
         }).attach();
+
+
+
+
 
 //        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 //            @Override
@@ -161,9 +169,22 @@ public class MainActivity extends AppCompatActivity  {
 //            viewPager.setLayoutParams(view.getLayoutParams());
 //        }
 //    }
+public void onListItemClick(Datum datum) {
+    //Toast.makeText(this, datum., Toast.LENGTH_SHORT).show();
+//        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
+//        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+    DatumUpdate isFavorite;
+    if(datum.getFavorite() == false) {
+        isFavorite = new DatumUpdate(datum.getId(), true);
+    } else {
+        isFavorite = new DatumUpdate(datum.getId(), false);
+    }
+    mRaveLocatorViewModel.updateDatumFavorites(isFavorite);
+}
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+
         // Get the SearchView and set the searchable configuration
 //        SearchManager searchManager = null;
 //        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {

@@ -57,7 +57,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
     }
     private RaveLocatorRepository mRepository;
     private LiveData<List<Datum>> mAllDatum;
-
+    private LiveData<List<Datum>> searchQuery;
     LiveData<List<Datum>> getAllDatum(){
         return mAllDatum;
     }
@@ -70,7 +70,11 @@ public class RaveLocatorViewModel extends AndroidViewModel {
     List<VenueWithDatum> getDatumOfVenue(String venueName){return mRepository.getDatumOfVenue(venueName);}
     public void updateDatumFavorites(DatumUpdate isFavorite){mRepository.updateDatumFavorites(isFavorite);}
     public LiveData<List<Datum>> getAllFavorites(){return mRepository.getAllFavorites(); }
-    public List<Datum> search(String query){return mRepository.search(query); }
+    public List<Datum> search(String query){
+        return mRepository.search(query); }
+    public LiveData<List<Datum>> getSearchResults(){
+        return searchQuery;
+    }
     public MutableLiveData<RaveLocatorModel> requestRaveLocations() {
         final MutableLiveData<RaveLocatorModel> mutableLiveData = new MutableLiveData<>();
         Retrofit retrofit = new Retrofit.Builder()
