@@ -21,6 +21,7 @@
         app:navGraph="@navigation/nav_graph" />
 
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:background="@color/colorPrimaryLight"

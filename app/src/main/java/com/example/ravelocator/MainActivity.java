@@ -107,68 +107,8 @@ public class MainActivity extends AppCompatActivity  {
         }).attach();
 
 
-
-
-
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
-
-//        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                View view = viewPager.getChildAt(position);
-//                //if (view == null) return;
-//                int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
-//                int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-//                view.measure(wMeasureSpec,hMeasureSpec);
-//
-//                if(viewPager.getLayoutParams().height != view.getMeasuredHeight()){
-//                    ViewGroup.LayoutParams lp = viewPager.getLayoutParams();
-//                    lp.height = view.getMeasuredHeight();
-//                }
-//            }
-//        });
-
     }
 
-//    /**
-//     * Handles the Back button: closes the nav drawer.
-//     */
-//    @Override
-//    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer != null) {
-//            if (drawer.isDrawerOpen(GravityCompat.START)) {
-//                drawer.closeDrawer(GravityCompat.START);
-//            } else {
-//                super.onBackPressed();
-//            }
-//        }
-//    }
-
-
-//    private void updatePagerHeightForChild(View view, ViewPager2 viewPager){
-//        int wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY);
-//        int hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-//        view.measure(wMeasureSpec,hMeasureSpec);
-//
-//        if(viewPager.getLayoutParams().height != view.getMeasuredHeight()){
-//            viewPager.setLayoutParams(view.getLayoutParams());
-//        }
-//    }
 public void onListItemClick(Datum datum) {
     //Toast.makeText(this, datum., Toast.LENGTH_SHORT).show();
 //        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
@@ -185,30 +125,8 @@ public void onListItemClick(Datum datum) {
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
 
-        // Get the SearchView and set the searchable configuration
-//        SearchManager searchManager = null;
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-//            searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        }
-//        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-//        // Assumes current activity is the searchable activity
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-//        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         return true;
     }
-
-//    public void setActionBarTitle(String title) {
-//        getSupportActionBar().setTitle(title);
-//    }
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch(item.getItemId()){
-//            case R.id.action_calendar:
-//                DialogFragment newFragment = new DatePickerFragment();
-//                newFragment.show(getSupportFragmentManager(),"datePicker");
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 
     public void processDatePickerResult(int year, int month, int day){
         String month_string = Integer.toString(month+1);

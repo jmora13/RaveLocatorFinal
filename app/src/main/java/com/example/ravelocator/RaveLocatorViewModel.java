@@ -72,9 +72,6 @@ public class RaveLocatorViewModel extends AndroidViewModel {
     public LiveData<List<Datum>> getAllFavorites(){return mRepository.getAllFavorites(); }
     public List<Datum> search(String query){
         return mRepository.search(query); }
-    public LiveData<List<Datum>> getSearchResults(){
-        return searchQuery;
-    }
     public MutableLiveData<RaveLocatorModel> requestRaveLocations() {
         final MutableLiveData<RaveLocatorModel> mutableLiveData = new MutableLiveData<>();
         Retrofit retrofit = new Retrofit.Builder()
@@ -88,7 +85,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
             public void onResponse(Call<RaveLocatorModel> call, Response<RaveLocatorModel> response) {
                 String data = response.body().toString();
                 List<Datum> datum = response.body().getData();
-                for(int i =0; i <datum.size(); i++){
+                for(int i = 0; i <datum.size(); i++){
                     insertDatum(datum.get(i));
                     insertVenue(datum.get(i).getVenue());
                     insertDatumVenueCrossRef(new DatumVenueCrossRef(datum.get(i).getId(), datum.get(i).getVenue().getVenueName()));

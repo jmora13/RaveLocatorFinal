@@ -54,6 +54,7 @@ public interface DatumDao {
     @Delete
     void delete(Datum datum);
 
+
     @Update(entity = Datum.class)
     void updateDatumFavorites(DatumUpdate isFavorite);
 
