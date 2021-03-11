@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RaveLocator</string>
+    <string name="app_name">Rave Locator</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
@@ -8,7 +8,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="favorite">favorite_icon</string>
-    <string name="action_settings">action settings</string>
+    <string name="action_settings">Settings</string>
     <string name="content_description_action_settings">action settings</string>
     <string name="calendar">calendar</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -22,4 +22,32 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="search_title">Event Search</string>
     <string name="LocationToolbarTitle">$s</string>
+    <string name="location_text">"Latitude: %1$.4f \n Longitude: %2$.4f
+\n Timestamp: %3$tr"</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="festivals_only">Festivals Only</string>
+    <string name="live_streams_only">Live Streams Only</string>
+    <string name="include_electronic_shows">Include Electronic Shows</string>
+    <string name="include_other_genres">Include Other Genres</string>
+    <string name="update_and_sync_data">Update and Sync Data</string>
+    <string name="filters">Filters</string>
+    <string name="filter_dates">Filter Dates</string>
+    <string name="no_address_found">No Address Found</string>
+    <string name="service_not_available">Service Not Available</string>
+    <string name="invalid_lat_long_used">Invalid Lat Long Used</string>
 </resources>

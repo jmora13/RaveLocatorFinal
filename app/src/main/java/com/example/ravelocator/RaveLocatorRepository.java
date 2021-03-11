@@ -21,7 +21,7 @@ public class RaveLocatorRepository {
     private LiveData<List<Venue>> venue;
     private DatumWithVenue datumWithVenue;
 
-    RaveLocatorRepository(Application application){
+    public RaveLocatorRepository(Application application){
         DatumDatabase db = DatumDatabase.getDatabase(application);
         datumDao = db.datumDao();
         datum = datumDao.getAllDatum();

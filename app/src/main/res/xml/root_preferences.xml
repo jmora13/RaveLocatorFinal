@@ -1,0 +1,43 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <EditTextPreference
+            app:key="sync"
+            app:icon="@drawable/ic_baseline_refresh_24"
+            app:title="@string/update_and_sync_data"
+             />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/filters">
+
+
+        <EditTextPreference
+            app:icon="@drawable/ic_baseline_date_range_24"
+            android:defaultValue="Default value"
+            android:key="edit_text_preference_1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+
+            android:title="@string/filter_dates" />
+
+
+        <SwitchPreferenceCompat
+            app:key="include_electronic_shows"
+            app:title="@string/include_electronic_shows"
+            android:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            app:key="livestreams_only"
+            app:title="@string/live_streams_only"
+            android:defaultValue="false"/>
+        <SwitchPreferenceCompat
+            app:key="include_other_genres"
+            app:title="@string/include_other_genres"
+            android:defaultValue="false"/>
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,5 +1,8 @@
 package com.example.ravelocator;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -8,18 +11,26 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -27,12 +38,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.ravelocator.util.Datum;
 import com.example.ravelocator.util.DatumUpdate;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -41,73 +61,66 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     private RaveLocatorViewModel mRaveLocatorViewModel;
     private Object Menu;
     private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
     private NotificationManager mNotifyManager;
     private static final int NOTIFICATION_ID = 0;
-    private SharedPreferences mPreferences;
-    private String sharedPrefFile = "com.example.ravelocator";
+    private SharedPreferences sharedPref;
+    private String sharedPrefFile = "sharedPrefFile";
     Calendar calendar = Calendar.getInstance();
     private int dayOfMonth = 0;
     private final String DAY_OF_MONTH_KEY = "1";
     ViewPager2 viewPager;
+    private static final int REQUEST_LOCATION_PERMISSION = 1;
+    private FusedLocationProviderClient mFusedLocationClient;
+    Location mLastLocation;
+    // Initializing other items
+    // from layout file
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        if(savedInstanceState != null){
-//            dayOfMonth = mPreferences.getInt(DAY_OF_MONTH_KEY,0);
-//            if(dayOfMonth == 0){
-//                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-//            }
-//
-//        }
-//        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open,
-//                R.string.navigation_drawer_close);
-//        if (drawer != null) {
-//            drawer.addDrawerListener(toggle);
-//        }
-//        toggle.syncState();
-//
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        if (navigationView != null) {
-//            navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
-//        }
-//        Toolbar myToolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(myToolbar);
-        mRaveLocatorViewModel = new ViewModelProvider(this).get(RaveLocatorViewModel.class);
-        //getSupportActionBar().setTitle(city);
-        //myToolbar.setTitle(city);
+        SharedPreferences sharedPref = PreferenceManager
+                .getDefaultSharedPreferences(this);
         createNotificationChannel();
         DataFragmentAdapter ad = new DataFragmentAdapter(this);
         viewPager = findViewById(R.id.pager);
         viewPager.setAdapter(ad);
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(1);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             viewPager.setCurrentItem(tab.getPosition(), true);
-            if(position == 0) {
+            if (position == 0) {
                 tab.setText("Nearby");
                 tab.setIcon(R.drawable.ic_baseline_location_on_24_white);
             }
-            if(position == 1){
-                tab.setText("Search");
-                tab.setIcon(R.drawable.ic_baseline_search_24_white);
-            }
-            if(position == 2){
+            if (position == 1) {
                 tab.setText("Favorites");
                 tab.setIcon(R.drawable.ic_baseline_favorite_24_white);
             }
         }).attach();
-
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent i = new Intent(this, SettingsActivity.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 
 public void onListItemClick(Datum datum) {
     //Toast.makeText(this, datum., Toast.LENGTH_SHORT).show();

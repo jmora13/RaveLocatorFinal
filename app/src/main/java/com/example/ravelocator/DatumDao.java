@@ -22,7 +22,7 @@ public interface DatumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertRaveLocatorModel(Datum datum);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertDatum(Datum datum);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -54,11 +54,13 @@ public interface DatumDao {
     @Delete
     void delete(Datum datum);
 
+    @Query("DELETE FROM datum_table WHERE date < :currentDate")
+    void deletePastDates(String currentDate);
 
     @Update(entity = Datum.class)
     void updateDatumFavorites(DatumUpdate isFavorite);
 
-    @Query("SELECT * FROM datum_table WHERE isFavorite = 1")
+    @Query("SELECT * FROM datum_table WHERE isFavorite = 1 ORDER BY date")
     LiveData<List<Datum>> getAllFavorites();
 
 

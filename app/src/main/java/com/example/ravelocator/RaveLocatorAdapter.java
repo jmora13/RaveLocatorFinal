@@ -1,9 +1,13 @@
 package com.example.ravelocator;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -41,8 +45,10 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
         private final TextView artistPreview;
         private final TextView separatorView;
         private final TextView initialSeparatorView;
+        private final LinearLayout container;
         private RaveViewHolder(View itemView){
             super(itemView);
+            container = itemView.findViewById(R.id.recyclerview);
             concertName = itemView.findViewById(R.id.concertName);
             concertVenue = itemView.findViewById(R.id.concertVenue);
             artistPreview = itemView.findViewById(R.id.artistPreview);
@@ -77,17 +83,21 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     @Override
     public RaveLocatorAdapter.RaveViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View concertName = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+
         return new RaveViewHolder(concertName);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RaveLocatorAdapter.RaveViewHolder holder, int position) {
+        holder.container.setAnimation(AnimationUtils.loadAnimation(holder.container.getContext(), R.anim.fade_scale_animation));
+        //holder.concertName.setAnimation(AnimationUtils.loadAnimation(holder.concertName.getContext(),R.anim.fade_transition));
         Datum current = datum.get(position);
         if(position == 0){
             holder.initialSeparatorView.setText(datum.get(position).getDate());
+            holder.initialSeparatorView.setBackgroundColor(Color.BLUE);
             holder.initialSeparatorView.setVisibility(View.VISIBLE);
-        } else if(position + 1 != datum.size() && !current.getDate().equals(datum.get(position + 1).getDate()) ){ //set separator visible if new date is encountered
-            holder.separatorView.setText(datum.get(position + 1).getDate());
+        } else if(position != datum.size() && !current.getDate().equals(datum.get(position - 1).getDate()) ){ //set separator visible if new date is encountered
+            holder.separatorView.setText(datum.get(position).getDate());
             holder.separatorView.setVisibility(View.VISIBLE);
         } else {
             holder.initialSeparatorView.setVisibility(View.GONE);
@@ -101,10 +111,10 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
         if(isLocationQuery) {
             holder.concertVenue.setText(location);
         }
-            if(dwv == null && !isLocationQuery){
+            if(!isLocationQuery){
                 holder.concertVenue.setText(current.getVenue().getVenueName());
                 } else {
-                //holder.concertVenue.setText(dwv.get(position).venue.getVenueName());
+                holder.concertVenue.setText(dwv.get(position).venue.getVenueName());
             }
             holder.concertVenue.setOnClickListener(v -> collapseArtistList(holder));
             holder.artistPreview.setText(getArtists(current));

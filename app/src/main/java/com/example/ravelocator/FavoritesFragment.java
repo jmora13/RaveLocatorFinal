@@ -29,11 +29,13 @@ public class FavoritesFragment extends Fragment {
     ToggleButton favorite;
     View view;
     ViewPager2 viewPager;
+    ToggleButton favorites;
     @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                 @Nullable Bundle savedInstanceState) {
             view = inflater.inflate(R.layout.fragment_favorites, container, false);
+
             Context context = view.getContext();
             viewPager = view.findViewById(R.id.pager);
             RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
@@ -50,6 +52,7 @@ public class FavoritesFragment extends Fragment {
         DatumUpdate isFavorite;
         isFavorite = new DatumUpdate(datum.getId(), false);
         mRaveLocatorViewModel.updateDatumFavorites(isFavorite);
+
     }
 
     @Override

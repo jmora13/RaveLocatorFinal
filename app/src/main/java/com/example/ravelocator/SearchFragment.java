@@ -64,7 +64,7 @@ public class SearchFragment extends Fragment {
         viewPager = view.findViewById(R.id.pager);
         setHasOptionsMenu(true);
         final RaveLocatorAdapter adapter = new RaveLocatorAdapter(getActivity(), this::onListItemClick);
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         final Handler handler = new Handler();
         SearchView searchview = view.findViewById(R.id.search);
@@ -73,7 +73,7 @@ public class SearchFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 List<VenueWithDatum> vwd = mRaveLocatorViewModel.getDatumOfVenue(query);
                 List<Datum> raves = vwd.get(0).datum;
-                adapter.setRaves(raves, query);
+               // adapter.setRaves(raves, query);
                 return false;
             }
 
@@ -95,7 +95,7 @@ public class SearchFragment extends Fragment {
                     dwv.add(mRaveLocatorViewModel.getVenueOfDatum(raves.get(i).getId())); //makes list of events by id and its reference to the venue
                     //vwd.add(mRaveLocatorViewModel.g)
                 }
-                adapter.setRaves(raves, dwv);
+                //adapter.setRaves(raves, dwv);
             }
 
 //            //TODO: make a search location function
