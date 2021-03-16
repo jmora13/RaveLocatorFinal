@@ -22,8 +22,6 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="search_title">Event Search</string>
     <string name="LocationToolbarTitle">$s</string>
-    <string name="location_text">"Latitude: %1$.4f \n Longitude: %2$.4f
-\n Timestamp: %3$tr"</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- Preference Titles -->
@@ -50,4 +48,12 @@
     <string name="no_address_found">No Address Found</string>
     <string name="service_not_available">Service Not Available</string>
     <string name="invalid_lat_long_used">Invalid Lat Long Used</string>
+    <string name="go_to_event_page">Go to Event Page</string>
+    <string name="manual_location">Manual Location</string>
+    <string name="maps_api_key">AIzaSyCyxvlEhy7NvMNQAZj9o4XuzO6hXXInY-Y</string>
+    <string name="title_activity_maps">Drop a Pin</string>
+    <string name="set_manual_location">Set Manual Location</string>
+    <string name="just_added">JUST ADDED</string>
+    <string name="new_shows_only">New Shows Only</string>
+    <string name="new_events_only">New Events Only</string>
 </resources>

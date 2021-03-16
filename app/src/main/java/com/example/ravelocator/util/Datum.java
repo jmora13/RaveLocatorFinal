@@ -63,6 +63,10 @@ public class Datum {
     private List<ArtistList> artistList = null;
     @ColumnInfo(defaultValue = "false")
     private Boolean isFavorite = false;
+    private String venueName;
+    @ColumnInfo(defaultValue = "false")
+    private boolean justAdded;
+    private String location;
 
     public Datum(Integer id, String link, String name,String ages,Boolean festivalInd,
                  Boolean livestreamInd,Boolean electronicGenreInd,Boolean otherGenreInd,
@@ -72,7 +76,7 @@ public class Datum {
         this.date = date; this.startTime = startTime; this.endTime = endTime; this.createdDate = createdDate; this.venue = venue; this.artistList = artistList;
     }
 
-//    public Datum(Integer id, String name){
+//    public GetLocationId(Integer id, String name){
 //        this.id = id;
 //        this.name = name;
 //    }
@@ -231,5 +235,29 @@ public class Datum {
 
     public void setFavorite(Boolean favorite) {
         isFavorite = favorite;
+    }
+
+    public String getVenueName() {
+        return venueName;
+    }
+
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
+    }
+
+    public boolean isJustAdded() {
+        return justAdded;
+    }
+
+    public void setJustAdded(boolean justAdded) {
+        this.justAdded = justAdded;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

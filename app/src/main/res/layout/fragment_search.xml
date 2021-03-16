@@ -25,13 +25,23 @@
         app:iconifiedByDefault="false"
         android:background="@color/primaryDarkColor"
         android:id="@+id/search"
-        app:queryHint="type sum shit"
+        app:queryHint="Events, artists, or locations"
         />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="100dp"
+        android:indeterminate="true"
+        android:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
         app:layout_constraintTop_toBottomOf="@id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:id="@+id/searchrecyclerview"
         tools:context=""
         tools:listitem="@layout/recyclerview_item"/>

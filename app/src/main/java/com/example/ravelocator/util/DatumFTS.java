@@ -63,21 +63,11 @@ public class DatumFTS {
     private List<ArtistList> artistList = null;
     @ColumnInfo(defaultValue = "false")
     private Boolean isFavorite = false;
+    private String venueName;
+    @ColumnInfo(defaultValue = "false")
+    private boolean justAdded;
+    private String location;
 
-//    public Datum(Integer id, String link, String name,String ages,Boolean festivalInd,
-//                 Boolean livestreamInd,Boolean electronicGenreInd,Boolean otherGenreInd,
-//                 String date, String startTime, String endTime, String createdDate, Venue venue, List<ArtistList> artistList){
-//        this.id = id; this.link = link; this.name = name; this.ages = ages; this.festivalInd = festivalInd;
-//        this.livestreamInd = livestreamInd; this.electronicGenreInd = electronicGenreInd; this.otherGenreInd = otherGenreInd;
-//        this.date = date; this.startTime = startTime; this.endTime = endTime; this.createdDate = createdDate; this.venue = venue; this.artistList = artistList;
-//    }
-
-    //    public Datum(Integer id, String name){
-//        this.id = id;
-//        this.name = name;
-//    }
-//    public Datum(){
-//    }
 
     public static Datum populateData() {
         return new Datum(123, "456","test", "all", true, true,
@@ -231,5 +221,29 @@ public class DatumFTS {
 
     public void setFavorite(Boolean favorite) {
         isFavorite = favorite;
+    }
+
+    public String getVenueName() {
+        return venueName;
+    }
+
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
+    }
+
+    public boolean isJustAdded() {
+        return justAdded;
+    }
+
+    public void setJustAdded(boolean justAdded) {
+        this.justAdded = justAdded;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

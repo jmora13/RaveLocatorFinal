@@ -11,7 +11,8 @@ import androidx.room.Update;
 
 import com.example.ravelocator.util.ArtistList;
 import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumUpdate;
+import com.example.ravelocator.util.DatumFavoriteUpdate;
+import com.example.ravelocator.util.DatumVenueUpdate;
 import com.example.ravelocator.util.Venue;
 
 import java.util.List;
@@ -58,10 +59,14 @@ public interface DatumDao {
     void deletePastDates(String currentDate);
 
     @Update(entity = Datum.class)
-    void updateDatumFavorites(DatumUpdate isFavorite);
+    void updateDatumFavorites(DatumFavoriteUpdate isFavorite);
+
+    @Update(entity = Datum.class)
+    void updateDatumVenueName(DatumVenueUpdate venueName);
 
     @Query("SELECT * FROM datum_table WHERE isFavorite = 1 ORDER BY date")
     LiveData<List<Datum>> getAllFavorites();
+
 
 
     @Transaction

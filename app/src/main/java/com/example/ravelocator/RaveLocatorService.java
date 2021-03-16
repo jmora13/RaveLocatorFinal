@@ -1,6 +1,8 @@
 package com.example.ravelocator;
 
-import com.example.ravelocator.ReverseGeocoding.ReverseGeocodingModel;
+
+import com.example.ravelocator.GetLocationId.GetLocationId;
+import com.example.ravelocator.GetLocationId.LocationDataModel;
 import com.example.ravelocator.util.RaveLocatorModel;
 
 import retrofit2.Call;
@@ -14,27 +16,30 @@ public interface RaveLocatorService {
     //A ^ B ^ C == TRUE
     @GET("/api/events")
     public Call<RaveLocatorModel> getRaveLocations(
-            @Query("latitude")double lat, @Query("longitude")double lon,
-            @Query("state")String state,
+            @Query("createdStartDate") String createdStartDate,
+            @Query("createdEndDate") String createdEndDate,
+            @Query("startDate") String startDate,
+            @Query("endDate") String endDate,
+            @Query("locationIds")int locationids,
             @Query("includeElectronicGenreInd") boolean includeElectronicGenreInd,
             @Query("livestreamInd")boolean livestreamInd,
             @Query("includeOtherGenreInd")boolean includeOtherGenreInd,
             @Query("client")String client);
 
 
-    @GET("/api/events")
-    public Call<RaveLocatorModel> getRaveLocations(
-            @Query("eventName")String eventName, @Query("client")String client);
+    @GET("/api/locations")
+    public Call<LocationDataModel> getLocationId(
+            @Query("state")String state, @Query("city")String city,
+            @Query("client")String client);
+
+    @GET("/api/locations")
+    public Call<LocationDataModel> getLocationId(
+            @Query("state")String state,
+            @Query("client")String client);
 
     @GET("/api/events")
     public Call<RaveLocatorModel> getRaveLocations(
             @Query("client")String client);
 
-    @Headers("x-rapidapi-key: d2c1842dd0msh0258f661651e3a0p1079aajsnc918df2d5033")
-    @GET("/v1/reverse")
-    public Call<ReverseGeocodingModel> reverseGeocoding(
-            @Query("lat")double lat, @Query("lon")double lon,
-            @Query("format") String format,
-            @Query("zoom")int zoom);
 
 }

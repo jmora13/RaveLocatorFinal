@@ -7,21 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
 import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumUpdate;
-import com.example.ravelocator.util.RaveLocatorModel;
+import com.example.ravelocator.util.DatumFavoriteUpdate;
 
 
 public class FavoritesFragment extends Fragment {
@@ -49,8 +45,8 @@ public class FavoritesFragment extends Fragment {
 
 
     public void onListItemClick(Datum datum) {
-        DatumUpdate isFavorite;
-        isFavorite = new DatumUpdate(datum.getId(), false);
+        DatumFavoriteUpdate isFavorite;
+        isFavorite = new DatumFavoriteUpdate(datum.getId(), false);
         mRaveLocatorViewModel.updateDatumFavorites(isFavorite);
 
     }

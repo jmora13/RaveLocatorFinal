@@ -21,7 +21,7 @@ public class RaveLocatorModel {
 
 
 
-//    public RaveLocatorModel(@NonNull boolean success, List<Datum> data){
+//    public RaveLocatorModel(@NonNull boolean success, List<GetLocationId> data){
 //        this.success = success;
 //        this.data = data;
 //    }

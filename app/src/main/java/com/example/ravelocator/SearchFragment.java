@@ -1,51 +1,27 @@
 package com.example.ravelocator;
 
-import android.app.ActionBar;
-import android.app.SearchManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumUpdate;
-import com.example.ravelocator.util.RaveLocatorModel;
-import com.example.ravelocator.util.Venue;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+import com.example.ravelocator.util.DatumFavoriteUpdate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-import static androidx.core.content.ContextCompat.getSystemService;
 
 
 public class SearchFragment extends Fragment {
@@ -169,11 +145,11 @@ public class SearchFragment extends Fragment {
         //Toast.makeText(this, datum., Toast.LENGTH_SHORT).show();
 //        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
 //        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
-        DatumUpdate isFavorite;
+        DatumFavoriteUpdate isFavorite;
         if(datum.getFavorite() == false) {
-            isFavorite = new DatumUpdate(datum.getId(), true);
+            isFavorite = new DatumFavoriteUpdate(datum.getId(), true);
         } else {
-            isFavorite = new DatumUpdate(datum.getId(), false);
+            isFavorite = new DatumFavoriteUpdate(datum.getId(), false);
         }
         mRaveLocatorViewModel.updateDatumFavorites(isFavorite);
     }

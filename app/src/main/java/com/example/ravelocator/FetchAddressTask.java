@@ -1,12 +1,15 @@
 package com.example.ravelocator;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.preference.PreferenceManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ import java.util.Locale;
 /**
  * AsyncTask for reverse geocoding coordinates into a physical address.
  */
-class FetchAddressTask extends AsyncTask<Location, Void, String> {
+class FetchAddressTask extends AsyncTask<Location, Void, String[]> {
 
     private Context mContext;
     private OnTaskCompleted mListener;
@@ -30,7 +33,8 @@ class FetchAddressTask extends AsyncTask<Location, Void, String> {
     private final String TAG = FetchAddressTask.class.getSimpleName();
 
     @Override
-    protected String doInBackground(Location... params) {
+    protected String[] doInBackground(Location... params) {
+        String[] cityAndState = new String[2];
         // Set up the geocoder
         Geocoder geocoder = new Geocoder(mContext,
                 Locale.getDefault());
@@ -46,6 +50,7 @@ class FetchAddressTask extends AsyncTask<Location, Void, String> {
                     location.getLongitude(),
                     // In this sample, get just a single address
                     1);
+
         } catch (IOException ioException) {
             // Catch network or other I/O problems
             resultMessage = mContext.getString(R.string.service_not_available);
@@ -66,38 +71,33 @@ class FetchAddressTask extends AsyncTask<Location, Void, String> {
                 Log.e(TAG, resultMessage);
             }
         } else {
-            // If an address is found, read it into resultMessage
-            Address address = addresses.get(0);
-            ArrayList<String> addressParts = new ArrayList<>();
-
-            // Fetch the address lines using getAddressLine,
-            // join them, and send them to the thread
-            for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
-                addressParts.add(address.getAddressLine(i));
+            String city;
+            if(addresses.get(0).getLocality() == null){
+                city = "null";
+            } else {
+                city = addresses.get(0).getLocality();
             }
-
-            resultMessage = TextUtils.join(
-                    "\n",
-                    addressParts);
-
+            String state = addresses.get(0).getAdminArea();
+            cityAndState[0] = city;
+            cityAndState[1] = state;
         }
 
-        return resultMessage;
+        return cityAndState;
     }
 
     /**
      * Called once the background thread is finished and updates the
      * UI with the result.
-     * @param address The resulting reverse geocoded address, or error
+     * @param cityAndState The resulting reverse geocoded address, or error
      *                message if the task failed.
      */
     @Override
-    protected void onPostExecute(String address) {
-        mListener.onTaskCompleted(address);
-        super.onPostExecute(address);
+    protected void onPostExecute(String[] cityAndState) {
+        mListener.onTaskCompleted(cityAndState);
+        super.onPostExecute(cityAndState);
     }
 
     interface OnTaskCompleted {
-        void onTaskCompleted(String result);
+        void onTaskCompleted(String[] result);
     }
 }

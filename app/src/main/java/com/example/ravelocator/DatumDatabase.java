@@ -12,7 +12,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.ravelocator.util.ArtistList;
 import com.example.ravelocator.util.Datum;
 import com.example.ravelocator.util.DatumFTS;
-import com.example.ravelocator.util.DatumUpdate;
+import com.example.ravelocator.util.DatumFavoriteUpdate;
+import com.example.ravelocator.util.DatumVenueUpdate;
 import com.example.ravelocator.util.Venue;
 
 @Database(
@@ -20,10 +21,10 @@ import com.example.ravelocator.util.Venue;
                 Datum.class,
                 Venue.class,
                 ArtistList.class,
-                DatumUpdate.class,
+                DatumFavoriteUpdate.class,
                 DatumFTS.class,
-        DatumVenueCrossRef.class},
-        version = 6)
+        DatumVenueCrossRef.class, DatumVenueUpdate.class},
+        version = 10)
 @TypeConverters({Converters.class})
 public abstract class DatumDatabase extends RoomDatabase {
 
@@ -77,7 +78,7 @@ private static DatumDatabase INSTANCE;
 //                        Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
 //                            @Override
 //                            public void run() {
-//                                getDatabase(context).datumDao().insertDatum(Datum.populateData());
+//                                getDatabase(context).datumDao().insertDatum(GetLocationId.populateData());
 //                                Log.e("Done", "done");
 //                            }
 //                        });

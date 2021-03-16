@@ -3,7 +3,7 @@
 
     <PreferenceCategory app:title="@string/sync_header">
 
-        <EditTextPreference
+        <Preference
             app:key="sync"
             app:icon="@drawable/ic_baseline_refresh_24"
             app:title="@string/update_and_sync_data"
@@ -14,20 +14,33 @@
     <PreferenceCategory app:title="@string/filters">
 
 
-        <EditTextPreference
+        <Preference
             app:icon="@drawable/ic_baseline_date_range_24"
             android:defaultValue="Default value"
-            android:key="edit_text_preference_1"
+            android:key="filter_dates"
             android:selectAllOnFocus="true"
             android:singleLine="true"
 
             android:title="@string/filter_dates" />
 
+        <Preference
+            app:icon="@drawable/ic_baseline_location_on_24_white"
+            android:defaultValue="Default value"
+            android:key="manual_location"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/set_manual_location" />
 
         <SwitchPreferenceCompat
             app:key="include_electronic_shows"
             app:title="@string/include_electronic_shows"
             android:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            app:key="just_added"
+            app:title="@string/new_events_only"
+            android:summary="Shows added today"
+            android:defaultValue="false"/>
+
         <SwitchPreferenceCompat
             app:key="livestreams_only"
             app:title="@string/live_streams_only"

@@ -2,17 +2,11 @@ package com.example.ravelocator;
 
 import android.Manifest;
 import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.text.Editable;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -21,18 +15,19 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
-import com.example.ravelocator.ReverseGeocoding.ReverseGeocodingModel;
+
+import com.example.ravelocator.GetLocationId.GetLocationId;
+import com.example.ravelocator.GetLocationId.LocationDataModel;
 import com.example.ravelocator.Workers.UpdateDatabaseWorker;
 import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumUpdate;
+import com.example.ravelocator.util.DatumFavoriteUpdate;
 import com.example.ravelocator.util.RaveLocatorModel;
 import com.example.ravelocator.util.Venue;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
-import org.jetbrains.annotations.Nullable;
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -43,8 +38,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class RaveLocatorViewModel extends AndroidViewModel {
 
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
@@ -54,7 +47,6 @@ public class RaveLocatorViewModel extends AndroidViewModel {
     private Boolean mLocationPermissionsGranted = false;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private final String TAG = getClass().getSimpleName();
-    private String sharedPrefFile = "sharedPrefFile";
     private String day;
     private List<Datum> searchResults;
     private DatumVenueCrossRef crossRef;
@@ -69,8 +61,14 @@ public class RaveLocatorViewModel extends AndroidViewModel {
     private boolean includeOtherGenreInd;
     private boolean livestreamInd;
     private  String state;
+    private String city;
     private String lat;
     private String lon;
+    private String startDate;
+    private String endDate;
+    private int locationId;
+    private String createdStartDate;
+    private String today;
     private MutableLiveData<RaveLocatorModel> nearbyEventsList;
     public RaveLocatorViewModel(@NonNull Application application) {
         super(application);
@@ -85,9 +83,9 @@ public class RaveLocatorViewModel extends AndroidViewModel {
         livestreamInd = sharedPref.getBoolean("livestreams_only", false);
         includeOtherGenreInd = sharedPref.getBoolean("include_other_genres", false);
         state = sharedPref.getString("state", "California");
-//        SharedPreferences sharedPref = getApplication().getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-//        day = Integer.toString(sharedPref.getInt("1", 0));
-//        Log.e("Day of month value", day);
+        city = sharedPref.getString("city", "Los Angeles");
+        startDate = sharedPref.getString("startDate", "");
+        endDate = sharedPref.getString("endDate", "");
     }
     private RaveLocatorRepository mRepository;
     private LiveData<List<Datum>> mAllDatum;
@@ -103,13 +101,21 @@ public class RaveLocatorViewModel extends AndroidViewModel {
     public void insertDatumVenueCrossRef(DatumVenueCrossRef crossRef){mRepository.insertDatumVenueCrossRef(crossRef);}
     DatumWithVenue getVenueOfDatum(int id) {return mRepository.getVenueOfDatum(id);}
     List<VenueWithDatum> getDatumOfVenue(String venueName){return mRepository.getDatumOfVenue(venueName);}
-    public void updateDatumFavorites(DatumUpdate isFavorite){mRepository.updateDatumFavorites(isFavorite);}
+    public void updateDatumFavorites(DatumFavoriteUpdate isFavorite){mRepository.updateDatumFavorites(isFavorite);}
     public LiveData<List<Datum>> getAllFavorites(){return mRepository.getAllFavorites(); }
     public List<Datum> search(String query){
         return mRepository.search(query); }
 
     public MutableLiveData<RaveLocatorModel> getNearbyEvents() {
-
+        locationId = sharedPref.getInt("locationId", 73);
+        boolean justAdded = sharedPref.getBoolean("just_added", false);
+        if(justAdded){
+            Date todayDate = Calendar.getInstance().getTime();
+            final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            today = formatter.format(todayDate);
+        } else {
+            today = "";
+        }
         //Toast.makeText(getApplication().getApplicationContext(),lon, Toast.LENGTH_LONG);
         final MutableLiveData<RaveLocatorModel> mutableLiveData = new MutableLiveData<>();
         Retrofit retrofit = new Retrofit.Builder()
@@ -118,12 +124,10 @@ public class RaveLocatorViewModel extends AndroidViewModel {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         final RaveLocatorService service = retrofit.create(RaveLocatorService.class);
-        final Call<RaveLocatorModel> callRequest = service.getRaveLocations(Double.valueOf(lat), Double.valueOf(lon),state,includeElectronicGenreInd,livestreamInd,includeOtherGenreInd,"cc037aec-dde2-4060-98d9-0d121af42c73");
+        final Call<RaveLocatorModel> callRequest = service.getRaveLocations(today, today, startDate, endDate, locationId, includeElectronicGenreInd,livestreamInd,includeOtherGenreInd,"cc037aec-dde2-4060-98d9-0d121af42c73");
         callRequest.enqueue(new Callback<RaveLocatorModel>() {
             @Override
             public void onResponse(Call<RaveLocatorModel> call, Response<RaveLocatorModel> response) {
-                String data = response.body().toString();
-                List<Datum> datum = response.body().getData();
                 mutableLiveData.postValue(response.body());
                 Log.e("BACON AND", mutableLiveData.toString());
 
@@ -138,42 +142,69 @@ public class RaveLocatorViewModel extends AndroidViewModel {
         nearbyEventsList = mutableLiveData;
         return mutableLiveData;
     }
-
-
-    public void reverseGeocoding() {
-
-        sharedPref = PreferenceManager
-                .getDefaultSharedPreferences(getApplication().getApplicationContext());
-        lat = sharedPref.getString("lat", "");
-        lon = sharedPref.getString("lon", "");
+    public void getLocationId() {
+        //Toast.makeText(getApplication().getApplicationContext(),lon, Toast.LENGTH_LONG);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://forward-reverse-geocoding.p.rapidapi.com")
+                .baseUrl("https://edmtrain.com")
                 .callbackExecutor(Executors.newSingleThreadExecutor())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         final RaveLocatorService service = retrofit.create(RaveLocatorService.class);
-        final Call<ReverseGeocodingModel> callRequest = service.reverseGeocoding(Double.valueOf(lat), Double.valueOf(lon), "json", 5);
-        callRequest.enqueue(new Callback<ReverseGeocodingModel>() {
+        final Call<LocationDataModel> callRequest;
+        callRequest = service.getLocationId(state, city, "cc037aec-dde2-4060-98d9-0d121af42c73");
+        callRequest.enqueue(new Callback<LocationDataModel>() {
             @Override
-            public void onResponse(Call<ReverseGeocodingModel> call, Response<ReverseGeocodingModel> response) {
-                String data = response.body().toString();
-
+            public void onResponse(Call<LocationDataModel> call, Response<LocationDataModel> response) {
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("state", response.body().getAddress().getState());
-                editor.apply();
-                //                List<Datum> datum = response.body().getData();
-               // mutableLiveData.postValue(response.body());
-                Log.e("HAM AND", mutableLiveData.toString());
-
+                if (response.body().getSuccess() == false) {
+                    getStateWideLocationId();
+                    return;
+                } else {
+                    editor.putInt("locationId", response.body().getData().get(0).getId());
+                    editor.apply();
+                    Log.d("GOT LOCATION", response.body().getData().get(0).getState());
+                }
             }
 
             @Override
-            public void onFailure(Call<ReverseGeocodingModel> call, Throwable t) {
-                Log.d("NO", t.getMessage());
-                Log.d("YES", call.toString());
+            public void onFailure(Call<LocationDataModel> call, Throwable t) {
+                Log.d("Get Location Failed", t.getMessage());
+                Log.d("Get Location Failed", call.toString());
             }
         });
     }
+    public void getStateWideLocationId() {
+
+        //Toast.makeText(getApplication().getApplicationContext(),lon, Toast.LENGTH_LONG);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://edmtrain.com")
+                .callbackExecutor(Executors.newSingleThreadExecutor())
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+        final RaveLocatorService service = retrofit.create(RaveLocatorService.class);
+        final Call<LocationDataModel> callRequest;
+        callRequest = service.getLocationId(state,  "cc037aec-dde2-4060-98d9-0d121af42c73");
+        callRequest.enqueue(new Callback<LocationDataModel>() {
+            @Override
+            public void onResponse(Call<LocationDataModel> call, Response<LocationDataModel> response) {
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putInt("locationId", response.body().getData().get(0).getId());
+                editor.apply();
+                Log.d("GOT LOCATION", response.body().getData().get(0).getState());
+            }
+
+            @Override
+            public void onFailure(Call<LocationDataModel> call, Throwable t) {
+                Log.d("Get Location Failed", t.getMessage());
+                Log.d("Get Location Failed", call.toString());
+            }
+        });
+    }
+
+
+
+
+
     void updateDatabase(){
         if(mAllDatum == null) {
             mWorkManager.enqueue(OneTimeWorkRequest.from(UpdateDatabaseWorker.class));

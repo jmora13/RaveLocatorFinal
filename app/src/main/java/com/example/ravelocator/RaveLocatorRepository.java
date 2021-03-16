@@ -6,13 +6,11 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumFTS;
-import com.example.ravelocator.util.DatumUpdate;
+import com.example.ravelocator.util.DatumFavoriteUpdate;
+import com.example.ravelocator.util.DatumVenueUpdate;
 import com.example.ravelocator.util.Venue;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 public class RaveLocatorRepository {
     private DatumDao datumDao;
@@ -40,9 +38,14 @@ public class RaveLocatorRepository {
         new insertAsyncTask(datumDao).execute(venue);
     }
     public void insertDatumVenueCrossRef(DatumVenueCrossRef crossRef){ new insertAsyncTask(datumDao).execute(crossRef);}
-    public void updateDatumFavorites(DatumUpdate isFavorite){
+    public void updateDatumFavorites(DatumFavoriteUpdate isFavorite){
         new insertAsyncTask(datumDao).execute(isFavorite);
     }
+
+    public void updateDatumVenueName(DatumVenueUpdate venueName){
+        new insertAsyncTask(datumDao).execute(venueName);
+    }
+
     public LiveData<List<Datum>> getAllFavorites(){
         return favorites;
     }
@@ -61,7 +64,7 @@ public class RaveLocatorRepository {
             return null;
         }
 
-        public void execute(DatumUpdate isFavorite) {
+        public void execute(DatumFavoriteUpdate isFavorite) {
             mAsyncTaskDao.updateDatumFavorites(isFavorite);
         }
 
@@ -72,5 +75,9 @@ public class RaveLocatorRepository {
         public void execute(DatumVenueCrossRef crossRef) { mAsyncTaskDao.insertDatumVenueCrossRef(crossRef);
         }
 
+
+        public void execute(DatumVenueUpdate venueName) {
+            mAsyncTaskDao.updateDatumVenueName(venueName);
+        }
     }
 }

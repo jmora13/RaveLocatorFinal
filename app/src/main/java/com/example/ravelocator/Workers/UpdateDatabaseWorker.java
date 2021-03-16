@@ -18,6 +18,7 @@ import com.example.ravelocator.RaveLocatorRepository;
 import com.example.ravelocator.RaveLocatorService;
 import com.example.ravelocator.RaveLocatorViewModel;
 import com.example.ravelocator.util.Datum;
+import com.example.ravelocator.util.DatumVenueUpdate;
 import com.example.ravelocator.util.RaveLocatorModel;
 
 import java.text.SimpleDateFormat;
@@ -66,7 +67,9 @@ public class UpdateDatabaseWorker extends Worker {
                 for(int i = 0; i <datum.size(); i++){
                     database.datumDao().insertDatum(datum.get(i));
                     database.datumDao().insertVenue(datum.get(i).getVenue());
-                    database.datumDao().insertDatumVenueCrossRef(new DatumVenueCrossRef(datum.get(i).getId(), datum.get(i).getVenue().getVenueName()));
+                    database.datumDao().updateDatumVenueName(new DatumVenueUpdate(datum.get(i).getId(),datum.get(i).getVenue().getVenueName()));
+                    datum.get(i).setVenueName(datum.get(i).getVenue().getVenueName());
+                    datum.get(i).setLocation(datum.get(i).getVenue().getLocation());
                 }
                 mutableLiveData.postValue(response.body());
                 Log.e("BACON AND", mutableLiveData.toString());

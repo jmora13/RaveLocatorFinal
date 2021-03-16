@@ -1,26 +1,32 @@
 package com.example.ravelocator;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumUpdate;
+import com.example.ravelocator.util.DatumFavoriteUpdate;
 import com.example.ravelocator.util.Venue;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import xyz.hanks.library.bang.SmallBangView;
 
 public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.RaveViewHolder>{
 
@@ -28,7 +34,7 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     private List<Datum> datum;
     private Venue venue;
     private List<Datum> favorites;
-    private DatumUpdate isFavorite;
+    private DatumFavoriteUpdate isFavorite;
     private final static int MAX_LINES_COLLAPSED = 1;
     private final boolean INITIAL_IS_COLLAPSED = true;
     private boolean isCollapsed = INITIAL_IS_COLLAPSED;
@@ -39,30 +45,79 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     private List<VenueWithDatum> vwd;
     private String location;
     private boolean isLocationQuery = false;
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String date;
+    Date todayDate = Calendar.getInstance().getTime();
+    private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    String today = formatter.format(todayDate);
     class RaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView concertName;
         private final TextView concertVenue;
         private final TextView artistPreview;
         private final TextView separatorView;
+        private final SmallBangView imageView;
         private final TextView initialSeparatorView;
         private final LinearLayout container;
+        private final ImageButton itemOptions;
+        private final TextView location;
+        private final TextView justAdded;
         private RaveViewHolder(View itemView){
             super(itemView);
+            calendar = Calendar.getInstance();
+            dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            date = dateFormat.format(calendar.getTime());
+            imageView = itemView.findViewById(R.id.imageViewAnimation);
             container = itemView.findViewById(R.id.recyclerview);
             concertName = itemView.findViewById(R.id.concertName);
             concertVenue = itemView.findViewById(R.id.concertVenue);
             artistPreview = itemView.findViewById(R.id.artistPreview);
             separatorView = itemView.findViewById(R.id.separatorView);
-            initialSeparatorView = itemView.findViewById(R.id.initalSeparator);
+            initialSeparatorView = itemView.findViewById(R.id.initialSeparator);
+            itemOptions = itemView.findViewById(R.id.itemOptions);
+            location = itemView.findViewById(R.id.location);
+            justAdded = itemView.findViewById(R.id.justAdded);
             itemView.setOnClickListener(this);
-            itemView.findViewById(R.id.favoriteButton).setOnClickListener(new View.OnClickListener() {
+            itemView.findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (imageView.isSelected()) {
+                        imageView.setSelected(false);
+                    } else {
+                        // if not selected only
+                        // then show animation.
+                        imageView.setSelected(true);
+                        imageView.likeAnimation();
+                    }
                     int position = getBindingAdapterPosition();
                     mOnClickListener.onListItemClick(datum.get(position));
-                    Toast.makeText(v.getContext(), datum.get(position).getVenue().getVenueName(), Toast.LENGTH_SHORT).show();
                 }
             });
+            itemView.findViewById(R.id.itemOptions).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPopupMenu(v);
+                }
+            });
+        }
+
+        private void showPopupMenu(View view){
+            PopupMenu popupMenu = new PopupMenu(view.getContext(), view);
+            popupMenu.inflate(R.menu.popup_menu);
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch(item.getItemId()){
+                        case R.id.event_page:
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(datum.get(getAbsoluteAdapterPosition()).getLink()));
+                            view.getContext().startActivity(browserIntent);
+                            return true;
+                        default:
+                            return false;
+                    }
+                }
+            });
+            popupMenu.show();
         }
 
         @Override
@@ -78,6 +133,16 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     public RaveLocatorAdapter(Context context, ListItemClickListener onClickListener) {
         mInflater = LayoutInflater.from(context);
         this.mOnClickListener = onClickListener;
+        setHasStableIds(true);
+    }
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
     @NonNull
     @Override
@@ -90,11 +155,18 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     @Override
     public void onBindViewHolder(@NonNull RaveLocatorAdapter.RaveViewHolder holder, int position) {
         holder.container.setAnimation(AnimationUtils.loadAnimation(holder.container.getContext(), R.anim.fade_scale_animation));
-        //holder.concertName.setAnimation(AnimationUtils.loadAnimation(holder.concertName.getContext(),R.anim.fade_transition));
         Datum current = datum.get(position);
+
+        if(current.getFavorite() == true){
+            holder.imageView.setSelected(true);
+        }
+        String createdDate = current.getCreatedDate().substring(0,10);
+        if(createdDate.equals(today)){
+            holder.justAdded.setVisibility(View.VISIBLE);
+            current.setJustAdded(true);
+        }
         if(position == 0){
             holder.initialSeparatorView.setText(datum.get(position).getDate());
-            holder.initialSeparatorView.setBackgroundColor(Color.BLUE);
             holder.initialSeparatorView.setVisibility(View.VISIBLE);
         } else if(position != datum.size() && !current.getDate().equals(datum.get(position - 1).getDate()) ){ //set separator visible if new date is encountered
             holder.separatorView.setText(datum.get(position).getDate());
@@ -108,14 +180,14 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
             } else {
                 holder.concertName.setText(getArtists(current));
             }
-        if(isLocationQuery) {
-            holder.concertVenue.setText(location);
-        }
-            if(!isLocationQuery){
+        if(current.getVenue().getVenueName() == null) {
+            holder.concertVenue.setText(current.getVenueName());
+            holder.location.setText(current.getLocation());
+        } else {
                 holder.concertVenue.setText(current.getVenue().getVenueName());
-                } else {
-                holder.concertVenue.setText(dwv.get(position).venue.getVenueName());
-            }
+                holder.location.setText(current.getVenue().getLocation());
+                }
+
             holder.concertVenue.setOnClickListener(v -> collapseArtistList(holder));
             holder.artistPreview.setText(getArtists(current));
             holder.artistPreview.setOnClickListener(v -> collapseArtistList(holder));
@@ -144,23 +216,11 @@ public class RaveLocatorAdapter extends RecyclerView.Adapter<RaveLocatorAdapter.
     }
 
 
-    void setRaves(List<Datum> raves, List<DatumWithVenue> dwv){
-        datum = raves;
-        this.dwv = dwv;
-        notifyDataSetChanged();
-    }
-
     void setRaves(List<Datum> raves){
         datum = raves;
         notifyDataSetChanged();
     }
 
-    void setRaves(List<Datum> raves, String query){
-        datum = raves;
-        isLocationQuery = true;
-        location = query;
-        notifyDataSetChanged();
-    }
 
     @Override
     public int getItemCount() {

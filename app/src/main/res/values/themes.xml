@@ -11,23 +11,57 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="popupMenuBackground">@color/white</item>
+        <item name="android:itemBackground">@color/white</item>
+        <item name="itemRippleColor">@color/secondaryColor</item>
+        <item name="android:popupMenuStyle">@style/MenuStyle</item>
+        <item name="android:itemTextAppearance">@style/TextAppearance</item>
+
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="MenuStyle">
+        <item name="itemRippleColor">@color/secondaryColor</item>
+        <item name="android:listSelector">@color/secondaryColor</item>
+        <item name="android:colorPressedHighlight">@color/secondaryColor</item>
+        <item name="android:colorActivatedHighlight">@color/secondaryColor</item>
+    </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="TextAppearance">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:popupBackground">@color/primaryColor</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:colorBackground">@color/primaryColor</item>
+        <item name="android:colorForeground">@color/primaryColor</item>
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:colorForeground">@color/primaryColor</item>
+    </style>
 
     <style name="Theme.RaveLocator.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:popupBackground">@color/primaryColor</item>
     </style>
 
-    <style name="Theme.RaveLocator.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.RaveLocator.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.RaveLocator.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorOnSecondary">@color/white</item>
     </style>
 
+    <style name="MaterialCalendarTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <!-- just override the colors used in the default style -->
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/secondaryColor</item>
+        <item name="colorSecondary">@color/secondaryLightColor</item>
+
+
+    </style>
 
 </resources>
