@@ -1,77 +1,82 @@
 package com.example.ravelocator;
 
-import android.content.Context;
+import android.Manifest;
 import android.content.SharedPreferences;
-import android.location.Location;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
-import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumFavoriteUpdate;
-import com.google.android.gms.location.FusedLocationProviderClient;
+import com.example.ravelocator.adapters.RaveLocatorAdapter;
+import com.example.ravelocator.databinding.FragmentSearchBinding;
+import com.example.ravelocator.model.Datum;
+import com.example.ravelocator.model.DatumFavoriteUpdate;
+import com.example.ravelocator.model.RaveLocatorModel;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import dagger.hilt.android.scopes.ViewModelScoped;
 
 import static java.lang.Thread.sleep;
 
-
+@ViewModelScoped
 public class NearbyFragment extends Fragment {
     private RaveLocatorViewModel mRaveLocatorViewModel;
-    ViewPager2 viewPager;
-    private FusedLocationProviderClient mFusedLocationClient;
     SharedPreferences sharedPref;
-    private static final int REQUEST_LOCATION_PERMISSION = 1;
     private DatumFavoriteUpdate isFavorite;
-    Location mLastLocation;
-    RecyclerView search;
-    ProgressBar progressBar;
+    private FragmentSearchBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
-        search = view.findViewById(R.id.searchrecyclerview);
+        binding = FragmentSearchBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
         sharedPref = PreferenceManager
                 .getDefaultSharedPreferences(getActivity().getApplicationContext());
-        progressBar = view.findViewById(R.id.progress_bar);
-        RecyclerView recyclerView = view.findViewById(R.id.searchrecyclerview);
         final RaveLocatorAdapter adapter = new RaveLocatorAdapter(getActivity(), this::onListItemClick);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRaveLocatorViewModel = new ViewModelProvider(requireActivity()).get(RaveLocatorViewModel.class);
-        mRaveLocatorViewModel = ViewModelProviders.of(this).get(RaveLocatorViewModel.class);
+        binding.searchrecyclerview.setAdapter(adapter);
+        binding.searchrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRaveLocatorViewModel = new ViewModelProvider(this).get(RaveLocatorViewModel.class);
+
+        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            if(mRaveLocatorViewModel.getAllDatum().getValue() != null){
+                adapter.setRaves(mRaveLocatorViewModel.getAllDatum().getValue());
+            } else {
+                mRaveLocatorViewModel.getAllEvents().observe(getViewLifecycleOwner(), raveLocatorModel -> {
+                    adapter.setRaves(raveLocatorModel.getData());
+                });
+            }
+        } else {
+            mRaveLocatorViewModel.getLocationId();
             try {
-                mRaveLocatorViewModel.getLocationId();
                 sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-
-        mRaveLocatorViewModel.getNearbyEvents().observe(getViewLifecycleOwner(), raveLocatorModel -> {
-            adapter.setRaves(raveLocatorModel.getData());
-            progressBar.setVisibility(View.GONE);
-            search.setVisibility(View.VISIBLE);
+            mRaveLocatorViewModel.getNearbyEvents().observe(getViewLifecycleOwner(), raveLocatorModel -> {
+                adapter.setRaves(raveLocatorModel.getData());
             });
+        }
+
+        binding.progressBar.setVisibility(View.GONE);
+        binding.searchrecyclerview.setVisibility(View.VISIBLE);
+
         final Handler handler = new Handler();
         SearchView searchview = view.findViewById(R.id.search);
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -82,7 +87,7 @@ public class NearbyFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (TextUtils.isEmpty(newText)) {
+                if (TextUtils.isEmpty(newText) || newText.length() == 0) {
                     mRaveLocatorViewModel.getNearbyEventList().observe(getViewLifecycleOwner(), raveLocatorModel -> {
                         adapter.setRaves(raveLocatorModel.getData());
                     });
@@ -91,20 +96,26 @@ public class NearbyFragment extends Fragment {
                     handler.removeCallbacksAndMessages(null);
                     handler.postDelayed(() -> Search(newText), 400);
                 }
-                recyclerView.smoothScrollToPosition(0);
+                binding.searchrecyclerview.smoothScrollToPosition(0);
 
                 return false;
             }
 
             private void Search(String searchText) {
                 searchText = "*"+searchText+"*";
-                String finalSearchText = searchText;
+                String finalSearchText = searchText.replace(("\""),"\"\""); //sanitize
                 List<Datum> raves = mRaveLocatorViewModel.search(finalSearchText);
                 adapter.setRaves(raves);
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
 

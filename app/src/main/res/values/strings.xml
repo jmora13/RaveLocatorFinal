@@ -56,4 +56,5 @@
     <string name="just_added">JUST ADDED</string>
     <string name="new_shows_only">New Shows Only</string>
     <string name="new_events_only">New Events Only</string>
+    <string name="open_in_maps">Open in Maps</string>
 </resources>

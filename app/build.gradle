@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
 }
+apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
@@ -10,14 +12,13 @@ android {
         applicationId "com.sigmaprogrammers.ravelocator"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.0"
-
+        versionCode 11
+        versionName "11.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [
+                arguments += [
                         "room.schemaLocation": "$projectDir/schemas".toString()
                 ]
             }
@@ -30,6 +31,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -48,27 +54,13 @@ dependencies {
     def paging_version = "3.0.0-alpha11"
     def work_version = "2.5.0"
 
+    implementation 'com.google.dagger:hilt-android:2.33-beta'
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.33-beta'
+
+
     // (Java only)
     implementation "androidx.work:work-runtime:$work_version"
 
-    implementation "androidx.paging:paging-runtime:$paging_version"
-
-    // alternatively - without Android dependencies for tests
-    testImplementation "androidx.paging:paging-common:$paging_version"
-
-    // optional - RxJava2 support
-    implementation "androidx.paging:paging-rxjava2:$paging_version"
-
-    // optional - RxJava3 support
-    implementation "androidx.paging:paging-rxjava3:$paging_version"
-
-    // optional - Guava ListenableFuture support
-    implementation "androidx.paging:paging-guava:$paging_version"
-
-    // Jetpack Compose Integration
-    implementation "androidx.paging:paging-compose:1.0.0-alpha04"
-
-    implementation "androidx.paging:paging-rxjava2:$paging_version" // For Kotlin use paging-rxjava2-ktx
 
     def room_version = "2.2.6"
 

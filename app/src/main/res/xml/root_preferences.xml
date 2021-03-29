@@ -35,6 +35,16 @@
             app:key="include_electronic_shows"
             app:title="@string/include_electronic_shows"
             android:defaultValue="true"/>
+
+        <SwitchPreferenceCompat
+            app:key="include_other_genres"
+            app:title="@string/include_other_genres"
+            android:defaultValue="false"/>
+
+        <SwitchPreferenceCompat
+            app:key="festivals_only"
+            app:title="@string/festivals_only"
+            android:defaultValue="false"/>
         <SwitchPreferenceCompat
             app:key="just_added"
             app:title="@string/new_events_only"
@@ -45,10 +55,7 @@
             app:key="livestreams_only"
             app:title="@string/live_streams_only"
             android:defaultValue="false"/>
-        <SwitchPreferenceCompat
-            app:key="include_other_genres"
-            app:title="@string/include_other_genres"
-            android:defaultValue="false"/>
+
 
 
     </PreferenceCategory>

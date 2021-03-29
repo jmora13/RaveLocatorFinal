@@ -1,63 +1,48 @@
 package com.example.ravelocator;
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.preference.PreferenceManager;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.ravelocator.util.Datum;
-import com.example.ravelocator.util.DatumFavoriteUpdate;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.material.tabs.TabLayout;
+import com.example.ravelocator.adapters.DataFragmentAdapter;
+import com.example.ravelocator.databinding.ActivityMainBinding;
+import com.example.ravelocator.model.Datum;
+import com.example.ravelocator.model.DatumFavoriteUpdate;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.Calendar;
+import dagger.hilt.android.AndroidEntryPoint;
 
-
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
-    private RaveLocatorViewModel mRaveLocatorViewModel;
-    private Object Menu;
     private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
     private NotificationManager mNotifyManager;
     private static final int NOTIFICATION_ID = 0;
-    private SharedPreferences sharedPref;
-    private String sharedPrefFile = "sharedPrefFile";
-    Calendar calendar = Calendar.getInstance();
-    private int dayOfMonth = 0;
-    private final String DAY_OF_MONTH_KEY = "1";
-    ViewPager2 viewPager;
-    private static final int REQUEST_LOCATION_PERMISSION = 1;
-    private FusedLocationProviderClient mFusedLocationClient;
-    Location mLastLocation;
-    // Initializing other items
-    // from layout file
-
+    private ActivityMainBinding binding;
+    private RaveLocatorViewModel mRaveLocatorViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        SharedPreferences sharedPref = PreferenceManager
-                .getDefaultSharedPreferences(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         createNotificationChannel();
         DataFragmentAdapter ad = new DataFragmentAdapter(this);
-        viewPager = findViewById(R.id.pager);
-        viewPager.setAdapter(ad);
-        viewPager.setOffscreenPageLimit(1);
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            viewPager.setCurrentItem(tab.getPosition(), true);
+        binding.pager.setAdapter(ad);
+        binding.pager.setOffscreenPageLimit(1);
+        new TabLayoutMediator(binding.tabLayout, binding.pager, (tab, position) -> {
+            binding.pager.setCurrentItem(tab.getPosition(), true);
             if (position == 0) {
                 tab.setText("Nearby");
                 tab.setIcon(R.drawable.ic_baseline_location_on_24_white);
@@ -67,26 +52,25 @@ public class MainActivity extends AppCompatActivity {
                 tab.setIcon(R.drawable.ic_baseline_favorite_24_white);
             }
         }).attach();
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(myToolbar);
+        setSupportActionBar(binding.toolbar);
 
-//        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-//                    ad.notifyDataSetChanged();
-//            }
-//        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Toast.makeText(getApplicationContext(), "Tap update to save changes", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(this, SettingsActivity.class);
-                startActivity(i);
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED){
+                    item.setEnabled(false);
+                    Toast.makeText(getApplicationContext(), "Enable location for best experience", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Tap update to save changes", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(this, SettingsActivity.class);
+                    startActivity(i);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -114,19 +98,6 @@ public void onListItemClick(Datum datum) {
         return true;
     }
 
-    public void processDatePickerResult(int year, int month, int day){
-        String month_string = Integer.toString(month+1);
-        String day_string = Integer.toString(day);
-        String year_string = Integer.toString(year);
-        String dateMessage = (month_string +
-                "/" + day_string + "/" + year_string);
-        Toast.makeText(this, "Date: " + dateMessage,
-                Toast.LENGTH_SHORT).show();
-        dayOfMonth = day;
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-
-    }
     public void createNotificationChannel(){
         mNotifyManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
@@ -155,21 +126,4 @@ public void onListItemClick(Datum datum) {
         return notifyBuilder;
 
     }
-
-//    @Override
-//    protected void onPause() {
-//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-//        super.onPause();
-//        preferencesEditor.putInt(DAY_OF_MONTH_KEY, dayOfMonth);
-//        preferencesEditor.apply();
-//    }
-
-//    public void reset(View view){
-//        //reset day to current day
-//        dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-//        //clear preferences
-//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-//        preferencesEditor.clear();
-//        preferencesEditor.apply();
-//    }
 }

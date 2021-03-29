@@ -5,4 +5,8 @@
         android:id="@+id/event_page"
         android:title="@string/go_to_event_page"
         />
+    <item
+        android:id="@+id/open_maps"
+        android:title="@string/open_in_maps"
+        />
 </menu>

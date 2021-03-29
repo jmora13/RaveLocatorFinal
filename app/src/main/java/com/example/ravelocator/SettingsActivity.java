@@ -1,7 +1,9 @@
 package com.example.ravelocator;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,12 +11,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.util.Pair;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreferenceCompat;
 
+import com.example.ravelocator.databinding.SettingsActivityBinding;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -28,11 +32,13 @@ import java.util.TimeZone;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    RaveLocatorViewModel mRaveLocatorViewModel;
+    private SettingsActivityBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_activity);
+        binding = SettingsActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -156,7 +162,9 @@ public class SettingsActivity extends AppCompatActivity {
                     return false;
                 }
             });
+
         }
     }
+
 
 }
