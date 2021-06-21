@@ -1,0 +1,384 @@
+<html>
+<head>
+<title>4.json</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+4.json</font>
+</center></td></tr></table>
+<pre><span class="s0">{</span>
+  <span class="s1">&quot;formatVersion&quot;</span><span class="s2">: </span><span class="s3">1</span><span class="s2">,</span>
+  <span class="s1">&quot;database&quot;</span><span class="s2">: </span><span class="s0">{</span>
+    <span class="s1">&quot;version&quot;</span><span class="s2">: </span><span class="s3">4</span><span class="s2">,</span>
+    <span class="s1">&quot;identityHash&quot;</span><span class="s2">: </span><span class="s1">&quot;f5f5ef00f2a54124b563dce499ca6e0e&quot;</span><span class="s2">,</span>
+    <span class="s1">&quot;entities&quot;</span><span class="s2">: </span><span class="s0">[</span>
+      <span class="s0">{</span>
+        <span class="s1">&quot;tableName&quot;</span><span class="s2">: </span><span class="s1">&quot;datum_table&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;createSql&quot;</span><span class="s2">: </span><span class="s1">&quot;CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `link` TEXT, `name` TEXT, `ages` TEXT, `festivalInd` INTEGER, `livestreamInd` INTEGER, `electronicGenreInd` INTEGER, `otherGenreInd` INTEGER, `date` TEXT, `startTime` TEXT, `endTime` TEXT, `createdDate` TEXT, `venue` TEXT, `artistList` TEXT, `isFavorite` INTEGER DEFAULT false, PRIMARY KEY(`id`))&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;fields&quot;</span><span class="s2">: </span><span class="s0">[</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;id&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;id&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;link&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;link&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;name&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;name&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;ages&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;ages&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;festivalInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;festivalInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;livestreamInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;livestreamInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;electronicGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;electronicGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;otherGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;otherGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;date&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;date&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;startTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;startTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;endTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;endTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;createdDate&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;createdDate&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;venue&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;venue&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;artistList&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;artistList&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;isFavorite&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;isFavorite&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false,</span>
+            <span class="s1">&quot;defaultValue&quot;</span><span class="s2">: </span><span class="s1">&quot;false&quot;</span>
+          <span class="s0">}</span>
+        <span class="s0">]</span><span class="s2">,</span>
+        <span class="s1">&quot;primaryKey&quot;</span><span class="s2">: </span><span class="s0">{</span>
+          <span class="s1">&quot;columnNames&quot;</span><span class="s2">: </span><span class="s0">[</span>
+            <span class="s1">&quot;id&quot;</span>
+          <span class="s0">]</span><span class="s2">,</span>
+          <span class="s1">&quot;autoGenerate&quot;</span><span class="s2">: false</span>
+        <span class="s0">}</span><span class="s2">,</span>
+        <span class="s1">&quot;indices&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+        <span class="s1">&quot;foreignKeys&quot;</span><span class="s2">: </span><span class="s0">[]</span>
+      <span class="s0">}</span><span class="s2">,</span>
+      <span class="s0">{</span>
+        <span class="s1">&quot;tableName&quot;</span><span class="s2">: </span><span class="s1">&quot;Venue&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;createSql&quot;</span><span class="s2">: </span><span class="s1">&quot;CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`venueId` INTEGER, `venueName` TEXT, `location` TEXT, `address` TEXT, `state` TEXT, `latitude` REAL, `longitude` REAL, PRIMARY KEY(`venueId`))&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;fields&quot;</span><span class="s2">: </span><span class="s0">[</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;venueId&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;venueId&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;venueName&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;venueName&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;location&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;location&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;address&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;address&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;state&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;state&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;latitude&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;latitude&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;REAL&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;longitude&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;longitude&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;REAL&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span>
+        <span class="s0">]</span><span class="s2">,</span>
+        <span class="s1">&quot;primaryKey&quot;</span><span class="s2">: </span><span class="s0">{</span>
+          <span class="s1">&quot;columnNames&quot;</span><span class="s2">: </span><span class="s0">[</span>
+            <span class="s1">&quot;venueId&quot;</span>
+          <span class="s0">]</span><span class="s2">,</span>
+          <span class="s1">&quot;autoGenerate&quot;</span><span class="s2">: false</span>
+        <span class="s0">}</span><span class="s2">,</span>
+        <span class="s1">&quot;indices&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+        <span class="s1">&quot;foreignKeys&quot;</span><span class="s2">: </span><span class="s0">[]</span>
+      <span class="s0">}</span><span class="s2">,</span>
+      <span class="s0">{</span>
+        <span class="s1">&quot;tableName&quot;</span><span class="s2">: </span><span class="s1">&quot;ArtistList&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;createSql&quot;</span><span class="s2">: </span><span class="s1">&quot;CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`artistListId` INTEGER, `artistName` TEXT, `link` TEXT, `b2bInd` INTEGER, `aId` INTEGER, PRIMARY KEY(`artistListId`))&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;fields&quot;</span><span class="s2">: </span><span class="s0">[</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;artistListId&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;artistListId&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;artistName&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;artistName&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;link&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;link&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;b2bInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;b2bInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;aId&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;aId&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span>
+        <span class="s0">]</span><span class="s2">,</span>
+        <span class="s1">&quot;primaryKey&quot;</span><span class="s2">: </span><span class="s0">{</span>
+          <span class="s1">&quot;columnNames&quot;</span><span class="s2">: </span><span class="s0">[</span>
+            <span class="s1">&quot;artistListId&quot;</span>
+          <span class="s0">]</span><span class="s2">,</span>
+          <span class="s1">&quot;autoGenerate&quot;</span><span class="s2">: false</span>
+        <span class="s0">}</span><span class="s2">,</span>
+        <span class="s1">&quot;indices&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+        <span class="s1">&quot;foreignKeys&quot;</span><span class="s2">: </span><span class="s0">[]</span>
+      <span class="s0">}</span><span class="s2">,</span>
+      <span class="s0">{</span>
+        <span class="s1">&quot;tableName&quot;</span><span class="s2">: </span><span class="s1">&quot;DatumUpdate&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;createSql&quot;</span><span class="s2">: </span><span class="s1">&quot;CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `isFavorite` INTEGER NOT NULL, PRIMARY KEY(`id`))&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;fields&quot;</span><span class="s2">: </span><span class="s0">[</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;id&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;id&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;isFavorite&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;isFavorite&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: true</span>
+          <span class="s0">}</span>
+        <span class="s0">]</span><span class="s2">,</span>
+        <span class="s1">&quot;primaryKey&quot;</span><span class="s2">: </span><span class="s0">{</span>
+          <span class="s1">&quot;columnNames&quot;</span><span class="s2">: </span><span class="s0">[</span>
+            <span class="s1">&quot;id&quot;</span>
+          <span class="s0">]</span><span class="s2">,</span>
+          <span class="s1">&quot;autoGenerate&quot;</span><span class="s2">: false</span>
+        <span class="s0">}</span><span class="s2">,</span>
+        <span class="s1">&quot;indices&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+        <span class="s1">&quot;foreignKeys&quot;</span><span class="s2">: </span><span class="s0">[]</span>
+      <span class="s0">}</span><span class="s2">,</span>
+      <span class="s0">{</span>
+        <span class="s1">&quot;ftsVersion&quot;</span><span class="s2">: </span><span class="s1">&quot;FTS4&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;ftsOptions&quot;</span><span class="s2">: </span><span class="s0">{</span>
+          <span class="s1">&quot;tokenizer&quot;</span><span class="s2">: </span><span class="s1">&quot;simple&quot;</span><span class="s2">,</span>
+          <span class="s1">&quot;tokenizerArgs&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+          <span class="s1">&quot;contentTable&quot;</span><span class="s2">: </span><span class="s1">&quot;datum_table&quot;</span><span class="s2">,</span>
+          <span class="s1">&quot;languageIdColumnName&quot;</span><span class="s2">: </span><span class="s1">&quot;&quot;</span><span class="s2">,</span>
+          <span class="s1">&quot;matchInfo&quot;</span><span class="s2">: </span><span class="s1">&quot;FTS4&quot;</span><span class="s2">,</span>
+          <span class="s1">&quot;notIndexedColumns&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+          <span class="s1">&quot;prefixSizes&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+          <span class="s1">&quot;preferredOrder&quot;</span><span class="s2">: </span><span class="s1">&quot;ASC&quot;</span>
+        <span class="s0">}</span><span class="s2">,</span>
+        <span class="s1">&quot;contentSyncTriggers&quot;</span><span class="s2">: </span><span class="s0">[</span>
+          <span class="s1">&quot;CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_BEFORE_UPDATE BEFORE UPDATE ON `datum_table` BEGIN DELETE FROM `datum_fts` WHERE `docid`=OLD.`rowid`; END&quot;</span><span class="s2">,</span>
+          <span class="s1">&quot;CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_BEFORE_DELETE BEFORE DELETE ON `datum_table` BEGIN DELETE FROM `datum_fts` WHERE `docid`=OLD.`rowid`; END&quot;</span><span class="s2">,</span>
+          <span class="s1">&quot;CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_AFTER_UPDATE AFTER UPDATE ON `datum_table` BEGIN INSERT INTO `datum_fts`(`docid`, `id`, `link`, `name`, `ages`, `festivalInd`, `livestreamInd`, `electronicGenreInd`, `otherGenreInd`, `date`, `startTime`, `endTime`, `createdDate`, `venue`, `artistList`, `isFavorite`) VALUES (NEW.`rowid`, NEW.`id`, NEW.`link`, NEW.`name`, NEW.`ages`, NEW.`festivalInd`, NEW.`livestreamInd`, NEW.`electronicGenreInd`, NEW.`otherGenreInd`, NEW.`date`, NEW.`startTime`, NEW.`endTime`, NEW.`createdDate`, NEW.`venue`, NEW.`artistList`, NEW.`isFavorite`); END&quot;</span><span class="s2">,</span>
+          <span class="s1">&quot;CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_datum_fts_AFTER_INSERT AFTER INSERT ON `datum_table` BEGIN INSERT INTO `datum_fts`(`docid`, `id`, `link`, `name`, `ages`, `festivalInd`, `livestreamInd`, `electronicGenreInd`, `otherGenreInd`, `date`, `startTime`, `endTime`, `createdDate`, `venue`, `artistList`, `isFavorite`) VALUES (NEW.`rowid`, NEW.`id`, NEW.`link`, NEW.`name`, NEW.`ages`, NEW.`festivalInd`, NEW.`livestreamInd`, NEW.`electronicGenreInd`, NEW.`otherGenreInd`, NEW.`date`, NEW.`startTime`, NEW.`endTime`, NEW.`createdDate`, NEW.`venue`, NEW.`artistList`, NEW.`isFavorite`); END&quot;</span>
+        <span class="s0">]</span><span class="s2">,</span>
+        <span class="s1">&quot;tableName&quot;</span><span class="s2">: </span><span class="s1">&quot;datum_fts&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;createSql&quot;</span><span class="s2">: </span><span class="s1">&quot;CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`id` INTEGER, `link` TEXT, `name` TEXT, `ages` TEXT, `festivalInd` INTEGER, `livestreamInd` INTEGER, `electronicGenreInd` INTEGER, `otherGenreInd` INTEGER, `date` TEXT, `startTime` TEXT, `endTime` TEXT, `createdDate` TEXT, `venue` TEXT, `artistList` TEXT, `isFavorite` INTEGER DEFAULT false, content=`datum_table`)&quot;</span><span class="s2">,</span>
+        <span class="s1">&quot;fields&quot;</span><span class="s2">: </span><span class="s0">[</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;id&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;id&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;link&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;link&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;name&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;name&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;ages&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;ages&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;festivalInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;festivalInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;livestreamInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;livestreamInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;electronicGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;electronicGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;otherGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;otherGenreInd&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;date&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;date&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;startTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;startTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;endTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;endTime&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;createdDate&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;createdDate&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;venue&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;venue&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;artistList&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;artistList&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;TEXT&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">{</span>
+            <span class="s1">&quot;fieldPath&quot;</span><span class="s2">: </span><span class="s1">&quot;isFavorite&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;columnName&quot;</span><span class="s2">: </span><span class="s1">&quot;isFavorite&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;affinity&quot;</span><span class="s2">: </span><span class="s1">&quot;INTEGER&quot;</span><span class="s2">,</span>
+            <span class="s1">&quot;notNull&quot;</span><span class="s2">: false,</span>
+            <span class="s1">&quot;defaultValue&quot;</span><span class="s2">: </span><span class="s1">&quot;false&quot;</span>
+          <span class="s0">}</span>
+        <span class="s0">]</span><span class="s2">,</span>
+        <span class="s1">&quot;primaryKey&quot;</span><span class="s2">: </span><span class="s0">{</span>
+          <span class="s1">&quot;columnNames&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+          <span class="s1">&quot;autoGenerate&quot;</span><span class="s2">: false</span>
+        <span class="s0">}</span><span class="s2">,</span>
+        <span class="s1">&quot;indices&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+        <span class="s1">&quot;foreignKeys&quot;</span><span class="s2">: </span><span class="s0">[]</span>
+      <span class="s0">}</span>
+    <span class="s0">]</span><span class="s2">,</span>
+    <span class="s1">&quot;views&quot;</span><span class="s2">: </span><span class="s0">[]</span><span class="s2">,</span>
+    <span class="s1">&quot;setupQueries&quot;</span><span class="s2">: </span><span class="s0">[</span>
+      <span class="s1">&quot;CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)&quot;</span><span class="s2">,</span>
+      <span class="s1">&quot;INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f5f5ef00f2a54124b563dce499ca6e0e')&quot;</span>
+    <span class="s0">]</span>
+  <span class="s0">}</span>
+<span class="s0">}</span></pre>
+</body>
+</html>

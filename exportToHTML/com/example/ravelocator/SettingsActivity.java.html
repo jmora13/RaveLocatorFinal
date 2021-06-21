@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>SettingsActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+SettingsActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.SharedPreferences</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.MenuItem</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.ActionBar</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.core.util.Pair</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.preference.Preference</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.preference.PreferenceFragmentCompat</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.preference.PreferenceManager</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.preference.SwitchPreferenceCompat</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.google.android.material.datepicker.CalendarConstraints</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.material.datepicker.DateValidatorPointForward</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.material.datepicker.MaterialDatePicker</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.text.SimpleDateFormat</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Calendar</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Date</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.TimeZone</span><span class="s0">;</span>
+
+
+<span class="s0">public class </span><span class="s1">SettingsActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s1">RaveLocatorViewModel mRaveLocatorViewModel</span><span class="s0">;</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.settings_activity)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(savedInstanceState == </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">getSupportFragmentManager()</span>
+                    <span class="s1">.beginTransaction()</span>
+                    <span class="s1">.replace(R.id.settings</span><span class="s0">, new </span><span class="s1">SettingsFragment())</span>
+                    <span class="s1">.commit()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">ActionBar actionBar = getSupportActionBar()</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(actionBar != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">actionBar.setDisplayHomeAsUpEnabled(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">SharedPreferences sharedPref = PreferenceManager</span>
+                <span class="s1">.getDefaultSharedPreferences(getApplication().getApplicationContext())</span><span class="s0">;</span>
+
+        <span class="s1">sharedPref.registerOnSharedPreferenceChangeListener(</span><span class="s0">new </span><span class="s1">SharedPreferences.OnSharedPreferenceChangeListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onSharedPreferenceChanged(SharedPreferences sharedPreferences</span><span class="s0">, </span><span class="s1">String key) {</span>
+                <span class="s1">SharedPreferences sharedPref = PreferenceManager</span>
+                        <span class="s1">.getDefaultSharedPreferences(getApplication().getApplicationContext())</span><span class="s0">;</span>
+                <span class="s1">SharedPreferences.Editor editor = sharedPref.edit()</span><span class="s0">;</span>
+                <span class="s1">editor.putBoolean(</span><span class="s2">&quot;settings_changed&quot;</span><span class="s0">, true</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public boolean </span><span class="s1">onOptionsItemSelected(MenuItem item) {</span>
+        <span class="s0">switch </span><span class="s1">(item.getItemId()) {</span>
+            <span class="s3">// Respond to the action bar's Up/Home button</span>
+            <span class="s0">case </span><span class="s1">android.R.id.home:</span>
+                <span class="s0">super</span><span class="s1">.onBackPressed()</span><span class="s0">;</span>
+                <span class="s0">return true;</span>
+        <span class="s1">}</span>
+        <span class="s0">return super</span><span class="s1">.onOptionsItemSelected(item)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">public static class </span><span class="s1">SettingsFragment </span><span class="s0">extends </span><span class="s1">PreferenceFragmentCompat {</span>
+
+
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onCreatePreferences(Bundle savedInstanceState</span><span class="s0">, </span><span class="s1">String rootKey) {</span>
+            <span class="s1">SharedPreferences sharedPref = PreferenceManager</span>
+                    <span class="s1">.getDefaultSharedPreferences(getActivity().getApplication().getApplicationContext())</span><span class="s0">;</span>
+
+            <span class="s1">setPreferencesFromResource(R.xml.root_preferences</span><span class="s0">, </span><span class="s1">rootKey)</span><span class="s0">;</span>
+
+            <span class="s1">Preference sync = findPreference(</span><span class="s2">&quot;sync&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">sync.setOnPreferenceClickListener(</span><span class="s0">new </span><span class="s1">Preference.OnPreferenceClickListener() {</span>
+                <span class="s1">@Override</span>
+                <span class="s0">public boolean </span><span class="s1">onPreferenceClick(Preference preference) {</span>
+                    <span class="s1">Intent i = </span><span class="s0">new </span><span class="s1">Intent(getContext()</span><span class="s0">, </span><span class="s1">SplashActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">getActivity().finish()</span><span class="s0">;</span>
+                    <span class="s1">startActivity(i)</span><span class="s0">;</span>
+                    <span class="s1">Toast.makeText(getActivity().getApplicationContext()</span><span class="s0">, </span><span class="s2">&quot;Settings Updated&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+                    <span class="s0">return false;</span>
+                <span class="s1">}</span>
+            <span class="s1">})</span><span class="s0">;</span>
+
+            <span class="s1">Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(</span><span class="s2">&quot;UTC&quot;</span><span class="s1">))</span><span class="s0">;</span>
+            <span class="s1">calendar.clear()</span><span class="s0">;</span>
+            <span class="s1">CalendarConstraints.Builder constraintBuilder = </span><span class="s0">new </span><span class="s1">CalendarConstraints.Builder()</span><span class="s0">;</span>
+            <span class="s1">constraintBuilder.setValidator(DateValidatorPointForward.now())</span><span class="s0">;</span>
+            <span class="s1">MaterialDatePicker.Builder&lt;Pair&lt;Long</span><span class="s0">, </span><span class="s1">Long&gt;&gt; builder = MaterialDatePicker.Builder.dateRangePicker()</span><span class="s0">;</span>
+            <span class="s1">builder.setCalendarConstraints(constraintBuilder.build())</span><span class="s0">;</span>
+            <span class="s1">builder.setTitleText(</span><span class="s2">&quot;SELECT A DATE RANGE&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">builder.setTheme(R.style.MaterialCalendarTheme)</span><span class="s0">;</span>
+            <span class="s0">final </span><span class="s1">MaterialDatePicker materialDatePicker = builder.build()</span><span class="s0">;</span>
+
+
+            <span class="s1">Preference filterDates = findPreference(</span><span class="s2">&quot;filter_dates&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">String dates_selected = sharedPref.getString(</span><span class="s2">&quot;startDate&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">) + </span><span class="s2">&quot; - &quot; </span><span class="s1">+ sharedPref.getString(</span><span class="s2">&quot;endDate&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">filterDates.setSummary(dates_selected)</span><span class="s0">;</span>
+            <span class="s1">filterDates.setOnPreferenceClickListener(</span><span class="s0">new </span><span class="s1">Preference.OnPreferenceClickListener() {</span>
+                <span class="s1">@Override</span>
+                <span class="s0">public boolean </span><span class="s1">onPreferenceClick(Preference preference) {</span>
+
+                    <span class="s1">materialDatePicker.show(getActivity().getSupportFragmentManager()</span><span class="s0">, </span><span class="s2">&quot;MATERIAL_DATE_PICKER&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+                    <span class="s1">materialDatePicker.addOnPositiveButtonClickListener(</span><span class="s0">new </span><span class="s1">MaterialPickerOnPositiveButtonClickListener&lt;Pair&lt;Long</span><span class="s0">, </span><span class="s1">Long&gt;&gt;() {</span>
+
+
+                        <span class="s0">public void </span><span class="s1">onPositiveButtonClick(Pair&lt;Long</span><span class="s0">, </span><span class="s1">Long&gt; selection) {</span>
+
+                            <span class="s1">Calendar utc = Calendar.getInstance(TimeZone.getTimeZone(</span><span class="s2">&quot;UTC&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                            <span class="s1">utc.setTimeInMillis(selection.first)</span><span class="s0">;</span>
+
+                            <span class="s1">SimpleDateFormat format = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                            <span class="s1">String startDate = format.format(utc.getTime())</span><span class="s0">;</span>
+                            <span class="s1">SharedPreferences.Editor editor = sharedPref.edit()</span><span class="s0">;</span>
+                            <span class="s1">editor.putString(</span><span class="s2">&quot;startDate&quot;</span><span class="s0">, </span><span class="s1">startDate)</span><span class="s0">;</span>
+                            <span class="s1">utc.setTimeInMillis(selection.second)</span><span class="s0">;</span>
+                            <span class="s1">String endDate = format.format(utc.getTime())</span><span class="s0">;</span>
+                            <span class="s1">editor.putString(</span><span class="s2">&quot;endDate&quot;</span><span class="s0">, </span><span class="s1">endDate)</span><span class="s0">;</span>
+                            <span class="s1">editor.apply()</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+                    <span class="s1">})</span><span class="s0">;</span>
+
+                    <span class="s1">materialDatePicker.addOnNegativeButtonClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+                        <span class="s1">@Override</span>
+                        <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                            <span class="s1">SharedPreferences.Editor editor = sharedPref.edit()</span><span class="s0">;</span>
+                            <span class="s1">editor.putString(</span><span class="s2">&quot;startDate&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                            <span class="s1">editor.putString(</span><span class="s2">&quot;endDate&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                            <span class="s1">editor.apply()</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+                    <span class="s1">})</span><span class="s0">;</span>
+                    <span class="s0">return false;</span>
+                <span class="s1">}</span>
+            <span class="s1">})</span><span class="s0">;</span>
+
+            <span class="s1">Preference manualLocation = findPreference(</span><span class="s2">&quot;manual_location&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">String state = sharedPref.getString(</span><span class="s2">&quot;state&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">manualLocation.setSummary(state)</span><span class="s0">;</span>
+            <span class="s1">manualLocation.setOnPreferenceClickListener(</span><span class="s0">new </span><span class="s1">Preference.OnPreferenceClickListener() {</span>
+                <span class="s1">@Override</span>
+                <span class="s0">public boolean </span><span class="s1">onPreferenceClick(Preference preference) {</span>
+                    <span class="s1">Intent i = </span><span class="s0">new </span><span class="s1">Intent(getActivity()</span><span class="s0">, </span><span class="s1">MapsMarkerActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">startActivity(i)</span><span class="s0">;</span>
+                    <span class="s0">return false;</span>
+                <span class="s1">}</span>
+            <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>

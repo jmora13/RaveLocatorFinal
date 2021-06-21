@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>root_preferences.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #bababa;}
+.s2 { color: #6a8759;}
+.s3 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+root_preferences.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;PreferenceScreen </span><span class="s1">xmlns:android</span><span class="s2">=&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="s1">xmlns:app</span><span class="s2">=&quot;http://schemas.android.com/apk/res-auto&quot;</span><span class="s0">&gt;</span>
+
+    <span class="s0">&lt;PreferenceCategory </span><span class="s1">app:title</span><span class="s2">=&quot;@string/sync_header&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;Preference</span>
+            <span class="s1">app:key</span><span class="s2">=&quot;sync&quot;</span>
+            <span class="s1">app:icon</span><span class="s2">=&quot;@drawable/ic_baseline_refresh_24&quot;</span>
+            <span class="s1">app:title</span><span class="s2">=&quot;@string/update_and_sync_data&quot;</span>
+             <span class="s0">/&gt;</span>
+
+    <span class="s0">&lt;/PreferenceCategory&gt;</span>
+
+    <span class="s0">&lt;PreferenceCategory </span><span class="s1">app:title</span><span class="s2">=&quot;@string/filters&quot;</span><span class="s0">&gt;</span>
+
+
+        <span class="s0">&lt;Preference</span>
+            <span class="s1">app:icon</span><span class="s2">=&quot;@drawable/ic_baseline_date_range_24&quot;</span>
+            <span class="s1">android:defaultValue</span><span class="s2">=&quot;Default value&quot;</span>
+            <span class="s1">android:key</span><span class="s2">=&quot;filter_dates&quot;</span>
+            <span class="s1">android:selectAllOnFocus</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:singleLine</span><span class="s2">=&quot;true&quot;</span>
+
+            <span class="s1">android:title</span><span class="s2">=&quot;@string/filter_dates&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;Preference</span>
+            <span class="s1">app:icon</span><span class="s2">=&quot;@drawable/ic_baseline_location_on_24_white&quot;</span>
+            <span class="s1">android:defaultValue</span><span class="s2">=&quot;Default value&quot;</span>
+            <span class="s1">android:key</span><span class="s2">=&quot;manual_location&quot;</span>
+            <span class="s1">android:selectAllOnFocus</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:singleLine</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:title</span><span class="s2">=&quot;@string/set_manual_location&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;SwitchPreferenceCompat</span>
+            <span class="s1">app:key</span><span class="s2">=&quot;include_electronic_shows&quot;</span>
+            <span class="s1">app:title</span><span class="s2">=&quot;@string/include_electronic_shows&quot;</span>
+            <span class="s1">android:defaultValue</span><span class="s2">=&quot;true&quot;</span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;SwitchPreferenceCompat</span>
+            <span class="s1">app:key</span><span class="s2">=&quot;include_other_genres&quot;</span>
+            <span class="s1">app:title</span><span class="s2">=&quot;@string/include_other_genres&quot;</span>
+            <span class="s1">android:defaultValue</span><span class="s2">=&quot;false&quot;</span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;SwitchPreferenceCompat</span>
+            <span class="s1">app:key</span><span class="s2">=&quot;festivals_only&quot;</span>
+            <span class="s1">app:title</span><span class="s2">=&quot;@string/festivals_only&quot;</span>
+            <span class="s1">android:defaultValue</span><span class="s2">=&quot;false&quot;</span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;SwitchPreferenceCompat</span>
+            <span class="s1">app:key</span><span class="s2">=&quot;just_added&quot;</span>
+            <span class="s1">app:title</span><span class="s2">=&quot;@string/new_events_only&quot;</span>
+            <span class="s1">android:summary</span><span class="s2">=&quot;Shows added today&quot;</span>
+            <span class="s1">android:defaultValue</span><span class="s2">=&quot;false&quot;</span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;SwitchPreferenceCompat</span>
+            <span class="s1">app:key</span><span class="s2">=&quot;livestreams_only&quot;</span>
+            <span class="s1">app:title</span><span class="s2">=&quot;@string/live_streams_only&quot;</span>
+            <span class="s1">android:defaultValue</span><span class="s2">=&quot;false&quot;</span><span class="s0">/&gt;</span>
+
+
+
+    <span class="s0">&lt;/PreferenceCategory&gt;</span>
+
+<span class="s0">&lt;/PreferenceScreen&gt;</span></pre>
+</body>
+</html>

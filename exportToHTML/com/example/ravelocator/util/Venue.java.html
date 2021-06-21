@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>Venue.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Venue.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator.model</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.room.Entity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.ForeignKey</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.PrimaryKey</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.fasterxml.jackson.annotation.JsonInclude</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.fasterxml.jackson.annotation.JsonProperty</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.fasterxml.jackson.annotation.JsonPropertyOrder</span><span class="s0">;</span>
+
+<span class="s0">import static </span><span class="s1">androidx.room.ForeignKey.CASCADE</span><span class="s0">;</span>
+
+<span class="s1">@JsonInclude(JsonInclude.Include.NON_NULL)</span>
+<span class="s1">@JsonPropertyOrder({</span>
+        <span class="s2">&quot;id&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;venueName&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;location&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;address&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;latitude&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;longitude&quot;</span>
+<span class="s1">})</span>
+<span class="s1">@Entity</span>
+<span class="s0">public class </span><span class="s1">Venue {</span>
+    <span class="s1">@PrimaryKey</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">Integer venueId</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;name&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String venueName</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;location&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String location</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;address&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String address</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;state&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String state</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;latitude&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">Double latitude</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;longitude&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">Double longitude</span><span class="s0">;</span>
+
+
+    <span class="s1">@ForeignKey</span>
+            <span class="s1">(entity = Datum.</span><span class="s0">class,</span>
+                    <span class="s1">parentColumns = </span><span class="s2">&quot;id&quot;</span><span class="s0">,</span>
+                    <span class="s1">childColumns = </span><span class="s2">&quot;vId&quot;</span><span class="s0">,</span>
+                    <span class="s1">onDelete = CASCADE</span>
+            <span class="s1">)</span>
+
+<span class="s3">//    public Venue(Integer venueId, String venueName, String location, String address, String state, Double latitude, Double longitude){</span>
+<span class="s3">//        this.venueId = venueId; this.venueName = venueName; this.location = location; this.address = address; this.state = state; this. latitude = latitude; this.longitude = longitude;</span>
+<span class="s3">//    }</span>
+    <span class="s0">public  </span><span class="s1">Venue(){}</span>
+    <span class="s0">public </span><span class="s1">String getVenueName() {</span>
+        <span class="s0">return </span><span class="s1">venueName</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;name&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setVenueName(String venueName) {</span>
+        <span class="s0">this</span><span class="s1">.venueName = venueName</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;location&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">String getLocation() {</span>
+        <span class="s0">return </span><span class="s1">location</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;location&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setLocation(String location) {</span>
+        <span class="s0">this</span><span class="s1">.location = location</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;address&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">String getAddress() {</span>
+        <span class="s0">return </span><span class="s1">address</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;address&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setAddress(String address) {</span>
+        <span class="s0">this</span><span class="s1">.address = address</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;state&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">String getState() {</span>
+        <span class="s0">return </span><span class="s1">state</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;state&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setState(String state) {</span>
+        <span class="s0">this</span><span class="s1">.state = state</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;latitude&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">Double getLatitude() {</span>
+        <span class="s0">return </span><span class="s1">latitude</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;latitude&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setLatitude(Double latitude) {</span>
+        <span class="s0">this</span><span class="s1">.latitude = latitude</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;longitude&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">Double getLongitude() {</span>
+        <span class="s0">return </span><span class="s1">longitude</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;longitude&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setLongitude(Double longitude) {</span>
+        <span class="s0">this</span><span class="s1">.longitude = longitude</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">Integer getVenueId() {</span>
+        <span class="s0">return </span><span class="s1">venueId</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setVenueId(Integer venueId) {</span>
+        <span class="s0">this</span><span class="s1">.venueId = venueId</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getNameFromId(</span><span class="s0">int </span><span class="s1">venueId){</span>
+        <span class="s0">return </span><span class="s1">venueName</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

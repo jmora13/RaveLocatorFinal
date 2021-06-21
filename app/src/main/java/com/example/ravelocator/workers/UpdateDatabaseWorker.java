@@ -42,6 +42,7 @@ public class UpdateDatabaseWorker extends Worker {
 
     public UpdateDatabaseWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
+
     }
 
     @NonNull

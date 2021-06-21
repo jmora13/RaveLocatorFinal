@@ -1,0 +1,480 @@
+<html>
+<head>
+<title>dbnavigator.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #bababa;}
+.s2 { color: #6a8759;}
+.s3 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+dbnavigator.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot; </span><span class="s1">encoding</span><span class="s2">=&quot;UTF-8&quot;</span><span class="s0">?&gt;</span>
+<span class="s0">&lt;project </span><span class="s1">version</span><span class="s2">=&quot;4&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.DataEditorManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;record-view-column-sorting-type </span><span class="s1">value</span><span class="s2">=&quot;BY_INDEX&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;value-preview-text-wrapping </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;value-preview-pinned </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.DataExportManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;export-instructions&gt;</span>
+      <span class="s0">&lt;create-header </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;quote-values-containing-separator </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;quote-all-values </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;value-separator </span><span class="s1">value</span><span class="s2">=&quot;&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;file-name </span><span class="s1">value</span><span class="s2">=&quot;&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;file-location </span><span class="s1">value</span><span class="s2">=&quot;&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;scope </span><span class="s1">value</span><span class="s2">=&quot;GLOBAL&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;destination </span><span class="s1">value</span><span class="s2">=&quot;FILE&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;format </span><span class="s1">value</span><span class="s2">=&quot;EXCEL&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;charset </span><span class="s1">value</span><span class="s2">=&quot;windows-1252&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;/export-instructions&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.DatabaseBrowserManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;autoscroll-to-editor </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;autoscroll-from-editor </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;show-object-properties </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;loaded-nodes /&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.DatabaseFileManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;open-files /&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.EditorStateManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;last-used-providers /&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.ExecutionManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;retain-sticky-names </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.MethodExecutionManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;method-browser /&gt;</span>
+    <span class="s0">&lt;execution-history&gt;</span>
+      <span class="s0">&lt;group-entries </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;execution-inputs /&gt;</span>
+    <span class="s0">&lt;/execution-history&gt;</span>
+    <span class="s0">&lt;argument-values-cache /&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.ObjectDependencyManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;last-used-dependency-type </span><span class="s1">value</span><span class="s2">=&quot;INCOMING&quot; </span><span class="s0">/&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.ObjectQuickFilterManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;last-used-operator </span><span class="s1">value</span><span class="s2">=&quot;EQUAL&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;filters /&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.ScriptExecutionManager&quot; </span><span class="s1">clear-outputs</span><span class="s2">=&quot;true&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;recently-used-interfaces /&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.Settings&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;connections /&gt;</span>
+    <span class="s0">&lt;browser-settings&gt;</span>
+      <span class="s0">&lt;general&gt;</span>
+        <span class="s0">&lt;display-mode </span><span class="s1">value</span><span class="s2">=&quot;TABBED&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;navigation-history-size </span><span class="s1">value</span><span class="s2">=&quot;100&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;show-object-details </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/general&gt;</span>
+      <span class="s0">&lt;filters&gt;</span>
+        <span class="s0">&lt;object-type-filter&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;SCHEMA&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;USER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;ROLE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PRIVILEGE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;CHARSET&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;TABLE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;VIEW&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;MATERIALIZED_VIEW&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;NESTED_TABLE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;COLUMN&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;INDEX&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;CONSTRAINT&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DATASET_TRIGGER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DATABASE_TRIGGER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;SYNONYM&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;SEQUENCE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PROCEDURE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;FUNCTION&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PACKAGE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;TYPE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;TYPE_ATTRIBUTE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;ARGUMENT&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DIMENSION&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;CLUSTER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DBLINK&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/object-type-filter&gt;</span>
+      <span class="s0">&lt;/filters&gt;</span>
+      <span class="s0">&lt;sorting&gt;</span>
+        <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;COLUMN&quot; </span><span class="s1">sorting-type</span><span class="s2">=&quot;NAME&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;FUNCTION&quot; </span><span class="s1">sorting-type</span><span class="s2">=&quot;NAME&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PROCEDURE&quot; </span><span class="s1">sorting-type</span><span class="s2">=&quot;NAME&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;ARGUMENT&quot; </span><span class="s1">sorting-type</span><span class="s2">=&quot;POSITION&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/sorting&gt;</span>
+      <span class="s0">&lt;default-editors&gt;</span>
+        <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;VIEW&quot; </span><span class="s1">editor-type</span><span class="s2">=&quot;SELECTION&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PACKAGE&quot; </span><span class="s1">editor-type</span><span class="s2">=&quot;SELECTION&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;TYPE&quot; </span><span class="s1">editor-type</span><span class="s2">=&quot;SELECTION&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/default-editors&gt;</span>
+    <span class="s0">&lt;/browser-settings&gt;</span>
+    <span class="s0">&lt;navigation-settings&gt;</span>
+      <span class="s0">&lt;lookup-filters&gt;</span>
+        <span class="s0">&lt;lookup-objects&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;SCHEMA&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;USER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;ROLE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PRIVILEGE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;CHARSET&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;TABLE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;VIEW&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;MATERIALIZED VIEW&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;NESTED TABLE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;COLUMN&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;INDEX&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;CONSTRAINT&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DATASET TRIGGER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DATABASE TRIGGER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;SYNONYM&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;SEQUENCE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PROCEDURE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;FUNCTION&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;PACKAGE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;TYPE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;TYPE ATTRIBUTE&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;ARGUMENT&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DIMENSION&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;CLUSTER&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-type </span><span class="s1">name</span><span class="s2">=&quot;DBLINK&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/lookup-objects&gt;</span>
+        <span class="s0">&lt;force-database-load </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;prompt-connection-selection </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;prompt-schema-selection </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/lookup-filters&gt;</span>
+    <span class="s0">&lt;/navigation-settings&gt;</span>
+    <span class="s0">&lt;dataset-grid-settings&gt;</span>
+      <span class="s0">&lt;general&gt;</span>
+        <span class="s0">&lt;enable-zooming </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;enable-column-tooltip </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/general&gt;</span>
+      <span class="s0">&lt;sorting&gt;</span>
+        <span class="s0">&lt;nulls-first </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;max-sorting-columns </span><span class="s1">value</span><span class="s2">=&quot;4&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/sorting&gt;</span>
+      <span class="s0">&lt;tracking-columns&gt;</span>
+        <span class="s0">&lt;columnNames </span><span class="s1">value</span><span class="s2">=&quot;&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;visible </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;editable </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/tracking-columns&gt;</span>
+    <span class="s0">&lt;/dataset-grid-settings&gt;</span>
+    <span class="s0">&lt;dataset-editor-settings&gt;</span>
+      <span class="s0">&lt;text-editor-popup&gt;</span>
+        <span class="s0">&lt;active </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;active-if-empty </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;data-length-threshold </span><span class="s1">value</span><span class="s2">=&quot;100&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;popup-delay </span><span class="s1">value</span><span class="s2">=&quot;1000&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/text-editor-popup&gt;</span>
+      <span class="s0">&lt;values-actions-popup&gt;</span>
+        <span class="s0">&lt;show-popup-button </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;element-count-threshold </span><span class="s1">value</span><span class="s2">=&quot;1000&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;data-length-threshold </span><span class="s1">value</span><span class="s2">=&quot;250&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/values-actions-popup&gt;</span>
+      <span class="s0">&lt;general&gt;</span>
+        <span class="s0">&lt;fetch-block-size </span><span class="s1">value</span><span class="s2">=&quot;100&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;fetch-timeout </span><span class="s1">value</span><span class="s2">=&quot;30&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;trim-whitespaces </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;convert-empty-strings-to-null </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;select-content-on-cell-edit </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;large-value-preview-active </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/general&gt;</span>
+      <span class="s0">&lt;filters&gt;</span>
+        <span class="s0">&lt;prompt-filter-dialog </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;default-filter-type </span><span class="s1">value</span><span class="s2">=&quot;BASIC&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/filters&gt;</span>
+      <span class="s0">&lt;qualified-text-editor </span><span class="s1">text-length-threshold</span><span class="s2">=&quot;300&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;content-types&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;Text&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;Properties&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;XML&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;DTD&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;HTML&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;XHTML&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;Java&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;SQL&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;PL/SQL&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;JSON&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;JSON5&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;Groovy&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;AIDL&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;YAML&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;content-type </span><span class="s1">name</span><span class="s2">=&quot;Manifest&quot; </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/content-types&gt;</span>
+      <span class="s0">&lt;/qualified-text-editor&gt;</span>
+      <span class="s0">&lt;record-navigation&gt;</span>
+        <span class="s0">&lt;navigation-target </span><span class="s1">value</span><span class="s2">=&quot;VIEWER&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/record-navigation&gt;</span>
+    <span class="s0">&lt;/dataset-editor-settings&gt;</span>
+    <span class="s0">&lt;code-editor-settings&gt;</span>
+      <span class="s0">&lt;general&gt;</span>
+        <span class="s0">&lt;show-object-navigation-gutter </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;show-spec-declaration-navigation-gutter </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;enable-spellchecking </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;enable-reference-spellchecking </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/general&gt;</span>
+      <span class="s0">&lt;confirmations&gt;</span>
+        <span class="s0">&lt;save-changes </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;revert-changes </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/confirmations&gt;</span>
+    <span class="s0">&lt;/code-editor-settings&gt;</span>
+    <span class="s0">&lt;code-completion-settings&gt;</span>
+      <span class="s0">&lt;filters&gt;</span>
+        <span class="s0">&lt;basic-filter&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;keyword&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;parameter&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;datatype&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;exception&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;schema&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;role&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;user&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;privilege&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;user-schema&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;table&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;materialized view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;index&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;constraint&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;trigger&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;synonym&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;sequence&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;procedure&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;package&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;type&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dimension&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;cluster&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dblink&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;/user-schema&gt;</span>
+          <span class="s0">&lt;public-schema&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;table&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;materialized view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;index&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;constraint&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;trigger&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;synonym&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;sequence&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;procedure&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;package&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;type&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dimension&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;cluster&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dblink&quot; </span><span class="s1">selected</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;/public-schema&gt;</span>
+          <span class="s0">&lt;any-schema&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;table&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;materialized view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;index&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;constraint&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;trigger&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;synonym&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;sequence&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;procedure&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;package&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;type&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dimension&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;cluster&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dblink&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;/any-schema&gt;</span>
+        <span class="s0">&lt;/basic-filter&gt;</span>
+        <span class="s0">&lt;extended-filter&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;keyword&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;parameter&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;datatype&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;exception&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;schema&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;user&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;role&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;privilege&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;user-schema&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;table&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;materialized view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;index&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;constraint&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;trigger&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;synonym&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;sequence&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;procedure&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;package&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;type&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dimension&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;cluster&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dblink&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;/user-schema&gt;</span>
+          <span class="s0">&lt;public-schema&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;table&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;materialized view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;index&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;constraint&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;trigger&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;synonym&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;sequence&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;procedure&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;package&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;type&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dimension&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;cluster&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dblink&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;/public-schema&gt;</span>
+          <span class="s0">&lt;any-schema&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;table&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;materialized view&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;index&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;constraint&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;trigger&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;synonym&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;sequence&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;procedure&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;package&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;type&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dimension&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;cluster&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;filter-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dblink&quot; </span><span class="s1">selected</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;/any-schema&gt;</span>
+        <span class="s0">&lt;/extended-filter&gt;</span>
+      <span class="s0">&lt;/filters&gt;</span>
+      <span class="s0">&lt;sorting </span><span class="s1">enabled</span><span class="s2">=&quot;true&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;keyword&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;datatype&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;column&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;table&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;view&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;materialized view&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;index&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;constraint&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;trigger&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;synonym&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;sequence&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;procedure&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;package&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;type&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dimension&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;cluster&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;dblink&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;schema&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;role&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;OBJECT&quot; </span><span class="s1">id</span><span class="s2">=&quot;user&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;function&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;sorting-element </span><span class="s1">type</span><span class="s2">=&quot;RESERVED_WORD&quot; </span><span class="s1">id</span><span class="s2">=&quot;parameter&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/sorting&gt;</span>
+      <span class="s0">&lt;format&gt;</span>
+        <span class="s0">&lt;enforce-code-style-case </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/format&gt;</span>
+    <span class="s0">&lt;/code-completion-settings&gt;</span>
+    <span class="s0">&lt;execution-engine-settings&gt;</span>
+      <span class="s0">&lt;statement-execution&gt;</span>
+        <span class="s0">&lt;fetch-block-size </span><span class="s1">value</span><span class="s2">=&quot;100&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;execution-timeout </span><span class="s1">value</span><span class="s2">=&quot;20&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;debug-execution-timeout </span><span class="s1">value</span><span class="s2">=&quot;600&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;focus-result </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;prompt-execution </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/statement-execution&gt;</span>
+      <span class="s0">&lt;script-execution&gt;</span>
+        <span class="s0">&lt;command-line-interfaces /&gt;</span>
+        <span class="s0">&lt;execution-timeout </span><span class="s1">value</span><span class="s2">=&quot;300&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/script-execution&gt;</span>
+      <span class="s0">&lt;method-execution&gt;</span>
+        <span class="s0">&lt;execution-timeout </span><span class="s1">value</span><span class="s2">=&quot;30&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;debug-execution-timeout </span><span class="s1">value</span><span class="s2">=&quot;600&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;parameter-history-size </span><span class="s1">value</span><span class="s2">=&quot;10&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/method-execution&gt;</span>
+    <span class="s0">&lt;/execution-engine-settings&gt;</span>
+    <span class="s0">&lt;operation-settings&gt;</span>
+      <span class="s0">&lt;transactions&gt;</span>
+        <span class="s0">&lt;uncommitted-changes&gt;</span>
+          <span class="s0">&lt;on-project-close </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;on-disconnect </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;on-autocommit-toggle </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/uncommitted-changes&gt;</span>
+        <span class="s0">&lt;multiple-uncommitted-changes&gt;</span>
+          <span class="s0">&lt;on-commit </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;on-rollback </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/multiple-uncommitted-changes&gt;</span>
+      <span class="s0">&lt;/transactions&gt;</span>
+      <span class="s0">&lt;session-browser&gt;</span>
+        <span class="s0">&lt;disconnect-session </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;kill-session </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;reload-on-filter-change </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/session-browser&gt;</span>
+      <span class="s0">&lt;compiler&gt;</span>
+        <span class="s0">&lt;compile-type </span><span class="s1">value</span><span class="s2">=&quot;KEEP&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;compile-dependencies </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;always-show-controls </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/compiler&gt;</span>
+      <span class="s0">&lt;debugger&gt;</span>
+        <span class="s0">&lt;debugger-type </span><span class="s1">value</span><span class="s2">=&quot;ASK&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;use-generic-runners </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/debugger&gt;</span>
+    <span class="s0">&lt;/operation-settings&gt;</span>
+    <span class="s0">&lt;ddl-file-settings&gt;</span>
+      <span class="s0">&lt;extensions&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;VIEW&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;vw&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;TRIGGER&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;trg&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;PROCEDURE&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;prc&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;FUNCTION&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;fnc&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;PACKAGE&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;pkg&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;PACKAGE_SPEC&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;pks&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;PACKAGE_BODY&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;pkb&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;TYPE&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;tpe&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;TYPE_SPEC&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;tps&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;mapping </span><span class="s1">file-type-id</span><span class="s2">=&quot;TYPE_BODY&quot; </span><span class="s1">extensions</span><span class="s2">=&quot;tpb&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/extensions&gt;</span>
+      <span class="s0">&lt;general&gt;</span>
+        <span class="s0">&lt;lookup-ddl-files </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;create-ddl-files </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;synchronize-ddl-files </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;use-qualified-names </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;make-scripts-rerunnable </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/general&gt;</span>
+    <span class="s0">&lt;/ddl-file-settings&gt;</span>
+    <span class="s0">&lt;general-settings&gt;</span>
+      <span class="s0">&lt;regional-settings&gt;</span>
+        <span class="s0">&lt;date-format </span><span class="s1">value</span><span class="s2">=&quot;MEDIUM&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;number-format </span><span class="s1">value</span><span class="s2">=&quot;UNGROUPED&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;locale </span><span class="s1">value</span><span class="s2">=&quot;SYSTEM_DEFAULT&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;use-custom-formats </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+      <span class="s0">&lt;/regional-settings&gt;</span>
+      <span class="s0">&lt;environment&gt;</span>
+        <span class="s0">&lt;environment-types&gt;</span>
+          <span class="s0">&lt;environment-type </span><span class="s1">id</span><span class="s2">=&quot;development&quot; </span><span class="s1">name</span><span class="s2">=&quot;Development&quot; </span><span class="s1">description</span><span class="s2">=&quot;Development environment&quot; </span><span class="s1">color</span><span class="s2">=&quot;-2430209/-12296320&quot; </span><span class="s1">readonly-code</span><span class="s2">=&quot;false&quot; </span><span class="s1">readonly-data</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;environment-type </span><span class="s1">id</span><span class="s2">=&quot;integration&quot; </span><span class="s1">name</span><span class="s2">=&quot;Integration&quot; </span><span class="s1">description</span><span class="s2">=&quot;Integration environment&quot; </span><span class="s1">color</span><span class="s2">=&quot;-2621494/-12163514&quot; </span><span class="s1">readonly-code</span><span class="s2">=&quot;true&quot; </span><span class="s1">readonly-data</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;environment-type </span><span class="s1">id</span><span class="s2">=&quot;production&quot; </span><span class="s1">name</span><span class="s2">=&quot;Production&quot; </span><span class="s1">description</span><span class="s2">=&quot;Productive environment&quot; </span><span class="s1">color</span><span class="s2">=&quot;-11574/-10271420&quot; </span><span class="s1">readonly-code</span><span class="s2">=&quot;true&quot; </span><span class="s1">readonly-data</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;environment-type </span><span class="s1">id</span><span class="s2">=&quot;other&quot; </span><span class="s1">name</span><span class="s2">=&quot;Other&quot; </span><span class="s1">description</span><span class="s2">=&quot;&quot; </span><span class="s1">color</span><span class="s2">=&quot;-1576/-10724543&quot; </span><span class="s1">readonly-code</span><span class="s2">=&quot;false&quot; </span><span class="s1">readonly-data</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/environment-types&gt;</span>
+        <span class="s0">&lt;visibility-settings&gt;</span>
+          <span class="s0">&lt;connection-tabs </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;dialog-headers </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;object-editor-tabs </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;script-editor-tabs </span><span class="s1">value</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+          <span class="s0">&lt;execution-result-tabs </span><span class="s1">value</span><span class="s2">=&quot;true&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/visibility-settings&gt;</span>
+      <span class="s0">&lt;/environment&gt;</span>
+    <span class="s0">&lt;/general-settings&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+  <span class="s0">&lt;component </span><span class="s1">name</span><span class="s2">=&quot;DBNavigator.Project.StatementExecutionManager&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;execution-variables /&gt;</span>
+  <span class="s0">&lt;/component&gt;</span>
+<span class="s0">&lt;/project&gt;</span></pre>
+</body>
+</html>

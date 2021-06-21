@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>DatumDatabase.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DatumDatabase.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Database</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Room</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.RoomDatabase</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.TypeConverters</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.sqlite.db.SupportSQLiteDatabase</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.ArtistList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.Datum</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumCoordinatesUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumFTS</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumFavoriteUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumLocationUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumVenueUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.Venue</span><span class="s0">;</span>
+
+<span class="s1">@Database(</span>
+        <span class="s1">entities = {</span>
+                <span class="s1">Datum.</span><span class="s0">class,</span>
+                <span class="s1">Venue.</span><span class="s0">class,</span>
+                <span class="s1">ArtistList.</span><span class="s0">class,</span>
+                <span class="s1">DatumFavoriteUpdate.</span><span class="s0">class,</span>
+                <span class="s1">DatumFTS.</span><span class="s0">class,</span>
+                <span class="s1">DatumVenueCrossRef.</span><span class="s0">class,</span>
+                <span class="s1">DatumVenueUpdate.</span><span class="s0">class,</span>
+                <span class="s1">DatumLocationUpdate.</span><span class="s0">class,</span>
+                <span class="s1">DatumCoordinatesUpdate.</span><span class="s0">class</span><span class="s1">}</span><span class="s0">,</span>
+        <span class="s1">version = </span><span class="s2">12</span><span class="s1">)</span>
+<span class="s1">@TypeConverters({Converters.</span><span class="s0">class</span><span class="s1">})</span>
+<span class="s0">public abstract class </span><span class="s1">DatumDatabase </span><span class="s0">extends </span><span class="s1">RoomDatabase {</span>
+
+<span class="s0">private static </span><span class="s1">DatumDatabase INSTANCE</span><span class="s0">;</span>
+
+    <span class="s0">public abstract </span><span class="s1">DatumDao datumDao()</span><span class="s0">;</span>
+
+    <span class="s0">public synchronized static </span><span class="s1">DatumDatabase getDatabase(Context context) {</span>
+        <span class="s0">if </span><span class="s1">(INSTANCE == </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">INSTANCE = Room</span>
+                    <span class="s1">.databaseBuilder(context.getApplicationContext()</span><span class="s0">, </span><span class="s1">DatumDatabase.</span><span class="s0">class, </span><span class="s3">&quot;datum_database&quot;</span><span class="s1">)</span>
+                    <span class="s1">.fallbackToDestructiveMigration()</span>
+                    <span class="s1">.addCallback(sRoomDatabaseCallback)</span>
+                    <span class="s1">.allowMainThreadQueries()</span>
+                    <span class="s1">.build()</span><span class="s0">;</span>
+            <span class="s1">INSTANCE.populateInitialData()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">INSTANCE</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">private void </span><span class="s1">populateInitialData() {</span>
+            <span class="s1">runInTransaction(() -&gt; {</span>
+                <span class="s0">new </span><span class="s1">Datum()</span><span class="s0">;</span>
+            <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+        <span class="s0">private static final </span><span class="s1">RoomDatabase.Callback sRoomDatabaseCallback =</span>
+            <span class="s0">new </span><span class="s1">RoomDatabase.Callback(){</span>
+
+                <span class="s1">@Override</span>
+                <span class="s0">public void </span><span class="s1">onOpen(@NonNull SupportSQLiteDatabase db) {</span>
+                    <span class="s0">super</span><span class="s1">.onOpen(db)</span><span class="s0">;</span>
+                    <span class="s1">db.execSQL(</span><span class="s3">&quot;INSERT INTO datum_fts(datum_fts) VALUES ('rebuild')&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span><span class="s0">;</span>
+
+<span class="s4">//    private static DatumDatabase buildDatabase(final Context context) {</span>
+<span class="s4">//        return Room.databaseBuilder(context,</span>
+<span class="s4">//                DatumDatabase.class,</span>
+<span class="s4">//                &quot;datum_database&quot;)</span>
+<span class="s4">//                .addCallback(new Callback() {</span>
+<span class="s4">//                    @Override</span>
+<span class="s4">//                    public void onOpen(@NonNull SupportSQLiteDatabase db) {</span>
+<span class="s4">//                        super.onOpen(db);</span>
+<span class="s4">//                    }</span>
+<span class="s4">//</span>
+<span class="s4">//                    @Override</span>
+<span class="s4">//                    public void onCreate(@NonNull SupportSQLiteDatabase db) {</span>
+<span class="s4">//                        super.onCreate(db);</span>
+<span class="s4">//</span>
+<span class="s4">//                        Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {</span>
+<span class="s4">//                            @Override</span>
+<span class="s4">//                            public void run() {</span>
+<span class="s4">//                                getDatabase(context).datumDao().insertDatum(GetLocationId.populateData());</span>
+<span class="s4">//                                Log.e(&quot;Done&quot;, &quot;done&quot;);</span>
+<span class="s4">//                            }</span>
+<span class="s4">//                        });</span>
+<span class="s4">//                    }</span>
+<span class="s4">//                })</span>
+<span class="s4">//                .build();</span>
+<span class="s4">//    }</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

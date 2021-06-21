@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>ArtistList.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ArtistList.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator.model</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.room.Entity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.ForeignKey</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.PrimaryKey</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.fasterxml.jackson.annotation.JsonInclude</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.fasterxml.jackson.annotation.JsonProperty</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.fasterxml.jackson.annotation.JsonPropertyOrder</span><span class="s0">;</span>
+
+<span class="s0">import static </span><span class="s1">androidx.room.ForeignKey.CASCADE</span><span class="s0">;</span>
+
+<span class="s1">@JsonInclude(JsonInclude.Include.NON_NULL)</span>
+<span class="s1">@JsonPropertyOrder({</span>
+        <span class="s2">&quot;id&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;artistName&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;link&quot;</span><span class="s0">,</span>
+        <span class="s2">&quot;b2bInd&quot;</span>
+<span class="s1">})</span>
+<span class="s1">@Entity</span>
+<span class="s0">public class </span><span class="s1">ArtistList {</span>
+
+    <span class="s1">@PrimaryKey</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">Integer artistListId</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;name&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String artistName</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;link&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">String link</span><span class="s0">;</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;b2bInd&quot;</span><span class="s1">)</span>
+    <span class="s0">private </span><span class="s1">Boolean b2bInd</span><span class="s0">;</span>
+    <span class="s0">public </span><span class="s1">Integer aId</span><span class="s0">;</span>
+
+
+
+<span class="s3">//    public ArtistList(Integer artistListId, String artistName, String link, Boolean b2bInd){</span>
+<span class="s3">//        this.artistListId = artistListId; this.artistName = artistName; this.link = link; this.b2bInd = b2bInd;</span>
+<span class="s3">//    }</span>
+    <span class="s0">public </span><span class="s1">ArtistList(){}</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;name&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">String getArtistName() {</span>
+        <span class="s0">return </span><span class="s1">artistName</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;name&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setArtistName(String artistName) {</span>
+        <span class="s0">this</span><span class="s1">.artistName = artistName</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;link&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">String getLink() {</span>
+        <span class="s0">return </span><span class="s1">link</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;link&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setLink(String link) {</span>
+        <span class="s0">this</span><span class="s1">.link = link</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;b2bInd&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">Boolean getB2bInd() {</span>
+        <span class="s0">return </span><span class="s1">b2bInd</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;b2bInd&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setB2bInd(Boolean b2bInd) {</span>
+        <span class="s0">this</span><span class="s1">.b2bInd = b2bInd</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s0">public </span><span class="s1">Integer getArtistListId() {</span>
+        <span class="s0">return </span><span class="s1">artistListId</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s1">@JsonProperty(</span><span class="s2">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s0">public void </span><span class="s1">setArtistListId(Integer artistListId) {</span>
+        <span class="s0">this</span><span class="s1">.artistListId = artistListId</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

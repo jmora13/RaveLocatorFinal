@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>DatumDao.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DatumDao.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.lifecycle.LiveData</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Dao</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Delete</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Insert</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.OnConflictStrategy</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Query</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Transaction</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.room.Update</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.ArtistList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.Datum</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumCoordinatesUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumFavoriteUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumLocationUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumVenueUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.Venue</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s1">@Dao</span>
+<span class="s0">public interface </span><span class="s1">DatumDao {</span>
+
+    <span class="s1">@Insert(onConflict = OnConflictStrategy.REPLACE)</span>
+    <span class="s0">void </span><span class="s1">insertRaveLocatorModel(Datum datum)</span><span class="s0">;</span>
+
+    <span class="s1">@Insert(onConflict = OnConflictStrategy.IGNORE)</span>
+    <span class="s0">void </span><span class="s1">insertDatum(Datum datum)</span><span class="s0">;</span>
+
+    <span class="s1">@Insert(onConflict = OnConflictStrategy.REPLACE)</span>
+    <span class="s0">void </span><span class="s1">insertVenue(Venue venue)</span><span class="s0">;</span>
+
+    <span class="s1">@Insert(onConflict = OnConflictStrategy.REPLACE)</span>
+    <span class="s0">void </span><span class="s1">insertArtistList(List&lt;ArtistList&gt; artistList)</span><span class="s0">;</span>
+
+    <span class="s1">@Query(</span><span class="s2">&quot;SELECT * from datum_table ORDER BY date&quot;</span><span class="s1">)</span>
+    <span class="s1">LiveData&lt;List&lt;Datum&gt;&gt; getAllDatum()</span><span class="s0">;</span>
+
+    <span class="s1">@Query(</span><span class="s2">&quot;SELECT * FROM datum_table JOIN datum_fts ON datum_table.id = datum_fts.id WHERE datum_fts MATCH :query ORDER BY date&quot;</span><span class="s1">)</span>
+    <span class="s1">List&lt;Datum&gt;search(String query)</span><span class="s0">;</span>
+
+    <span class="s1">@Query(</span><span class="s2">&quot;SELECT * FROM datum_table WHERE id =:eventId&quot;</span><span class="s1">)</span>
+    <span class="s1">Datum getDatum(</span><span class="s0">int </span><span class="s1">eventId)</span><span class="s0">;</span>
+
+    <span class="s1">@Insert(onConflict = OnConflictStrategy.REPLACE)</span>
+    <span class="s0">void </span><span class="s1">insertDatumVenueCrossRef(DatumVenueCrossRef crossRef)</span><span class="s0">;</span>
+
+    <span class="s1">@Transaction</span>
+    <span class="s1">@Query(</span><span class="s2">&quot;SELECT * FROM datum_table WHERE id = :id&quot;</span><span class="s1">)</span>
+    <span class="s1">DatumWithVenue getVenueOfDatum(</span><span class="s0">int </span><span class="s1">id)</span><span class="s0">;</span>
+
+    <span class="s1">@Transaction</span>
+    <span class="s1">@Query(</span><span class="s2">&quot;SELECT * FROM venue WHERE venueName = :venueName&quot;</span><span class="s1">)</span>
+    <span class="s1">List&lt;VenueWithDatum&gt; getDatumOfVenue(String venueName)</span><span class="s0">;</span>
+
+    <span class="s1">@Insert(onConflict = OnConflictStrategy.REPLACE)</span>
+    <span class="s0">void </span><span class="s1">insert(Datum datum)</span><span class="s0">;</span>
+
+    <span class="s1">@Delete</span>
+    <span class="s0">void </span><span class="s1">delete(Datum datum)</span><span class="s0">;</span>
+
+    <span class="s1">@Query(</span><span class="s2">&quot;DELETE FROM datum_table WHERE date &lt; :currentDate&quot;</span><span class="s1">)</span>
+    <span class="s0">void </span><span class="s1">deletePastDates(String currentDate)</span><span class="s0">;</span>
+
+    <span class="s1">@Update(entity = Datum.</span><span class="s0">class</span><span class="s1">)</span>
+    <span class="s0">void </span><span class="s1">updateDatumFavorites(DatumFavoriteUpdate isFavorite)</span><span class="s0">;</span>
+
+    <span class="s1">@Update(entity = Datum.</span><span class="s0">class</span><span class="s1">)</span>
+    <span class="s0">void </span><span class="s1">updateDatumVenueName(DatumVenueUpdate venueName)</span><span class="s0">;</span>
+
+    <span class="s1">@Update(entity = Datum.</span><span class="s0">class</span><span class="s1">)</span>
+    <span class="s0">void </span><span class="s1">updateDatumLocation(DatumLocationUpdate location)</span><span class="s0">;</span>
+
+    <span class="s1">@Update(entity = Datum.</span><span class="s0">class</span><span class="s1">)</span>
+    <span class="s0">void </span><span class="s1">updateDatumCoordinates(DatumCoordinatesUpdate coordinates)</span><span class="s0">;</span>
+
+    <span class="s1">@Query(</span><span class="s2">&quot;SELECT * FROM datum_table WHERE isFavorite = 1 ORDER BY date&quot;</span><span class="s1">)</span>
+    <span class="s1">LiveData&lt;List&lt;Datum&gt;&gt; getAllFavorites()</span><span class="s0">;</span>
+
+
+    <span class="s1">@Transaction</span>
+    <span class="s1">@Query(</span><span class="s2">&quot;SELECT * FROM datum_table WHERE id = :aId&quot;</span><span class="s1">)</span>
+    <span class="s1">List&lt;DatumWithArtistList&gt; getDatumWithArtistList(Integer aId)</span><span class="s0">;</span>
+    <span class="s1">@Query(</span><span class="s2">&quot;DELETE FROM datum_table&quot;</span><span class="s1">)</span>
+    <span class="s0">void </span><span class="s1">deleteAll()</span><span class="s0">;</span>
+
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

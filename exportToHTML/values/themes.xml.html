@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>themes.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #bababa;}
+.s2 { color: #6a8759;}
+.s3 { color: #a9b7c6;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+themes.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;resources </span><span class="s1">xmlns:tools</span><span class="s2">=&quot;http://schemas.android.com/tools&quot;</span><span class="s0">&gt;</span>
+    <span class="s4">&lt;!-- Base application theme. --&gt;</span>
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;Theme.RaveLocator&quot; </span><span class="s1">parent</span><span class="s2">=&quot;Theme.MaterialComponents.NoActionBar&quot;</span><span class="s0">&gt;</span>
+        <span class="s4">&lt;!-- Primary brand color. --&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorPrimary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/primaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorPrimaryVariant&quot;</span><span class="s0">&gt;</span><span class="s3">@color/primaryDarkColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorOnPrimary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/white</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s4">&lt;!-- Secondary brand color. --&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorSecondary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorSecondaryVariant&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryDarkColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorOnSecondary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/white</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s4">&lt;!-- Status bar color. --&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:statusBarColor&quot; </span><span class="s1">tools:targetApi</span><span class="s2">=&quot;l&quot;</span><span class="s0">&gt;</span><span class="s3">?attr/colorPrimaryVariant</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;popupMenuBackground&quot;</span><span class="s0">&gt;</span><span class="s3">@color/white</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:itemBackground&quot;</span><span class="s0">&gt;</span><span class="s3">@color/white</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;itemRippleColor&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:popupMenuStyle&quot;</span><span class="s0">&gt;</span><span class="s3">@style/MenuStyle</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:itemTextAppearance&quot;</span><span class="s0">&gt;</span><span class="s3">@style/TextAppearance</span><span class="s0">&lt;/item&gt;</span>
+
+        <span class="s4">&lt;!-- Customize your theme here. --&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;MenuStyle&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;itemRippleColor&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:listSelector&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:colorPressedHighlight&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:colorActivatedHighlight&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryColor</span><span class="s0">&lt;/item&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;TextAppearance&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:textColor&quot;</span><span class="s0">&gt;</span><span class="s3">@color/black</span><span class="s0">&lt;/item&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;AppTheme.PopupOverlay&quot; </span><span class="s1">parent</span><span class="s2">=&quot;ThemeOverlay.AppCompat.Light&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:popupBackground&quot;</span><span class="s0">&gt;</span><span class="s3">@color/primaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:background&quot;</span><span class="s0">&gt;</span><span class="s3">@color/white</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:colorBackground&quot;</span><span class="s0">&gt;</span><span class="s3">@color/primaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:colorForeground&quot;</span><span class="s0">&gt;</span><span class="s3">@color/primaryColor</span><span class="s0">&lt;/item&gt;</span>
+
+    <span class="s0">&lt;/style&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;AppTheme.AppBarOverlay&quot; </span><span class="s1">parent</span><span class="s2">=&quot;ThemeOverlay.AppCompat.Dark.ActionBar&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:colorForeground&quot;</span><span class="s0">&gt;</span><span class="s3">@color/primaryColor</span><span class="s0">&lt;/item&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;Theme.RaveLocator.NoActionBar&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;windowActionBar&quot;</span><span class="s0">&gt;</span><span class="s3">false</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;windowNoTitle&quot;</span><span class="s0">&gt;</span><span class="s3">true</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;android:popupBackground&quot;</span><span class="s0">&gt;</span><span class="s3">@color/primaryColor</span><span class="s0">&lt;/item&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;Theme.RaveLocator.AppBarOverlay&quot; </span><span class="s1">parent</span><span class="s2">=&quot;ThemeOverlay.AppCompat.Light&quot; </span><span class="s0">/&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;Theme.RaveLocator.PopupOverlay&quot; </span><span class="s1">parent</span><span class="s2">=&quot;ThemeOverlay.AppCompat.Light&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorOnSecondary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/white</span><span class="s0">&lt;/item&gt;</span>
+    <span class="s0">&lt;/style&gt;</span>
+
+    <span class="s0">&lt;style </span><span class="s1">name</span><span class="s2">=&quot;MaterialCalendarTheme&quot; </span><span class="s1">parent</span><span class="s2">=&quot;ThemeOverlay.MaterialComponents.MaterialCalendar&quot;</span><span class="s0">&gt;</span>
+        <span class="s4">&lt;!-- just override the colors used in the default style --&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorOnPrimary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/white</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorPrimary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryColor</span><span class="s0">&lt;/item&gt;</span>
+        <span class="s0">&lt;item </span><span class="s1">name</span><span class="s2">=&quot;colorSecondary&quot;</span><span class="s0">&gt;</span><span class="s3">@color/secondaryLightColor</span><span class="s0">&lt;/item&gt;</span>
+
+
+    <span class="s0">&lt;/style&gt;</span>
+
+<span class="s0">&lt;/resources&gt;</span></pre>
+</body>
+</html>

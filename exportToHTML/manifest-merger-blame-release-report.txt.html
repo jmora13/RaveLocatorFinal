@@ -1,0 +1,383 @@
+<html>
+<head>
+<title>manifest-merger-blame-release-report.txt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+manifest-merger-blame-release-report.txt</font>
+</center></td></tr></table>
+<pre><span class="s0">1&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="s0">2&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="s0">3    package=&quot;com.sigmaprogrammers.ravelocator&quot;</span>
+<span class="s0">4    android:versionCode=&quot;10&quot;</span>
+<span class="s0">5    android:versionName=&quot;10.0&quot; &gt;</span>
+<span class="s0">6</span>
+<span class="s0">7    &lt;uses-sdk</span>
+<span class="s0">8        android:minSdkVersion=&quot;26&quot;</span>
+<span class="s0">8--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml</span>
+<span class="s0">9        android:targetSdkVersion=&quot;30&quot; /&gt;</span>
+<span class="s0">9--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml</span>
+<span class="s0">10</span>
+<span class="s0">11    &lt;!--</span>
+<span class="s0">12         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use</span>
+<span class="s0">13         Google Maps Android API v2, but you must specify either coarse or fine</span>
+<span class="s0">14         location permissions for the &quot;MyLocation&quot; functionality.</span>
+<span class="s0">15    --&gt;</span>
+<span class="s0">16    &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</span>
+<span class="s0">16--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:11:5-79</span>
+<span class="s0">16--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:11:22-76</span>
+<span class="s0">17</span>
+<span class="s0">18    &lt;!-- Required for foreground services on P+. --&gt;</span>
+<span class="s0">19    &lt;uses-permission android:name=&quot;android.permission.FOREGROUND_SERVICE&quot; /&gt;</span>
+<span class="s0">19--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:14:5-77</span>
+<span class="s0">19--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:14:22-74</span>
+<span class="s0">20    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</span>
+<span class="s0">20--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:15:5-67</span>
+<span class="s0">20--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:15:22-64</span>
+<span class="s0">21    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</span>
+<span class="s0">21--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:16:5-79</span>
+<span class="s0">21--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:16:22-76</span>
+<span class="s0">22</span>
+<span class="s0">23    &lt;uses-feature</span>
+<span class="s0">23--&gt;[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8dd8e7c17a85a0661f86487a4c192d89\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35</span>
+<span class="s0">24        android:glEsVersion=&quot;0x00020000&quot;</span>
+<span class="s0">24--&gt;[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8dd8e7c17a85a0661f86487a4c192d89\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41</span>
+<span class="s0">25        android:required=&quot;true&quot; /&gt;</span>
+<span class="s0">25--&gt;[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8dd8e7c17a85a0661f86487a4c192d89\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32</span>
+<span class="s0">26</span>
+<span class="s0">27    &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;</span>
+<span class="s0">27--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:25:5-68</span>
+<span class="s0">27--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:25:22-65</span>
+<span class="s0">28    &lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;</span>
+<span class="s0">28--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:27:5-81</span>
+<span class="s0">28--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:27:22-78</span>
+<span class="s0">29</span>
+<span class="s0">30    &lt;application</span>
+<span class="s0">30--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:18:5-71:19</span>
+<span class="s0">31        android:allowBackup=&quot;true&quot;</span>
+<span class="s0">31--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:19:9-35</span>
+<span class="s0">32        android:appComponentFactory=&quot;androidx.core.app.CoreComponentFactory&quot;</span>
+<span class="s0">32--&gt;[androidx.core:core:1.5.0-alpha01] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\117306ab0ccb0ebbc04d6500be12363f\core-1.5.0-alpha01\AndroidManifest.xml:24:18-86</span>
+<span class="s0">33        android:extractNativeLibs=&quot;false&quot;</span>
+<span class="s0">34        android:icon=&quot;@mipmap/ic_launcher&quot;</span>
+<span class="s0">34--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:20:9-43</span>
+<span class="s0">35        android:label=&quot;@string/app_name&quot;</span>
+<span class="s0">35--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:21:9-41</span>
+<span class="s0">36        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span>
+<span class="s0">36--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:22:9-54</span>
+<span class="s0">37        android:supportsRtl=&quot;true&quot;</span>
+<span class="s0">37--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:23:9-35</span>
+<span class="s0">38        android:theme=&quot;@style/Theme.RaveLocator&quot; &gt;</span>
+<span class="s0">38--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:24:9-49</span>
+<span class="s0">39</span>
+<span class="s0">40        &lt;!--</span>
+<span class="s0">41             The API key for Google Maps-based APIs is defined as a string resource.</span>
+<span class="s0">42             (See the file &quot;res/values/google_maps_api.xml&quot;).</span>
+<span class="s0">43             Note that the API key is linked to the encryption key used to sign the APK.</span>
+<span class="s0">44             You need a different API key for each encryption key, including the release key that is used to</span>
+<span class="s0">45             sign the APK for publishing.</span>
+<span class="s0">46             You can define the keys for the debug and release targets in src/debug/ and src/release/.</span>
+<span class="s0">47        --&gt;</span>
+<span class="s0">48        &lt;meta-data</span>
+<span class="s0">48--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:34:9-36:69</span>
+<span class="s0">49            android:name=&quot;com.google.android.gms.version&quot;</span>
+<span class="s0">49--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:35:13-58</span>
+<span class="s0">50            android:value=&quot;@integer/google_play_services_version&quot; /&gt;</span>
+<span class="s0">50--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:36:13-66</span>
+<span class="s0">51</span>
+<span class="s0">52&lt;!--              The API key for Google Maps-based APIs. --&gt;</span>
+<span class="s0">53        &lt;meta-data</span>
+<span class="s0">53--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:41:9-43:52</span>
+<span class="s0">54            android:name=&quot;com.google.android.geo.API_KEY&quot;</span>
+<span class="s0">54--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:42:13-58</span>
+<span class="s0">55            android:value=&quot;@string/maps_api_key&quot; /&gt;</span>
+<span class="s0">55--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:43:13-49</span>
+<span class="s0">56</span>
+<span class="s0">57        &lt;activity</span>
+<span class="s0">57--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:45:9-47:58</span>
+<span class="s0">58            android:name=&quot;com.example.ravelocator.MapsMarkerActivity&quot;</span>
+<span class="s0">58--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:46:13-47</span>
+<span class="s0">59            android:label=&quot;@string/title_activity_maps&quot; /&gt;</span>
+<span class="s0">59--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:47:13-56</span>
+<span class="s0">60        &lt;activity</span>
+<span class="s0">60--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:49:9-51:72</span>
+<span class="s0">61            android:name=&quot;com.example.ravelocator.SettingsActivity&quot;</span>
+<span class="s0">61--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:50:13-45</span>
+<span class="s0">62            android:label=&quot;@string/title_activity_settings&quot; /&gt;</span>
+<span class="s0">62--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:51:13-60</span>
+<span class="s0">63        &lt;activity</span>
+<span class="s0">63--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:52:9-60:20</span>
+<span class="s0">64            android:name=&quot;com.example.ravelocator.SplashActivity&quot;</span>
+<span class="s0">64--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:53:13-43</span>
+<span class="s0">65            android:theme=&quot;@style/SplashTheme&quot; &gt;</span>
+<span class="s0">65--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:54:13-47</span>
+<span class="s0">66            &lt;intent-filter&gt;</span>
+<span class="s0">66--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:55:13-59:29</span>
+<span class="s0">67                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span>
+<span class="s0">67--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:56:17-69</span>
+<span class="s0">67--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:56:25-66</span>
+<span class="s0">68</span>
+<span class="s0">69                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span>
+<span class="s0">69--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:58:17-77</span>
+<span class="s0">69--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:58:27-74</span>
+<span class="s0">70            &lt;/intent-filter&gt;</span>
+<span class="s0">71        &lt;/activity&gt;</span>
+<span class="s0">72        &lt;activity</span>
+<span class="s0">72--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:61:9-65:55</span>
+<span class="s0">73            android:name=&quot;com.example.ravelocator.MainActivity&quot;</span>
+<span class="s0">73--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:62:13-41</span>
+<span class="s0">74            android:label=&quot;@string/title_activity_main&quot;</span>
+<span class="s0">74--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:63:13-56</span>
+<span class="s0">75            android:theme=&quot;@style/Theme.RaveLocator.NoActionBar&quot;</span>
+<span class="s0">75--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:64:13-65</span>
+<span class="s0">76            android:windowSoftInputMode=&quot;adjustPan&quot; /&gt;</span>
+<span class="s0">76--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:65:13-52</span>
+<span class="s0">77</span>
+<span class="s0">78        &lt;meta-data</span>
+<span class="s0">78--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:67:9-69:57</span>
+<span class="s0">79            android:name=&quot;preloaded_fonts&quot;</span>
+<span class="s0">79--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:68:13-43</span>
+<span class="s0">80            android:resource=&quot;@array/preloaded_fonts&quot; /&gt;</span>
+<span class="s0">80--&gt;C:\Android Studio Projects\RaveLocator\app\src\main\AndroidManifest.xml:69:13-54</span>
+<span class="s0">81</span>
+<span class="s0">82        &lt;!-- Needs to be explicitly declared on P+ --&gt;</span>
+<span class="s0">83        &lt;uses-library</span>
+<span class="s0">83--&gt;[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8dd8e7c17a85a0661f86487a4c192d89\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40</span>
+<span class="s0">84            android:name=&quot;org.apache.http.legacy&quot;</span>
+<span class="s0">84--&gt;[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8dd8e7c17a85a0661f86487a4c192d89\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50</span>
+<span class="s0">85            android:required=&quot;false&quot; /&gt;</span>
+<span class="s0">85--&gt;[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8dd8e7c17a85a0661f86487a4c192d89\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37</span>
+<span class="s0">86</span>
+<span class="s0">87        &lt;provider</span>
+<span class="s0">87--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:31:9-37:35</span>
+<span class="s0">88            android:name=&quot;androidx.work.impl.WorkManagerInitializer&quot;</span>
+<span class="s0">88--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:32:13-69</span>
+<span class="s0">89            android:authorities=&quot;com.sigmaprogrammers.ravelocator.workmanager-init&quot;</span>
+<span class="s0">89--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:33:13-68</span>
+<span class="s0">90            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">90--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:34:13-44</span>
+<span class="s0">91            android:exported=&quot;false&quot;</span>
+<span class="s0">91--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:35:13-37</span>
+<span class="s0">92            android:multiprocess=&quot;true&quot; /&gt;</span>
+<span class="s0">92--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:36:13-40</span>
+<span class="s0">93</span>
+<span class="s0">94        &lt;service</span>
+<span class="s0">94--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:39:9-44:35</span>
+<span class="s0">95            android:name=&quot;androidx.work.impl.background.systemalarm.SystemAlarmService&quot;</span>
+<span class="s0">95--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:40:13-88</span>
+<span class="s0">96            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">96--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:41:13-44</span>
+<span class="s0">97            android:enabled=&quot;@bool/enable_system_alarm_service_default&quot;</span>
+<span class="s0">97--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:42:13-72</span>
+<span class="s0">98            android:exported=&quot;false&quot; /&gt;</span>
+<span class="s0">98--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:43:13-37</span>
+<span class="s0">99        &lt;service</span>
+<span class="s0">99--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:45:9-51:35</span>
+<span class="s0">100            android:name=&quot;androidx.work.impl.background.systemjob.SystemJobService&quot;</span>
+<span class="s0">100--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:46:13-84</span>
+<span class="s0">101            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">101--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:47:13-44</span>
+<span class="s0">102            android:enabled=&quot;@bool/enable_system_job_service_default&quot;</span>
+<span class="s0">102--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:48:13-70</span>
+<span class="s0">103            android:exported=&quot;true&quot;</span>
+<span class="s0">103--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:49:13-36</span>
+<span class="s0">104            android:permission=&quot;android.permission.BIND_JOB_SERVICE&quot; /&gt;</span>
+<span class="s0">104--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:50:13-69</span>
+<span class="s0">105        &lt;service</span>
+<span class="s0">105--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:52:9-57:35</span>
+<span class="s0">106            android:name=&quot;androidx.work.impl.foreground.SystemForegroundService&quot;</span>
+<span class="s0">106--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:53:13-81</span>
+<span class="s0">107            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">107--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:54:13-44</span>
+<span class="s0">108            android:enabled=&quot;@bool/enable_system_foreground_service_default&quot;</span>
+<span class="s0">108--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:55:13-77</span>
+<span class="s0">109            android:exported=&quot;false&quot; /&gt;</span>
+<span class="s0">109--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:56:13-37</span>
+<span class="s0">110</span>
+<span class="s0">111        &lt;receiver</span>
+<span class="s0">111--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:59:9-64:35</span>
+<span class="s0">112            android:name=&quot;androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver&quot;</span>
+<span class="s0">112--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:60:13-88</span>
+<span class="s0">113            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">113--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:61:13-44</span>
+<span class="s0">114            android:enabled=&quot;true&quot;</span>
+<span class="s0">114--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:62:13-35</span>
+<span class="s0">115            android:exported=&quot;false&quot; /&gt;</span>
+<span class="s0">115--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:63:13-37</span>
+<span class="s0">116        &lt;receiver</span>
+<span class="s0">116--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:65:9-75:20</span>
+<span class="s0">117            android:name=&quot;androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy&quot;</span>
+<span class="s0">117--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:66:13-106</span>
+<span class="s0">118            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">118--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:67:13-44</span>
+<span class="s0">119            android:enabled=&quot;false&quot;</span>
+<span class="s0">119--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:68:13-36</span>
+<span class="s0">120            android:exported=&quot;false&quot; &gt;</span>
+<span class="s0">120--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:69:13-37</span>
+<span class="s0">121            &lt;intent-filter&gt;</span>
+<span class="s0">121--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:71:13-74:29</span>
+<span class="s0">122                &lt;action android:name=&quot;android.intent.action.ACTION_POWER_CONNECTED&quot; /&gt;</span>
+<span class="s0">122--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:72:17-87</span>
+<span class="s0">122--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:72:25-84</span>
+<span class="s0">123                &lt;action android:name=&quot;android.intent.action.ACTION_POWER_DISCONNECTED&quot; /&gt;</span>
+<span class="s0">123--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:73:17-90</span>
+<span class="s0">123--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:73:25-87</span>
+<span class="s0">124            &lt;/intent-filter&gt;</span>
+<span class="s0">125        &lt;/receiver&gt;</span>
+<span class="s0">126        &lt;receiver</span>
+<span class="s0">126--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:76:9-86:20</span>
+<span class="s0">127            android:name=&quot;androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy&quot;</span>
+<span class="s0">127--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:77:13-104</span>
+<span class="s0">128            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">128--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:78:13-44</span>
+<span class="s0">129            android:enabled=&quot;false&quot;</span>
+<span class="s0">129--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:79:13-36</span>
+<span class="s0">130            android:exported=&quot;false&quot; &gt;</span>
+<span class="s0">130--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:80:13-37</span>
+<span class="s0">131            &lt;intent-filter&gt;</span>
+<span class="s0">131--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:82:13-85:29</span>
+<span class="s0">132                &lt;action android:name=&quot;android.intent.action.BATTERY_OKAY&quot; /&gt;</span>
+<span class="s0">132--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:83:17-77</span>
+<span class="s0">132--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:83:25-74</span>
+<span class="s0">133                &lt;action android:name=&quot;android.intent.action.BATTERY_LOW&quot; /&gt;</span>
+<span class="s0">133--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:84:17-76</span>
+<span class="s0">133--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:84:25-73</span>
+<span class="s0">134            &lt;/intent-filter&gt;</span>
+<span class="s0">135        &lt;/receiver&gt;</span>
+<span class="s0">136        &lt;receiver</span>
+<span class="s0">136--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:87:9-97:20</span>
+<span class="s0">137            android:name=&quot;androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy&quot;</span>
+<span class="s0">137--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:88:13-104</span>
+<span class="s0">138            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">138--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:89:13-44</span>
+<span class="s0">139            android:enabled=&quot;false&quot;</span>
+<span class="s0">139--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:90:13-36</span>
+<span class="s0">140            android:exported=&quot;false&quot; &gt;</span>
+<span class="s0">140--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:91:13-37</span>
+<span class="s0">141            &lt;intent-filter&gt;</span>
+<span class="s0">141--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:93:13-96:29</span>
+<span class="s0">142                &lt;action android:name=&quot;android.intent.action.DEVICE_STORAGE_LOW&quot; /&gt;</span>
+<span class="s0">142--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:94:17-83</span>
+<span class="s0">142--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:94:25-80</span>
+<span class="s0">143                &lt;action android:name=&quot;android.intent.action.DEVICE_STORAGE_OK&quot; /&gt;</span>
+<span class="s0">143--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:95:17-82</span>
+<span class="s0">143--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:95:25-79</span>
+<span class="s0">144            &lt;/intent-filter&gt;</span>
+<span class="s0">145        &lt;/receiver&gt;</span>
+<span class="s0">146        &lt;receiver</span>
+<span class="s0">146--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:98:9-107:20</span>
+<span class="s0">147            android:name=&quot;androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy&quot;</span>
+<span class="s0">147--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:99:13-103</span>
+<span class="s0">148            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">148--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:100:13-44</span>
+<span class="s0">149            android:enabled=&quot;false&quot;</span>
+<span class="s0">149--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:101:13-36</span>
+<span class="s0">150            android:exported=&quot;false&quot; &gt;</span>
+<span class="s0">150--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:102:13-37</span>
+<span class="s0">151            &lt;intent-filter&gt;</span>
+<span class="s0">151--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:104:13-106:29</span>
+<span class="s0">152                &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt;</span>
+<span class="s0">152--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:105:17-79</span>
+<span class="s0">152--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:105:25-76</span>
+<span class="s0">153            &lt;/intent-filter&gt;</span>
+<span class="s0">154        &lt;/receiver&gt;</span>
+<span class="s0">155        &lt;receiver</span>
+<span class="s0">155--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:108:9-119:20</span>
+<span class="s0">156            android:name=&quot;androidx.work.impl.background.systemalarm.RescheduleReceiver&quot;</span>
+<span class="s0">156--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:109:13-88</span>
+<span class="s0">157            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">157--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:110:13-44</span>
+<span class="s0">158            android:enabled=&quot;false&quot;</span>
+<span class="s0">158--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:111:13-36</span>
+<span class="s0">159            android:exported=&quot;false&quot; &gt;</span>
+<span class="s0">159--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:112:13-37</span>
+<span class="s0">160            &lt;intent-filter&gt;</span>
+<span class="s0">160--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:114:13-118:29</span>
+<span class="s0">161                &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;</span>
+<span class="s0">161--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:115:17-79</span>
+<span class="s0">161--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:115:25-76</span>
+<span class="s0">162                &lt;action android:name=&quot;android.intent.action.TIME_SET&quot; /&gt;</span>
+<span class="s0">162--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:116:17-73</span>
+<span class="s0">162--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:116:25-70</span>
+<span class="s0">163                &lt;action android:name=&quot;android.intent.action.TIMEZONE_CHANGED&quot; /&gt;</span>
+<span class="s0">163--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:117:17-81</span>
+<span class="s0">163--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:117:25-78</span>
+<span class="s0">164            &lt;/intent-filter&gt;</span>
+<span class="s0">165        &lt;/receiver&gt;</span>
+<span class="s0">166        &lt;receiver</span>
+<span class="s0">166--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:120:9-129:20</span>
+<span class="s0">167            android:name=&quot;androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver&quot;</span>
+<span class="s0">167--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:121:13-99</span>
+<span class="s0">168            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">168--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:122:13-44</span>
+<span class="s0">169            android:enabled=&quot;@bool/enable_system_alarm_service_default&quot;</span>
+<span class="s0">169--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:123:13-72</span>
+<span class="s0">170            android:exported=&quot;false&quot; &gt;</span>
+<span class="s0">170--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:124:13-37</span>
+<span class="s0">171            &lt;intent-filter&gt;</span>
+<span class="s0">171--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:126:13-128:29</span>
+<span class="s0">172                &lt;action android:name=&quot;androidx.work.impl.background.systemalarm.UpdateProxies&quot; /&gt;</span>
+<span class="s0">172--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:127:17-98</span>
+<span class="s0">172--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:127:25-95</span>
+<span class="s0">173            &lt;/intent-filter&gt;</span>
+<span class="s0">174        &lt;/receiver&gt;</span>
+<span class="s0">175        &lt;receiver</span>
+<span class="s0">175--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:130:9-140:20</span>
+<span class="s0">176            android:name=&quot;androidx.work.impl.diagnostics.DiagnosticsReceiver&quot;</span>
+<span class="s0">176--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:131:13-78</span>
+<span class="s0">177            android:directBootAware=&quot;false&quot;</span>
+<span class="s0">177--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:132:13-44</span>
+<span class="s0">178            android:enabled=&quot;true&quot;</span>
+<span class="s0">178--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:133:13-35</span>
+<span class="s0">179            android:exported=&quot;true&quot;</span>
+<span class="s0">179--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:134:13-36</span>
+<span class="s0">180            android:permission=&quot;android.permission.DUMP&quot; &gt;</span>
+<span class="s0">180--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:135:13-57</span>
+<span class="s0">181            &lt;intent-filter&gt;</span>
+<span class="s0">181--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:137:13-139:29</span>
+<span class="s0">182                &lt;action android:name=&quot;androidx.work.diagnostics.REQUEST_DIAGNOSTICS&quot; /&gt;</span>
+<span class="s0">182--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:138:17-88</span>
+<span class="s0">182--&gt;[androidx.work:work-runtime:2.5.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\c186feea2b9b8f3c95f34ca3453b7d4f\work-runtime-2.5.0\AndroidManifest.xml:138:25-85</span>
+<span class="s0">183            &lt;/intent-filter&gt;</span>
+<span class="s0">184        &lt;/receiver&gt;</span>
+<span class="s0">185</span>
+<span class="s0">186        &lt;service</span>
+<span class="s0">186--&gt;[androidx.room:room-runtime:2.2.6] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\41d0ef89919f6cf380370bafbc1a6aea\room-runtime-2.2.6\AndroidManifest.xml:25:9-28:40</span>
+<span class="s0">187            android:name=&quot;androidx.room.MultiInstanceInvalidationService&quot;</span>
+<span class="s0">187--&gt;[androidx.room:room-runtime:2.2.6] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\41d0ef89919f6cf380370bafbc1a6aea\room-runtime-2.2.6\AndroidManifest.xml:26:13-74</span>
+<span class="s0">188            android:directBootAware=&quot;true&quot;</span>
+<span class="s0">188--&gt;[androidx.room:room-runtime:2.2.6] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\41d0ef89919f6cf380370bafbc1a6aea\room-runtime-2.2.6\AndroidManifest.xml:27:13-43</span>
+<span class="s0">189            android:exported=&quot;false&quot; /&gt;</span>
+<span class="s0">189--&gt;[androidx.room:room-runtime:2.2.6] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\41d0ef89919f6cf380370bafbc1a6aea\room-runtime-2.2.6\AndroidManifest.xml:28:13-37</span>
+<span class="s0">190</span>
+<span class="s0">191        &lt;activity</span>
+<span class="s0">191--&gt;[com.google.android.gms:play-services-base:17.3.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8e57eb0a54c21311bef18d1e0edac20f\jetified-play-services-base-17.3.0\AndroidManifest.xml:23:9-26:75</span>
+<span class="s0">192            android:name=&quot;com.google.android.gms.common.api.GoogleApiActivity&quot;</span>
+<span class="s0">192--&gt;[com.google.android.gms:play-services-base:17.3.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8e57eb0a54c21311bef18d1e0edac20f\jetified-play-services-base-17.3.0\AndroidManifest.xml:24:13-79</span>
+<span class="s0">193            android:exported=&quot;false&quot;</span>
+<span class="s0">193--&gt;[com.google.android.gms:play-services-base:17.3.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8e57eb0a54c21311bef18d1e0edac20f\jetified-play-services-base-17.3.0\AndroidManifest.xml:25:13-37</span>
+<span class="s0">194            android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot; /&gt;</span>
+<span class="s0">194--&gt;[com.google.android.gms:play-services-base:17.3.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\8e57eb0a54c21311bef18d1e0edac20f\jetified-play-services-base-17.3.0\AndroidManifest.xml:26:13-72</span>
+<span class="s0">195</span>
+<span class="s0">196        &lt;provider</span>
+<span class="s0">196--&gt;[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\07affe4d4ee75ee78ff2e4c9dedbaa4e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43</span>
+<span class="s0">197            android:name=&quot;androidx.lifecycle.ProcessLifecycleOwnerInitializer&quot;</span>
+<span class="s0">197--&gt;[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\07affe4d4ee75ee78ff2e4c9dedbaa4e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79</span>
+<span class="s0">198            android:authorities=&quot;com.sigmaprogrammers.ravelocator.lifecycle-process&quot;</span>
+<span class="s0">198--&gt;[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\07affe4d4ee75ee78ff2e4c9dedbaa4e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69</span>
+<span class="s0">199            android:exported=&quot;false&quot;</span>
+<span class="s0">199--&gt;[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\07affe4d4ee75ee78ff2e4c9dedbaa4e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37</span>
+<span class="s0">200            android:multiprocess=&quot;true&quot; /&gt;</span>
+<span class="s0">200--&gt;[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\Jose\.gradle\caches\transforms-2\files-2.1\07affe4d4ee75ee78ff2e4c9dedbaa4e\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40</span>
+<span class="s0">201    &lt;/application&gt;</span>
+<span class="s0">202</span>
+<span class="s0">203&lt;/manifest&gt;</span>
+</pre>
+</body>
+</html>

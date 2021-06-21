@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>FetchAddressTask.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #629755; font-style: italic;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+.s5 { color: #6a8759;}
+.s6 { color: #629755; font-weight: bold; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+FetchAddressTask.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.SharedPreferences</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.location.Address</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.location.Geocoder</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.location.Location</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.AsyncTask</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.text.TextUtils</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.util.Log</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.preference.PreferenceManager</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.io.IOException</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Locale</span><span class="s0">;</span>
+
+<span class="s2">/**</span>
+ <span class="s2">* AsyncTask for reverse geocoding coordinates into a physical address.</span>
+ <span class="s2">*/</span>
+<span class="s0">class </span><span class="s1">FetchAddressTask </span><span class="s0">extends </span><span class="s1">AsyncTask&lt;Location</span><span class="s0">, </span><span class="s1">Void</span><span class="s0">, </span><span class="s1">String[]&gt; {</span>
+
+    <span class="s0">private final </span><span class="s1">Context mContext</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">OnTaskCompleted mListener</span><span class="s0">;</span>
+
+
+    <span class="s1">FetchAddressTask(Context applicationContext</span><span class="s0">, </span><span class="s1">OnTaskCompleted listener) {</span>
+        <span class="s1">mContext = applicationContext</span><span class="s0">;</span>
+        <span class="s1">mListener = listener</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">private final </span><span class="s1">String TAG = FetchAddressTask.</span><span class="s0">class</span><span class="s1">.getSimpleName()</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected </span><span class="s1">String[] doInBackground(Location... params) {</span>
+        <span class="s1">String[] cityAndState = </span><span class="s0">new </span><span class="s1">String[</span><span class="s3">2</span><span class="s1">]</span><span class="s0">;</span>
+        <span class="s4">// Set up the geocoder</span>
+        <span class="s1">Geocoder geocoder = </span><span class="s0">new </span><span class="s1">Geocoder(mContext</span><span class="s0">,</span>
+                <span class="s1">Locale.getDefault())</span><span class="s0">;</span>
+
+        <span class="s4">// Get the passed in location</span>
+        <span class="s1">Location location = params[</span><span class="s3">0</span><span class="s1">]</span><span class="s0">;</span>
+        <span class="s1">List&lt;Address&gt; addresses = </span><span class="s0">null;</span>
+        <span class="s1">String resultMessage = </span><span class="s5">&quot;&quot;</span><span class="s0">;</span>
+
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">addresses = geocoder.getFromLocation(</span>
+                    <span class="s1">location.getLatitude()</span><span class="s0">,</span>
+                    <span class="s1">location.getLongitude()</span><span class="s0">,</span>
+                    <span class="s4">// In this sample, get just a single address</span>
+                    <span class="s3">1</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(IOException ioException) {</span>
+            <span class="s4">// Catch network or other I/O problems</span>
+            <span class="s1">resultMessage = mContext.getString(R.string.service_not_available)</span><span class="s0">;</span>
+            <span class="s1">Log.e(TAG</span><span class="s0">, </span><span class="s1">resultMessage</span><span class="s0">, </span><span class="s1">ioException)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(IllegalArgumentException illegalArgumentException) {</span>
+            <span class="s4">// Catch invalid latitude or longitude values</span>
+            <span class="s1">resultMessage = mContext.getString(R.string.invalid_lat_long_used)</span><span class="s0">;</span>
+            <span class="s1">Log.e(TAG</span><span class="s0">, </span><span class="s1">resultMessage + </span><span class="s5">&quot;. &quot; </span><span class="s1">+</span>
+                    <span class="s5">&quot;Latitude = &quot; </span><span class="s1">+ location.getLatitude() +</span>
+                    <span class="s5">&quot;, Longitude = &quot; </span><span class="s1">+</span>
+                    <span class="s1">location.getLongitude()</span><span class="s0">, </span><span class="s1">illegalArgumentException)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s4">// If no addresses found, print an error message.</span>
+        <span class="s0">if </span><span class="s1">(addresses == </span><span class="s0">null </span><span class="s1">|| addresses.size() == </span><span class="s3">0</span><span class="s1">) {</span>
+            <span class="s0">if </span><span class="s1">(resultMessage.isEmpty()) {</span>
+                <span class="s1">resultMessage = mContext.getString(R.string.no_address_found)</span><span class="s0">;</span>
+                <span class="s1">Log.e(TAG</span><span class="s0">, </span><span class="s1">resultMessage)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">String city</span><span class="s0">;</span>
+            <span class="s0">if</span><span class="s1">(addresses.get(</span><span class="s3">0</span><span class="s1">).getLocality() == </span><span class="s0">null</span><span class="s1">){</span>
+                <span class="s1">city = </span><span class="s5">&quot;null&quot;</span><span class="s0">;</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">city = addresses.get(</span><span class="s3">0</span><span class="s1">).getLocality()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s1">String state = addresses.get(</span><span class="s3">0</span><span class="s1">).getAdminArea()</span><span class="s0">;</span>
+            <span class="s1">cityAndState[</span><span class="s3">0</span><span class="s1">] = city</span><span class="s0">;</span>
+            <span class="s1">cityAndState[</span><span class="s3">1</span><span class="s1">] = state</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">return </span><span class="s1">cityAndState</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">/**</span>
+     <span class="s2">* Called once the background thread is finished and updates the</span>
+     <span class="s2">* UI with the result.</span>
+     <span class="s2">* </span><span class="s6">@param </span><span class="s2">cityAndState The resulting reverse geocoded address, or error</span>
+     <span class="s2">*                message if the task failed.</span>
+     <span class="s2">*/</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onPostExecute(String[] cityAndState) {</span>
+        <span class="s1">mListener.onTaskCompleted(cityAndState)</span><span class="s0">;</span>
+        <span class="s0">super</span><span class="s1">.onPostExecute(cityAndState)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">interface </span><span class="s1">OnTaskCompleted {</span>
+        <span class="s0">void </span><span class="s1">onTaskCompleted(String[] result)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

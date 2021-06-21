@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>recyclerview_item.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #bababa;}
+.s2 { color: #6a8759;}
+.s3 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+recyclerview_item.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;LinearLayout </span><span class="s1">xmlns:android</span><span class="s2">=&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="s1">xmlns:app</span><span class="s2">=&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="s1">xmlns:tools</span><span class="s2">=&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+    <span class="s1">android:background</span><span class="s2">=&quot;@color/colorScreenBackground&quot;</span>
+    <span class="s1">android:minHeight</span><span class="s2">=&quot;88dp&quot;</span>
+    <span class="s1">android:id</span><span class="s2">=&quot;@+id/recyclerview&quot;</span><span class="s0">&gt;</span>
+
+    <span class="s0">&lt;com.google.android.material.card.MaterialCardView</span>
+        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+        <span class="s1">android:layout_marginBottom</span><span class="s2">=&quot;4dp&quot;</span>
+        <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;2dp&quot;</span>
+
+        <span class="s1">app:cardBackgroundColor</span><span class="s2">=&quot;@color/white&quot;</span>
+        <span class="s1">android:foregroundTint</span><span class="s2">=&quot;@color/mtrl_list_item_tint&quot;</span>
+        <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;2dp&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;RelativeLayout</span>
+
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/separatorView&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;25dp&quot;</span>
+                <span class="s1">android:paddingTop</span><span class="s2">=&quot;8dp&quot;</span>
+                <span class="s1">android:paddingBottom</span><span class="s2">=&quot;8dp&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:visibility</span><span class="s2">=&quot;gone&quot;</span>
+                <span class="s1">tools:text</span><span class="s2">=&quot;Date&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@color/secondaryDarkColor&quot;</span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/initialSeparator&quot;</span>
+                <span class="s1">android:layout_below</span><span class="s2">=&quot;@id/separatorView&quot;</span>
+                <span class="s1">android:layout_alignParentStart</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:paddingTop</span><span class="s2">=&quot;8dp&quot;</span>
+                <span class="s1">android:paddingBottom</span><span class="s2">=&quot;8dp&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;25dp&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                <span class="s1">android:visibility</span><span class="s2">=&quot;gone&quot;</span>
+                <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">tools:text</span><span class="s2">=&quot;Date&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@color/secondaryDarkColor&quot;</span><span class="s0">/&gt;</span>
+
+
+            <span class="s0">&lt;ImageView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/mtrl_list_item_icon&quot;</span>
+                <span class="s1">android:layout_below</span><span class="s2">=&quot;@id/initialSeparator&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:padding</span><span class="s2">=&quot;16dp&quot;</span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/concertName&quot;</span>
+                <span class="s1">android:layout_below</span><span class="s2">=&quot;@id/initialSeparator&quot;</span>
+                <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/bebas_neue&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;220dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_gravity</span><span class="s2">=&quot;center_vertical&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@id/mtrl_list_item_icon&quot;</span>
+                <span class="s1">android:paddingTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:textAppearance</span><span class="s2">=&quot;?attr/textAppearanceHeadline4&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
+                <span class="s1">tools:text</span><span class="s2">=&quot;@tools:sample/date/day_of_week&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/justAdded&quot;</span>
+                <span class="s1">android:layout_below</span><span class="s2">=&quot;@id/concertName&quot;</span>
+                <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/bebas_neue&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_gravity</span><span class="s2">=&quot;center_vertical&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;@string/just_added&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@id/mtrl_list_item_icon&quot;</span>
+                <span class="s1">android:visibility</span><span class="s2">=&quot;gone&quot;</span>
+                <span class="s1">android:textAppearance</span><span class="s2">=&quot;?attr/textAppearanceHeadline4&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/secondaryColor&quot;</span>
+                <span class="s0">/&gt;</span>
+
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/artistPreview&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;220dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_below</span><span class="s2">=&quot;@id/justAdded&quot;</span>
+                <span class="s1">android:layout_gravity</span><span class="s2">=&quot;center_vertical&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@id/mtrl_list_item_icon&quot;</span>
+                <span class="s1">android:maxLines</span><span class="s2">=&quot;1&quot;</span>
+                <span class="s1">android:paddingEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:textAppearance</span><span class="s2">=&quot;?attr/textAppearanceBody2&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span>
+                <span class="s1">tools:text</span><span class="s2">=&quot;@tools:sample/full_names&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/concertVenue&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_below</span><span class="s2">=&quot;@id/artistPreview&quot;</span>
+                <span class="s1">android:layout_gravity</span><span class="s2">=&quot;center_vertical&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@id/mtrl_list_item_icon&quot;</span>
+                <span class="s1">android:paddingEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:maxLines</span><span class="s2">=&quot;1&quot;</span>
+                <span class="s1">android:textAppearance</span><span class="s2">=&quot;?attr/textAppearanceCaption&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/location&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginBottom</span><span class="s2">=&quot;10dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_below</span><span class="s2">=&quot;@id/concertVenue&quot;</span>
+                <span class="s1">android:layout_gravity</span><span class="s2">=&quot;center_vertical&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@id/mtrl_list_item_icon&quot;</span>
+                <span class="s1">android:paddingEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:maxLines</span><span class="s2">=&quot;1&quot;</span>
+                <span class="s1">android:textAppearance</span><span class="s2">=&quot;?attr/textAppearanceCaption&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/black&quot;</span><span class="s0">/&gt;</span>
+
+
+            <span class="s0">&lt;xyz.hanks.library.bang.SmallBangView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/imageViewAnimation&quot;</span>
+                <span class="s1">android:layout_alignTop</span><span class="s2">=&quot;@id/concertName&quot;</span>
+                <span class="s1">android:layout_alignBottom</span><span class="s2">=&quot;@id/location&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_toRightOf</span><span class="s2">=&quot;@+id/concertName&quot;</span>
+                <span class="s0">&gt;</span>
+
+                <span class="s0">&lt;ImageView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/imageView&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_gravity</span><span class="s2">=&quot;center&quot;</span>
+                    <span class="s1">android:src</span><span class="s2">=&quot;@drawable/button_states&quot;</span>
+                    <span class="s0">/&gt;</span>
+            <span class="s0">&lt;/xyz.hanks.library.bang.SmallBangView&gt;</span>
+
+            <span class="s0">&lt;ImageButton</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/itemOptions&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_alignBottom</span><span class="s2">=&quot;@+id/artistPreview&quot;</span>
+                <span class="s1">android:paddingTop</span><span class="s2">=&quot;34dp&quot;</span>
+                <span class="s1">android:layout_alignTop</span><span class="s2">=&quot;@id/concertName&quot;</span>
+                <span class="s1">android:layout_alignParentEnd</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:layout_alignBaseline</span><span class="s2">=&quot;@id/imageViewAnimation&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@+id/imageViewAnimation&quot;</span>
+                <span class="s1">android:layout_toRightOf</span><span class="s2">=&quot;@+id/imageViewAnimation&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@color/white&quot;</span>
+                <span class="s1">android:paddingRight</span><span class="s2">=&quot;15dp&quot;</span>
+                <span class="s1">android:src</span><span class="s2">=&quot;@drawable/ic_baseline_more_vert_24&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/RelativeLayout&gt;</span>
+    <span class="s0">&lt;/com.google.android.material.card.MaterialCardView&gt;</span>
+<span class="s0">&lt;/LinearLayout&gt;</span></pre>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>UpdateDatabaseWorker.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+UpdateDatabaseWorker.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator.workers</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.util.Log</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.lifecycle.MutableLiveData</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.lifecycle.ViewModelProvider</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.lifecycle.ViewModelProviders</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.work.Worker</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.work.WorkerParameters</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.ravelocator.data.DatumDatabase</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumVenueCrossRef</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.MainActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.NearbyFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.data.RaveLocatorRepository</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.api.RaveLocatorService</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.RaveLocatorViewModel</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.Datum</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumCoordinatesUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumLocationUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.DatumVenueUpdate</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.RaveLocatorModel</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.text.SimpleDateFormat</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.concurrent.Executors</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">retrofit2.Call</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.Callback</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.Response</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.Retrofit</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.converter.jackson.JacksonConverterFactory</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">UpdateDatabaseWorker </span><span class="s0">extends </span><span class="s1">Worker {</span>
+    <span class="s1">RaveLocatorViewModel mRaveLocatorViewModel</span><span class="s0">;</span>
+    <span class="s0">public </span><span class="s1">UpdateDatabaseWorker(@NonNull Context context</span><span class="s0">, </span><span class="s1">@NonNull WorkerParameters workerParams) {</span>
+        <span class="s0">super</span><span class="s1">(context</span><span class="s0">, </span><span class="s1">workerParams)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@NonNull</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">Result doWork() {</span>
+        <span class="s1">DatumDatabase database = DatumDatabase.getDatabase(getApplicationContext())</span><span class="s0">;</span>
+
+        <span class="s1">SimpleDateFormat sdf = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">String date = sdf.format(System.currentTimeMillis())</span><span class="s0">;</span>
+        <span class="s1">database.datumDao().deletePastDates(date)</span><span class="s0">;</span>
+        <span class="s1">requestRaveLocations(database)</span><span class="s0">;</span>
+
+        <span class="s0">return </span><span class="s1">Result.success()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">MutableLiveData&lt;RaveLocatorModel&gt; requestRaveLocations(DatumDatabase database) {</span>
+        <span class="s0">final </span><span class="s1">MutableLiveData&lt;RaveLocatorModel&gt; mutableLiveData = </span><span class="s0">new </span><span class="s1">MutableLiveData&lt;&gt;()</span><span class="s0">;</span>
+        <span class="s1">Retrofit retrofit = </span><span class="s0">new </span><span class="s1">Retrofit.Builder()</span>
+                <span class="s1">.baseUrl(</span><span class="s2">&quot;https://edmtrain.com&quot;</span><span class="s1">)</span>
+                <span class="s1">.callbackExecutor(Executors.newSingleThreadExecutor())</span>
+                <span class="s1">.addConverterFactory(JacksonConverterFactory.create())</span>
+                <span class="s1">.build()</span><span class="s0">;</span>
+        <span class="s0">final </span><span class="s1">RaveLocatorService service = retrofit.create(RaveLocatorService.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">final </span><span class="s1">Call&lt;RaveLocatorModel&gt; callRequest = service.getRaveLocations(</span><span class="s2">&quot;cc037aec-dde2-4060-98d9-0d121af42c73&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">callRequest.enqueue(</span><span class="s0">new </span><span class="s1">Callback&lt;RaveLocatorModel&gt;() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onResponse(Call&lt;RaveLocatorModel&gt; call</span><span class="s0">, </span><span class="s1">Response&lt;RaveLocatorModel&gt; response) {</span>
+                <span class="s1">String data = response.body().toString()</span><span class="s0">;</span>
+                <span class="s1">List&lt;Datum&gt; datum = response.body().getData()</span><span class="s0">;</span>
+                <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s0">; </span><span class="s1">i &lt;datum.size()</span><span class="s0">; </span><span class="s1">i++){</span>
+                    <span class="s1">database.datumDao().insertDatum(datum.get(i))</span><span class="s0">;</span>
+                    <span class="s1">database.datumDao().insertVenue(datum.get(i).getVenue())</span><span class="s0">;</span>
+                    <span class="s1">database.datumDao().updateDatumVenueName(</span><span class="s0">new </span><span class="s1">DatumVenueUpdate(datum.get(i).getId()</span><span class="s0">,</span><span class="s1">datum.get(i).getVenue().getVenueName()))</span><span class="s0">;</span>
+                    <span class="s1">database.datumDao().updateDatumLocation(</span><span class="s0">new </span><span class="s1">DatumLocationUpdate(datum.get(i).getId()</span><span class="s0">, </span><span class="s1">datum.get(i).getVenue().getLocation()))</span><span class="s0">;</span>
+                    <span class="s0">if</span><span class="s1">(!datum.get(i).getLivestreamInd()) {</span>
+                        <span class="s1">database.datumDao().updateDatumCoordinates(</span><span class="s0">new </span><span class="s1">DatumCoordinatesUpdate(datum.get(i).getId()</span><span class="s0">,</span>
+                                <span class="s1">datum.get(i).getVenue().getLatitude() + </span><span class="s2">&quot;, &quot;</span>
+                                        <span class="s1">+ datum.get(i).getVenue().getLongitude() ))</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+                <span class="s1">mutableLiveData.postValue(response.body())</span><span class="s0">;</span>
+                <span class="s1">Log.e(</span><span class="s2">&quot;BACON AND&quot;</span><span class="s0">, </span><span class="s1">mutableLiveData.toString())</span><span class="s0">;</span>
+
+            <span class="s1">}</span>
+
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onFailure(Call&lt;RaveLocatorModel&gt; call</span><span class="s0">, </span><span class="s1">Throwable t) {</span>
+                <span class="s1">Log.d(</span><span class="s2">&quot;NO&quot;</span><span class="s0">, </span><span class="s1">t.getMessage())</span><span class="s0">;</span>
+                <span class="s1">Log.d(</span><span class="s2">&quot;YES&quot;</span><span class="s0">, </span><span class="s1">call.toString())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">mutableLiveData</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

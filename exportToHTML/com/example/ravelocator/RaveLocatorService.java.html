@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>RaveLocatorService.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+RaveLocatorService.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.ravelocator</span><span class="s0">;</span>
+
+
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.GetLocationId</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.LocationDataModel</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.ravelocator.model.RaveLocatorModel</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">retrofit2.Call</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.http.GET</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.http.Header</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.http.Headers</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">retrofit2.http.Query</span><span class="s0">;</span>
+<span class="s0">public interface </span><span class="s1">RaveLocatorService {</span>
+
+
+    <span class="s2">//A ^ B ^ C == TRUE</span>
+    <span class="s1">@GET(</span><span class="s3">&quot;/api/events&quot;</span><span class="s1">)</span>
+    <span class="s1">Call&lt;RaveLocatorModel&gt; getRaveLocations(</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;festivalInd&quot;</span><span class="s1">) </span><span class="s0">boolean </span><span class="s1">festivalInd</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;createdStartDate&quot;</span><span class="s1">) String createdStartDate</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;createdEndDate&quot;</span><span class="s1">) String createdEndDate</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;startDate&quot;</span><span class="s1">) String startDate</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;endDate&quot;</span><span class="s1">) String endDate</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;locationIds&quot;</span><span class="s1">) </span><span class="s0">int </span><span class="s1">locationids</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;includeElectronicGenreInd&quot;</span><span class="s1">) </span><span class="s0">boolean </span><span class="s1">includeElectronicGenreInd</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;livestreamInd&quot;</span><span class="s1">) </span><span class="s0">boolean </span><span class="s1">livestreamInd</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;includeOtherGenreInd&quot;</span><span class="s1">) </span><span class="s0">boolean </span><span class="s1">includeOtherGenreInd</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;client&quot;</span><span class="s1">) String client)</span><span class="s0">;</span>
+
+
+    <span class="s1">@GET(</span><span class="s3">&quot;/api/locations&quot;</span><span class="s1">)</span>
+    <span class="s1">Call&lt;LocationDataModel&gt; getLocationId(</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;state&quot;</span><span class="s1">) String state</span><span class="s0">, </span><span class="s1">@Query(</span><span class="s3">&quot;city&quot;</span><span class="s1">) String city</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;client&quot;</span><span class="s1">) String client)</span><span class="s0">;</span>
+
+    <span class="s1">@GET(</span><span class="s3">&quot;/api/locations&quot;</span><span class="s1">)</span>
+    <span class="s1">Call&lt;LocationDataModel&gt; getLocationId(</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;state&quot;</span><span class="s1">) String state</span><span class="s0">,</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;client&quot;</span><span class="s1">) String client)</span><span class="s0">;</span>
+
+    <span class="s1">@GET(</span><span class="s3">&quot;/api/events&quot;</span><span class="s1">)</span>
+    <span class="s1">Call&lt;RaveLocatorModel&gt; getRaveLocations(</span>
+            <span class="s1">@Query(</span><span class="s3">&quot;client&quot;</span><span class="s1">) String client)</span><span class="s0">;</span>
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
