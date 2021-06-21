@@ -118,7 +118,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         final RaveLocatorService service = retrofit.create(RaveLocatorService.class);
-        final Call<RaveLocatorModel> callRequest = service.getRaveLocations(festivalInd,today, today, startDate, endDate, locationId, includeElectronicGenreInd,livestreamInd,includeOtherGenreInd,"API_KEY");
+        final Call<RaveLocatorModel> callRequest = service.getRaveLocations(festivalInd,today, today, startDate, endDate, locationId, includeElectronicGenreInd,livestreamInd,includeOtherGenreInd,"cc037aec-dde2-4060-98d9-0d121af42c73");
         callRequest.enqueue(new Callback<RaveLocatorModel>() {
             @Override
             public void onResponse(Call<RaveLocatorModel> call, Response<RaveLocatorModel> response) {
@@ -145,7 +145,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         final RaveLocatorService service = retrofit.create(RaveLocatorService.class);
-        final Call<RaveLocatorModel> callRequest = service.getRaveLocations("API_KEY");
+        final Call<RaveLocatorModel> callRequest = service.getRaveLocations("cc037aec-dde2-4060-98d9-0d121af42c73");
         callRequest.enqueue(new Callback<RaveLocatorModel>() {
             @Override
             public void onResponse(Call<RaveLocatorModel> call, Response<RaveLocatorModel> response) {
@@ -173,7 +173,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
                 .build();
         final RaveLocatorService service = retrofit.create(RaveLocatorService.class);
         final Call<LocationDataModel> callRequest;
-        callRequest = service.getLocationId(state, city, "API_KEY";
+        callRequest = service.getLocationId(state, city, "cc037aec-dde2-4060-98d9-0d121af42c73");
         callRequest.enqueue(new Callback<LocationDataModel>() {
             @Override
             public void onResponse(Call<LocationDataModel> call, Response<LocationDataModel> response) {
@@ -205,7 +205,7 @@ public class RaveLocatorViewModel extends AndroidViewModel {
                 .build();
         final RaveLocatorService service = retrofit.create(RaveLocatorService.class);
         final Call<LocationDataModel> callRequest;
-        callRequest = service.getLocationId(state,  "API_KEY");
+        callRequest = service.getLocationId(state,  "cc037aec-dde2-4060-98d9-0d121af42c73");
         callRequest.enqueue(new Callback<LocationDataModel>() {
             @Override
             public void onResponse(Call<LocationDataModel> call, Response<LocationDataModel> response) {
